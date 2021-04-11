@@ -5,7 +5,7 @@ import "../styles/alldayz.css";
 function AllDayz() {
   const [isLoading, setLoading] = useState(true);
   const [isData, setData] = useState([]);
-  const [isSortBy, setSortby] = useState("name");
+  const [sortType, setSortType] = useState("name");
 
   let url = "http://localhost:8000/allDay";
 
@@ -52,14 +52,23 @@ function AllDayz() {
   } // pushDifference end
 
   useEffect(() => {
-    setData(
-      isData.sort((a, b) =>
-        a[isSortBy] > b[isSortBy] ? 1 : b[isSortBy] > a[isSortBy] ? -1 : 0
-      )
-    );
-    console.log(isData);
-    /*    setData(sortData); */
-  }, [isSortBy]); // sorba rendezi adott elv alapján, de valamiért csak késve rendereli le.
+    const sortArray = (type) => {
+      const types = {
+        name: "name",
+        remaining: "remaining",
+        date: "date",
+      };
+      const sortProperty = types[type];
+
+      const sorted = [...isData].sort((a, b) =>
+        a[sortProperty] > b[sortProperty] ? 1 : b[sortProperty] > a[sortProperty] ? -1 : 0
+      );
+
+      setData(sorted);
+    };
+
+    sortArray(sortType);
+  }, [sortType]); // sorba rendezi adott elv alapján, de valamiért csak késve rendereli le.
 
   return (
     <div>
@@ -70,15 +79,14 @@ function AllDayz() {
           <div
             className="radioButton"
             onClick={() => {
-              setSortby("date");
-            }}
-          >
+              setSortType("date");
+            }}>
             Date
           </div>
-          <div className="radioButton" onClick={() => setSortby("remaining")}>
+          <div className="radioButton" onClick={() => setSortType("remaining")}>
             Remaining
           </div>
-          <div className="radioButton" onClick={() => setSortby("name")}>
+          <div className="radioButton" onClick={() => setSortType("name")}>
             Name
           </div>
         </div>
