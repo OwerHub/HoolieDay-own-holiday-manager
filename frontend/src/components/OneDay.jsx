@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "../styles/oneday-temp.css";
+import "../styles/oneday.css";
 import { months } from "../utils/progdatas";
 
 function OneDay(props) {

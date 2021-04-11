@@ -53,12 +53,14 @@ function AllDayz() {
 
   useEffect(() => {
     let sortData = isData;
-    console.log(isSortBy);
-    sortData.sort((a, b) =>
-      a[isSortBy] > b[isSortBy] ? 1 : b[isSortBy] > a[isSortBy] ? -1 : 0
+    /*  console.log(isSortBy); */
+    setData(
+      sortData.sort((a, b) =>
+        a[isSortBy] > b[isSortBy] ? 1 : b[isSortBy] > a[isSortBy] ? -1 : 0
+      )
     );
-    console.log(sortData);
-    setData(sortData);
+    console.log(isData);
+    /*    setData(sortData); */
   }, [isSortBy]); // sorba rendezi adott elv alapján, de valamiért csak késve rendereli le.
 
   return (
@@ -78,13 +80,15 @@ function AllDayz() {
           </div>
         </div>
       </div>
-      {isLoading ? (
-        <div> Loading </div>
-      ) : (
-        isData.map((data, iterator) => (
-          <OneDay data={data} key={"daycomp" + iterator}></OneDay>
-        ))
-      )}
+      <div className="cardContainer">
+        {isLoading ? (
+          <div> Loading </div>
+        ) : (
+          isData.map((data, iterator) => (
+            <OneDay data={data} key={"daycomp" + iterator}></OneDay>
+          ))
+        )}
+      </div>
     </div>
   );
 }

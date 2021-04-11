@@ -1,6 +1,10 @@
 .radioButtonContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .radioButton {
@@ -10,3 +14,13 @@
   border: 1px solid black;
   cursor: pointer;
 }
+
+.cardContainer {
+  width: 100vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+/*# sourceMappingURL=alldayz.css.map */

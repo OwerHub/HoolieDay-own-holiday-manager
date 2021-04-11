@@ -7,9 +7,38 @@ function App() {
   const [isIinputForm, setInputForm] = useState(false);
   return (
     <div className="App">
-      <button onClick={() => setInputForm(!isIinputForm)}>
-        {isIinputForm ? "Show the Holydays" : "New Input"}
-      </button>
+      <div id="head">
+        <div id="orderSelect"></div>
+        <div id="centerDiv">
+          {isIinputForm ? (
+            <div id="holydaysButton">
+              <div
+                id="HolydaysButton"
+                className="headCenterButtons"
+                onClick={() => setInputForm(!isIinputForm)}
+              >
+                Holydays
+              </div>
+              <div
+                id="HolydaysButton"
+                className="headCenterButtons"
+                onClick={() => setInputForm(!isIinputForm)}
+              >
+                later...
+              </div>
+            </div>
+          ) : (
+            <div
+              id="newInputButton"
+              className="headCenterButtons"
+              onClick={() => setInputForm(!isIinputForm)}
+            >
+              New Input
+            </div>
+          )}
+        </div>
+        <div id="typeSelect"></div>
+      </div>
 
       {isIinputForm ? (
         <InputForm close={() => setInputForm(false)}></InputForm>
