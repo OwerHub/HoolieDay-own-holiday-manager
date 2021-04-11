@@ -1,29 +1,15 @@
 import React, { useState } from "react";
+import { months } from "../utils/progdatas.js";
 
-function InputForm() {
+function InputForm(props) {
   const [isMax, setMax] = useState(30);
-
-  const months = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "Aug",
-    "September",
-    "October",
-    "November",
-    "December",
-  ];
 
   function twoDigits(e) {
     if (e < 10) {
       e = "0" + e.toString();
     } else e = e.toString();
     return e;
-  }
+  } // két számjegyre húzza fel az értékeket
 
   function sendDatas() {
     let object = {};
@@ -34,16 +20,11 @@ function InputForm() {
     let dayValue = document.querySelector(".dayInput").value;
     object.date = twoDigits(monthValue) + twoDigits(dayValue);
 
-    /*   if (monthValue < 10) {
-      monthValue = "0" + monthValue.toString();
-    }
-    object.date = monthValue.toString() + dayValue;  */
-
     object.picture = "none";
     object.celebrate = document.querySelector(".celebrateMethodInput").value;
     object.description = document.querySelector(".descriptionInput").value;
-
-    console.log(object);
+    /* 
+    console.log(object); */
 
     fetch("http://localhost:8000/upload", {
       method: "POST",
@@ -51,6 +32,7 @@ function InputForm() {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(object),
     });
+    props.close();
   }
 
   return (

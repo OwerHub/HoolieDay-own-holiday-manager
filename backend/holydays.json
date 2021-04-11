@@ -40,5 +40,61 @@
     "picture": "none",
     "celebrate": "Karácsonyozz!",
     "description": "ne már, hogy le kelljen írni.. :D"
+  },
+  {
+    "name": "Scatman John születésnapja",
+    "date": "0313",
+    "picture": "none",
+    "celebrate": "Hallgasd a zenéjét",
+    "description": "..."
+  },
+  {
+    "name": "Devils Night",
+    "date": "1030",
+    "picture": "none",
+    "celebrate": "The Crow",
+    "description": "..."
+  },
+  {
+    "name": "Peter Steele",
+    "date": "0104",
+    "picture": "none",
+    "celebrate": "Goth, baby, Goth",
+    "description": "..."
+  },
+  {
+    "name": "Rejtő Jenő ",
+    "date": "0329",
+    "picture": "none",
+    "celebrate": "Marínírozott hal, Tourbigo módra!",
+    "description": "..."
+  },
+  {
+    "name": "Philip Seymour (a Gróf)",
+    "date": "0723",
+    "picture": "none",
+    "celebrate": "Rock 'n Roll",
+    "description": ""
+  },
+  {
+    "name": "Rodney Dangerfield",
+    "date": "1122",
+    "picture": "none",
+    "celebrate": "Back To School",
+    "description": ""
+  },
+  {
+    "name": "Lemmy Kilmister",
+    "date": "1224",
+    "picture": "none",
+    "celebrate": "Whisky-Coke and Bass",
+    "description": ""
+  },
+  {
+    "name": "Költészet napja",
+    "date": "0411",
+    "picture": "none",
+    "celebrate": "Posztolj egy verset az utcára",
+    "description": ""
   }
 ]
