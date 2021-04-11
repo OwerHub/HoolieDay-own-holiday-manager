@@ -52,10 +52,8 @@ function AllDayz() {
   } // pushDifference end
 
   useEffect(() => {
-    let sortData = isData;
-    /*  console.log(isSortBy); */
     setData(
-      sortData.sort((a, b) =>
+      isData.sort((a, b) =>
         a[isSortBy] > b[isSortBy] ? 1 : b[isSortBy] > a[isSortBy] ? -1 : 0
       )
     );
@@ -69,7 +67,12 @@ function AllDayz() {
       <div className="typeButton">
         <h4>Select sort by</h4>
         <div className="radioButtonContainer">
-          <div className="radioButton" onClick={() => setSortby("date")}>
+          <div
+            className="radioButton"
+            onClick={() => {
+              setSortby("date");
+            }}
+          >
             Date
           </div>
           <div className="radioButton" onClick={() => setSortby("remaining")}>
