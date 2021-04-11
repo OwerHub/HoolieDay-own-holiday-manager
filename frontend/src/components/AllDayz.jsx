@@ -53,22 +53,23 @@ function AllDayz() {
 
   useEffect(() => {
     const sortArray = (type) => {
-      const types = {
+      /* const types = {
         name: "name",
         remaining: "remaining",
         date: "date",
-      };
-      const sortProperty = types[type];
+      }; */
+      /* const sortProperty = type; */
 
       const sorted = [...isData].sort((a, b) =>
-        a[sortProperty] > b[sortProperty] ? 1 : b[sortProperty] > a[sortProperty] ? -1 : 0
+        a[type] > b[type] ? 1 : b[type] > a[type] ? -1 : 0
       );
 
       setData(sorted);
     };
 
     sortArray(sortType);
-  }, [sortType]); // sorba rendezi adott elv alapján, de valamiért csak késve rendereli le.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [sortType]);
 
   return (
     <div>
