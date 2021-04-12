@@ -17,27 +17,30 @@ function OneDay(props) {
  */
   return (
     <div className="onedayDiv">
-      <div>{props.data.name}</div>
+      <div className="nameDiv">{props.data.name}</div>
 
-      <div>
+      <div className="dateDiv">
         {/*  <span>dátum: </span> */}
         <span>{months[month - 1]} </span>
         <span>{day}</span>
       </div>
 
-      <div>
-        <span>teendő: </span>
+      <div className="toDoDiv">
+        {/*    <span>teendő: </span> */}
         <span>{props.data.celebrate}</span>
       </div>
 
-      <div>
-        <span>Visszalévő napok : </span>
-        <span>{props.data.remaining}</span>
+      <div className="remainingDiv">
+        <div className="numberUp">LEFT</div>
+        <div className="remainNumber">
+          <span>{props.data.remaining}</span>
+        </div>
+        <div className="numberDown">DAYZ</div>
       </div>
 
       {/*  <div>year : {props.data.year}</div> */}
 
-      <button onClick={() => setDescription(!isDescription)}>
+      <button onClick={() => setDescription(!isDescription)} className="hide">
         {" "}
         {isDescription ? "mutass kevesebbet" : "mutass többet"}
       </button>

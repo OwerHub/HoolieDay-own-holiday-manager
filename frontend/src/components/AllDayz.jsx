@@ -53,15 +53,14 @@ function AllDayz() {
 
   useEffect(() => {
     const sortArray = (type) => {
-      const types = {
-        name: "name",
-        remaining: "remaining",
-        date: "date",
-      };
-      const sortProperty = types[type];
+      const sortProperty = type;
 
       const sorted = [...isData].sort((a, b) =>
-        a[sortProperty] > b[sortProperty] ? 1 : b[sortProperty] > a[sortProperty] ? -1 : 0
+        a[sortProperty] > b[sortProperty]
+          ? 1
+          : b[sortProperty] > a[sortProperty]
+          ? -1
+          : 0
       );
 
       setData(sorted);
@@ -80,7 +79,8 @@ function AllDayz() {
             className="radioButton"
             onClick={() => {
               setSortType("date");
-            }}>
+            }}
+          >
             Date
           </div>
           <div className="radioButton" onClick={() => setSortType("remaining")}>

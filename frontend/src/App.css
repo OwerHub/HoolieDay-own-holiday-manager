@@ -1,4 +1,9 @@
 /* from: https://colorpalettes.net/color-palette-2911/ */
+* {
+  margin: 0;
+  padding: 0;
+}
+
 .App {
   text-align: center;
   min-height: 100vh;

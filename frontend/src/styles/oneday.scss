@@ -1,7 +1,67 @@
+@import "./styles/colors";
+
 .onedayDiv {
-  margin: 10px;
+  position: relative;
+  margin: 2rem auto;
   padding: 5px 3rem;
   border: 2px solid black;
 
-  width: 25vw;
+  min-height: 13vh;
+  width: 80vw;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nameDiv {
+  position: absolute;
+  top: 0;
+  left: 10px;
+
+  font-size: 130%;
+  padding: 5px 3px;
+  border: 2px solid black;
+
+  background-color: white;
+
+  transform: translate(-1.5rem, -1rem);
+}
+
+.remainingDiv {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+
+  padding: 2px;
+  transform: translate(0.5rem, 0.5rem);
+  background-color: white;
+  border: 2px solid black;
+  div:nth-child(odd) {
+    padding: 0 10px;
+    font-size: 70%;
+    background-color: black;
+    font-weight: bold;
+    color: white;
+  }
+
+  .remainNumber {
+    font-size: 180%;
+    font-weight: bold;
+  }
+}
+
+.dateDiv {
+  position: absolute;
+  right: 2rem;
+  top: 1rem;
+}
+
+.hide {
+  display: none;
+}
+
+.toDoDiv {
+  font-size: 200%;
+  font-weight: bolder;
 }
