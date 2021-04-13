@@ -110,13 +110,5 @@
     "celebrate": "Posztolj egy verset az utcára",
     "description": "",
     "dayType": "1"
-  },
-  {
-    "name": "teszt BirthOf",
-    "date": "0102",
-    "picture": "none",
-    "celebrate": "asda",
-    "description": "asda",
-    "dayType": "0"
   }
 ]

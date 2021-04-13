@@ -1,11 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { months, dayTypesNew } from "../utils/progdatas.js";
 import "../styles/dist/inputform.css";
 
 function InputForm(props) {
-  console.log("inputform Open");
+  const [isMax, setMax] = useState(31);
+  const [isValidate, setValidate] = useState(false);
 
-  const [isMax, setMax] = useState(30);
+  const monthLenght = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 
   function twoDigits(e) {
     if (e < 10) {
@@ -20,7 +21,6 @@ function InputForm(props) {
     object.name = document.querySelector(".nameInput").value;
 
     let monthValue = document.querySelector(".monthDropDown").value;
-
     let dayValue = document.querySelector(".dayInput").value;
     object.date = twoDigits(monthValue) + twoDigits(dayValue);
 
@@ -40,58 +40,126 @@ function InputForm(props) {
     props.close();
   }
 
+  function lengthChange() {
+    setMax(monthLenght[document.querySelector(".monthDropDown").value - 1]);
+  }
+
+  function validate() {
+    const forInputs = () => {
+      let validNum = 0;
+
+      for (const field of document.querySelectorAll("input")) {
+        if (field.value.length > 0) {
+          validNum = validNum + 1;
+        }
+      }
+
+      return document.querySelectorAll("input").length / validNum;
+    };
+
+    /* if (forInputs() === 1 && document.querySelector(".dayInput").validity.valid) {
+      console.log(true);
+    } else {
+      console.log(false);
+    } */
+
+    /*    console.log(
+      forInputs() === 1 && document.querySelector(".dayInput").validity.valid
+    ); */
+
+    setValidate(
+      forInputs() === 1 && document.querySelector(".dayInput").validity.valid
+    );
+    console.log(isValidate);
+  }
+
   return (
-    <div className="inputform">
-      <div className="nameInputDiv">
-        <div>Name of the Holyday: </div>
-        <input type="text" className="nameInput" />
-      </div>
+    <div className="inputModal">
+      <div className="form">
+        <h1>New Day</h1>
 
-      <div className="date">
-        <div>date</div>
-        <select name="month" className="monthDropDown">
-          {months.map((month, iterator) => (
-            <option key={"month" + iterator} value={iterator + 1}>
-              {month}
-            </option>
-          ))}
-        </select>
-        <input type="number" className="dayInput" min="1" max={isMax} />
-      </div>
+        <div className="nameInputCont inputCont">
+          <div className="inputHead">Name of the Holyday: </div>
+          <input
+            type="text"
+            className="nameInput"
+            onChange={() => validate()}
+            required
+          />
+        </div>
 
-      <div className="celebrateMethod">
-        <div>Celebrate Method:</div>
-        <input type="text" className="celebrateMethodInput" />
-      </div>
-
-      <div className="dayType">
-        <div>Type of the Day</div>
-        <select
-          name="dayTypes"
-          className="typeDropDown"
-          style={{ backgroundColor: dayTypesNew[0].color, color: "white" }}
-        >
-          {dayTypesNew.map((type, iterator) => (
-            <option
-              key={"type" + iterator}
-              value={iterator}
-              style={{ backgroundColor: type.color, color: "white" }}
+        <div className="dateCont inputCont">
+          <div className="inputHead"> Date</div>
+          <div>
+            <select
+              name="month"
+              className="monthDropDown"
+              onChange={() => lengthChange()}
             >
-              {type.name}
-            </option>
-          ))}
-        </select>
-      </div>
+              {months.map((month, iterator) => (
+                <option key={"month" + iterator} value={iterator + 1}>
+                  {month}
+                </option>
+              ))}
+            </select>
+          </div>
+          <input
+            type="number"
+            className="dayInput"
+            min="1"
+            max={isMax}
+            required
+            onChange={() => validate()}
+          />
+        </div>
 
-      <div className="description">
-        <div>Description</div>
-        <input type="text" className="descriptionInput" />
-      </div>
+        <div className="celebrateSMethodCont inputCont">
+          <div className="inputHead">Celebrate Method:</div>
+          <input
+            type="text"
+            className="celebrateMethodInput required"
+            onChange={() => validate()}
+          />
+        </div>
 
-      <button onClick={sendDatas}> Elküld</button>
+        <div className="dayTypeCont inputCont">
+          <div className="inputHead">Type of the Day</div>
+          <select
+            name="dayTypes"
+            className="typeDropDown"
+            onChange={() => validate()}
+            style={{ backgroundColor: dayTypesNew[0].color, color: "white" }}
+          >
+            {dayTypesNew.map((type, iterator) => (
+              <option
+                key={"type" + iterator}
+                value={iterator}
+                style={{ backgroundColor: type.color, color: "white" }}
+              >
+                {type.name}
+              </option>
+            ))}
+          </select>
+        </div>
 
-      <div className="closeButton" onClick={() => props.close()}>
-        X
+        <div className="descriptionCont inputCont">
+          <div className="inputHead">Description</div>
+          <input
+            type="text"
+            className="descriptionInput"
+            onChange={() => validate()}
+          />
+        </div>
+
+        <button onClick={sendDatas} className="sendButton" disabled={!isValidate}>
+          Elküld
+        </button>
+
+        {/*   <button onClick={() => validate()}>Validate</button> */}
+
+        <div className="closeButton" onClick={() => props.close()}>
+          X
+        </div>
       </div>
     </div>
   );
