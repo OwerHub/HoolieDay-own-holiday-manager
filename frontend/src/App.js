@@ -40,11 +40,9 @@ function App() {
         <div id="typeSelect"></div>
       </div>
 
-      {isIinputForm ? (
-        <InputForm close={() => setInputForm(false)}></InputForm>
-      ) : (
-        <AllDazy></AllDazy>
-      )}
+      <AllDazy></AllDazy>
+
+      {isIinputForm ? <InputForm close={() => setInputForm(false)}></InputForm> : ""}
     </div>
   );
 }

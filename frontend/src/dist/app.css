@@ -5,6 +5,7 @@
 }
 
 .App {
+  position: relative;
   text-align: center;
   min-height: 100vh;
   background-color: #f3b61f;

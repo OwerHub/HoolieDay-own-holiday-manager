@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import { months, dayTypesNew } from "../utils/progdatas.js";
+import "../styles/dist/inputform.css";
 
 function InputForm(props) {
+  console.log("inputform Open");
+
   const [isMax, setMax] = useState(30);
 
   function twoDigits(e) {
@@ -86,6 +89,10 @@ function InputForm(props) {
       </div>
 
       <button onClick={sendDatas}> Elküld</button>
+
+      <div className="closeButton" onClick={() => props.close()}>
+        X
+      </div>
     </div>
   );
 }

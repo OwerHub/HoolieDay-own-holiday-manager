@@ -1,0 +1,29 @@
+.inputform{
+	position: fixed;
+	top: 2.5vh;
+	left:2.5vw ;
+	width: 95vw;
+	height: 95vh;
+
+	background-color: rgba($color: #000000, $alpha: .5);
+
+	z-index: 5;
+
+}
+
+
+.closeButton{
+	position: absolute;
+	right : 10px;
+	top: 10px;
+	width: 2rem;
+	height: 2rem;
+	cursor: pointer;
+
+	border: 2px solid black;
+border-radius: 2px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+}
