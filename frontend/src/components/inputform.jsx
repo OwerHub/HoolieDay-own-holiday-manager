@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { months } from "../utils/progdatas.js";
+import { months, dayTypesNew } from "../utils/progdatas.js";
 
 function InputForm(props) {
   const [isMax, setMax] = useState(30);
@@ -17,12 +17,14 @@ function InputForm(props) {
     object.name = document.querySelector(".nameInput").value;
 
     let monthValue = document.querySelector(".monthDropDown").value;
+
     let dayValue = document.querySelector(".dayInput").value;
     object.date = twoDigits(monthValue) + twoDigits(dayValue);
 
     object.picture = "none";
     object.celebrate = document.querySelector(".celebrateMethodInput").value;
     object.description = document.querySelector(".descriptionInput").value;
+    object.dayType = document.querySelector(".typeDropDown").value;
     /* 
     console.log(object); */
 
@@ -57,6 +59,25 @@ function InputForm(props) {
       <div className="celebrateMethod">
         <div>Celebrate Method:</div>
         <input type="text" className="celebrateMethodInput" />
+      </div>
+
+      <div className="dayType">
+        <div>Type of the Day</div>
+        <select
+          name="dayTypes"
+          className="typeDropDown"
+          style={{ backgroundColor: dayTypesNew[0].color, color: "white" }}
+        >
+          {dayTypesNew.map((type, iterator) => (
+            <option
+              key={"type" + iterator}
+              value={iterator}
+              style={{ backgroundColor: type.color, color: "white" }}
+            >
+              {type.name}
+            </option>
+          ))}
+        </select>
       </div>
 
       <div className="description">

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./App.css";
+import "./dist/app.css";
 import InputForm from "./components/inputform";
 import AllDazy from "./components/AllDayz";
 

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import "../styles/oneday.css";
-import { months } from "../utils/progdatas";
+import "../styles/dist/oneday.css";
+import { months, dayTypesNew } from "../utils/progdatas";
 
 function OneDay(props) {
   const [isDescription, setDescription] = useState(false);
@@ -15,8 +15,18 @@ function OneDay(props) {
   let difference = dateThen.getTime() - dateNow.getTime();
   let differenceInDay = Math.ceil(difference / (1000 * 3600 * 24));
  */
+
+  /*  let classTry = "edcolor";
+  let classname = dayTypes[props.data.dayType];
+  console.log(dayTypes[props.data.dayType].replace(/\s/g, "").toLowerCase()); */
+
   return (
-    <div className="onedayDiv">
+    <div
+      className="onedayDiv"
+      style={{
+        backgroundColor: dayTypesNew[props.data.dayType].color,
+      }}
+    >
       <div className="nameDiv">{props.data.name}</div>
 
       <div className="dateDiv">

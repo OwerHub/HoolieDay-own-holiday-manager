@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import OneDay from "./OneDay";
-import "../styles/alldayz.css";
+import "../styles/dist/alldayz.css";
 
 function AllDayz() {
   const [isLoading, setLoading] = useState(true);
@@ -71,9 +71,9 @@ function AllDayz() {
 
   return (
     <div>
-      <h3>Alldayz</h3>
+      {/*  <h3>Alldayz</h3> */}
       <div className="typeButton">
-        <h4>Select sort by</h4>
+        <h4>sort by:</h4>
         <div className="radioButtonContainer">
           <div
             className="radioButton"

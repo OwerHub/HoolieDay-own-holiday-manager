@@ -4,119 +4,104 @@
     "date": "1031",
     "picture": "none",
     "celebrate": "Egyél egy hagymás babot",
-    "description": "Bud Spencer/Carlo Pedersoli az egyik legkedveltebb színész Magyarországon. stb stb stb. Karaktereinek visszatérő motívuma a hagymás bab iránti szenvedélyes rajongás. Ezen a napon főzz egy hagymás babot, és nézz meg legalább egy filmet Tőle. ",
-    "dayType": "0"
+    "description": "Bud Spencer/Carlo Pedersoli az egyik legkedveltebb színész Magyarországon. stb stb stb. Karaktereinek visszatérő motívuma a hagymás bab iránti szenvedélyes rajongás. Ezen a napon főzz egy hagymás babot, és nézz meg legalább egy filmet Tőle. "
   },
   {
     "name": "V napja",
     "date": "1105",
     "picture": "none",
-    "celebrate": "Remember, Rememeber",
-    "description": " Guy Fawkes összeesküvés napja, stb, stb stb",
-    "dayType": "1"
+    "celebrate": "Megnézni a V for Vendettát, esetleg felrobbantani a parlamentet",
+    "description": " Guy Fawkes összeesküvés napja, stb, stb stb"
   },
   {
-    "name": "Hunter S Thompson születésnapja",
+    "name": "HUnter S Thompson születésnapja",
     "date": "0718",
     "picture": "none",
     "celebrate": "Meginni egy üveg rumot",
-    "description": " gonzo, stb stb. ",
-    "dayType": "0"
+    "description": " gonzo, stb stb. "
   },
   {
     "name": "Towel Day",
     "date": "0525",
     "picture": "none",
     "celebrate": "Ne felejtsd el a törülközőt",
-    "description": "Douglas Adams születésnapja.",
-    "dayType": "0"
+    "description": "Douglas Adams születésnapja."
   },
   {
     "name": "Independence Day",
     "date": "0704",
     "picture": "none",
     "celebrate": "Barbecue, Los Santos, etc",
-    "description": "Függetlenség napja, az a nap, ami alapvetően elindította azt, ami ma nyugati kultúrának hívunk",
-    "dayType": "1"
+    "description": "Függetlenség napja, az a nap, ami alapvetően elindította azt, ami ma nyugati kultúrának hívunk"
   },
   {
     "name": "Karácsony",
     "date": "1224",
     "picture": "none",
     "celebrate": "Karácsonyozz!",
-    "description": "ne már, hogy le kelljen írni.. :D",
-    "dayType": "3"
+    "description": "ne már, hogy le kelljen írni.. :D"
   },
   {
     "name": "Scatman John születésnapja",
     "date": "0313",
     "picture": "none",
     "celebrate": "Hallgasd a zenéjét",
-    "description": "...",
-    "dayType": "0"
+    "description": "..."
   },
   {
     "name": "Devils Night",
     "date": "1030",
     "picture": "none",
     "celebrate": "The Crow",
-    "description": "...",
-    "dayType": "1"
+    "description": "..."
   },
   {
     "name": "Peter Steele",
     "date": "0104",
     "picture": "none",
-    "celebrate": "Blood and Fire",
-    "description": "...",
-    "dayType": "0"
+    "celebrate": "Goth, baby, Goth",
+    "description": "..."
   },
   {
     "name": "Rejtő Jenő ",
     "date": "0329",
     "picture": "none",
     "celebrate": "Marínírozott hal, Tourbigo módra!",
-    "description": "...",
-    "dayType": "0"
+    "description": "..."
   },
   {
     "name": "Philip Seymour (a Gróf)",
     "date": "0723",
     "picture": "none",
     "celebrate": "Rock 'n Roll",
-    "description": "",
-    "dayType": "0"
+    "description": ""
   },
   {
     "name": "Rodney Dangerfield",
     "date": "1122",
     "picture": "none",
     "celebrate": "Back To School",
-    "description": "",
-    "dayType": "0"
+    "description": ""
   },
   {
     "name": "Lemmy Kilmister",
     "date": "1224",
     "picture": "none",
     "celebrate": "Whisky-Coke and Bass",
-    "description": "",
-    "dayType": "0"
+    "description": ""
   },
   {
     "name": "Költészet napja",
     "date": "0411",
     "picture": "none",
     "celebrate": "Posztolj egy verset az utcára",
-    "description": "",
-    "dayType": "1"
+    "description": ""
   },
   {
-    "name": "teszt BirthOf",
-    "date": "0102",
+    "name": "Nuke Születésnapja",
+    "date": "0429",
     "picture": "none",
-    "celebrate": "asda",
-    "description": "asda",
-    "dayType": "0"
+    "celebrate": "Rule The World",
+    "description": ""
   }
 ]
