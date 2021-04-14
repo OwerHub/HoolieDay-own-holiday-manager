@@ -1,13 +1,33 @@
 import React, { useState, useEffect } from "react";
 import OneDay from "./OneDay";
 import "../styles/dist/alldayz.css";
+import { dayTypesNew } from "../utils/progdatas";
 
 function AllDayz() {
   const [isLoading, setLoading] = useState(true);
   const [isData, setData] = useState([]);
   const [sortType, setSortType] = useState("name");
 
+  const [isTypeCheck, setTypeCheck] = useState("11111111");
+
   let url = "http://localhost:8000/allDay";
+
+  function nullChanger(number) {
+    let typeVariable = isTypeCheck.split("");
+    let actualNr = typeVariable[number];
+    if (actualNr === "0") {
+      actualNr = "1";
+    } else {
+      actualNr = "0";
+    }
+    typeVariable[number] = actualNr;
+    console.log(!!parseInt(actualNr));
+    let a = typeVariable.join("");
+
+    setTypeCheck(a);
+  }
+
+  console.log(isTypeCheck);
 
   // lefetcheli a JSON-t
   const fetchData = async () => {
@@ -72,6 +92,26 @@ function AllDayz() {
   return (
     <div>
       {/*  <h3>Alldayz</h3> */}
+      <div className="typeButtonGroup">
+        {dayTypesNew.map((data, iterator) => (
+          <div
+            onClick={() => nullChanger(iterator)}
+            className="typeSelectButton"
+            style={{ backgroundColor: data.color }}
+          >
+            <div
+              className="onoff"
+              style={{
+                backgroundColor: !!parseInt(isTypeCheck.split("")[iterator])
+                  ? "red"
+                  : "green",
+              }}
+            ></div>
+            <div className="buttonText">{data.name}</div>
+          </div>
+        ))}
+      </div>
+
       <div className="typeButton">
         <h4>sort by:</h4>
         <div className="radioButtonContainer">
@@ -96,7 +136,11 @@ function AllDayz() {
           <div> Loading </div>
         ) : (
           isData.map((data, iterator) => (
-            <OneDay data={data} key={"daycomp" + iterator}></OneDay>
+            <OneDay
+              selectByte={isTypeCheck}
+              data={data}
+              key={"daycomp" + iterator}
+            ></OneDay>
           ))
         )}
       </div>

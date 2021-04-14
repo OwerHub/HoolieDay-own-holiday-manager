@@ -20,3 +20,19 @@
 .test {
   margin: 0;
 }
+
+.typeButtonGroup {
+  display: flex;
+  justify-content: center;
+  color: whitesmoke;
+}
+.typeButtonGroup .typeSelectButton {
+  padding: 5px;
+  margin: 0 5px;
+  border: 2px;
+  cursor: pointer;
+}
+.typeButtonGroup .typeSelectButton .onoff {
+  width: 10px;
+  height: 5px;
+}

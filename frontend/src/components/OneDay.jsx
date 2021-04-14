@@ -20,11 +20,16 @@ function OneDay(props) {
   let classname = dayTypes[props.data.dayType];
   console.log(dayTypes[props.data.dayType].replace(/\s/g, "").toLowerCase()); */
 
+  console.log(
+    `${props.data.name}  is  ${!!parseInt(props.selectByte[props.data.dayType])}`
+  );
+
   return (
     <div
       className="onedayDiv"
       style={{
         backgroundColor: dayTypesNew[props.data.dayType].color,
+        display: !!parseInt(props.selectByte[props.data.dayType]) ? "block" : "none",
       }}
     >
       <div className="nameDiv">{props.data.name}</div>

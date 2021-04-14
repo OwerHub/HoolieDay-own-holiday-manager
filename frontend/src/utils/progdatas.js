@@ -27,13 +27,13 @@ const dayTypesNew = [
   },
   {
     name: "Birthday",
-    color: "blue",
-    description: "valmely, számodra fontos ember születési dátuma",
+    color: "purple",
+    description: "rokon, barát, ismerős születésnapja",
   },
   {
     name: "Egyéb",
     color: "#105001",
-    description: "valmely, számodra fontos ember születési dátuma",
+    description: "Bármi más",
   },
 ];
 
