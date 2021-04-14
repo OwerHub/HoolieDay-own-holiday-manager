@@ -95,6 +95,7 @@ function AllDayz() {
       <div className="typeButtonGroup">
         {dayTypesNew.map((data, iterator) => (
           <div
+            key={"button" + iterator}
             onClick={() => nullChanger(iterator)}
             className="typeSelectButton"
             style={{ backgroundColor: data.color }}
@@ -103,8 +104,8 @@ function AllDayz() {
               className="onoff"
               style={{
                 backgroundColor: !!parseInt(isTypeCheck.split("")[iterator])
-                  ? "red"
-                  : "green",
+                  ? "green"
+                  : "red",
               }}
             ></div>
             <div className="buttonText">{data.name}</div>

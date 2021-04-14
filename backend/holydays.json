@@ -118,5 +118,21 @@
     "celebrate": "Bulii!!!!!",
     "description": "...",
     "dayType": "2"
+  },
+  {
+    "name": "testGreen",
+    "date": "0101",
+    "picture": "none",
+    "celebrate": "testGreen",
+    "description": "...",
+    "dayType": "3"
+  },
+  {
+    "name": "testPurple",
+    "date": "0102",
+    "picture": "none",
+    "celebrate": "Test Purple",
+    "description": "222",
+    "dayType": "2"
   }
 ]
