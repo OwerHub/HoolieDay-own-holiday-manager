@@ -1,11 +1,21 @@
 const express = require("express");
-fs = require("fs");
+fs = require("fs"); // ez majd nem fog kelleni
 const cors = require("cors");
 const app = express();
 const PORT = 8000;
 app.use(cors());
 app.use(express.json());
 
+const holydayRoutes = require("./routes/holydayRoutes");
+app.use("/api/holyday", holydayRoutes);
+
+const userRoutes = require("./routes/userRoutes");
+app.use("/api/user", userRoutes);
+
+const typeRoutes = require("./routes/typeRoutes");
+app.use("/api/type", typeRoutes);
+
+// old code from here
 let holydays = require("./holydays.json");
 
 app.get("/ping", function (req, res) {
