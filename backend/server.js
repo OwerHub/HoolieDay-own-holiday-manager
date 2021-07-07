@@ -3,8 +3,24 @@ fs = require("fs"); // ez majd nem fog kelleni
 const cors = require("cors");
 const app = express();
 const PORT = 8000;
+require("dotenv").config(); // dontenv-hez
+
 app.use(cors());
 app.use(express.json());
+
+const url = process.env.CONNECTION_STRING; //  ezt majd kitörölni
+
+// mongoose
+const mongoose = require("mongoose");
+
+mongoose
+  .connect(url, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useFindAndModify: false,
+  })
+  .then(() => console.log("MongoDB Connected"))
+  .catch((err) => console.log(err));
 
 const holydayRoutes = require("./routes/holydayRoutes");
 app.use("/api/holyday", holydayRoutes);
