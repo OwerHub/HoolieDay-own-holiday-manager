@@ -9,7 +9,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  /* background-color: desaturate( $deepRed, $amount: 20); */
 }
 
 .nameDiv {
@@ -22,6 +21,14 @@
   border: 2px solid black;
   background-color: white;
   transform: translate(-1.5rem, -1rem);
+}
+.nameDiv .nameUp {
+  padding: 0 5px 0;
+  font-size: 50%;
+  background-color: black;
+  color: white;
+  text-align: left;
+  max-width: 150px;
 }
 
 .remainingDiv {
@@ -57,6 +64,7 @@
 }
 
 .toDoDiv {
+  margin: 2rem 0 0 0;
   font-size: 200%;
   color: whitesmoke;
   font-weight: bolder;

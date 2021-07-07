@@ -12,6 +12,7 @@ function AllDayz() {
 
   let url = "http://localhost:8000/allDay";
 
+  // az isTypeCheck number-sedik elemét az ellentétére változtatja
   function nullChanger(number) {
     let typeVariable = isTypeCheck.split("");
     let actualNr = typeVariable[number];
@@ -91,13 +92,14 @@ function AllDayz() {
 
   return (
     <div>
-      {/*  <h3>Alldayz</h3> */}
+      {/* végigiterál a dayTpypesNew tömbön, gombokat hoz létre mindegyik adatai alapján
+          a gombok az a type state annyiadik elemével dolgoznak, amennyi az iterátoruk */}
       <div className="typeButtonGroup">
         {dayTypesNew.map((data, iterator) => (
           <div
+            className="typeSelectButton"
             key={"button" + iterator}
             onClick={() => nullChanger(iterator)}
-            className="typeSelectButton"
             style={{ backgroundColor: data.color }}
           >
             <div

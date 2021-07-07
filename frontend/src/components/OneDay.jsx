@@ -32,7 +32,10 @@ function OneDay(props) {
         display: !!parseInt(props.selectByte[props.data.dayType]) ? "block" : "none",
       }}
     >
-      <div className="nameDiv">{props.data.name}</div>
+      <div className="nameDiv">
+        <div className="nameUp">{dayTypesNew[props.data.dayType].name}</div>
+        <div className="nameBig">{props.data.name}</div>
+      </div>
 
       <div className="dateDiv">
         {/*  <span>dátum: </span> */}

@@ -1,14 +1,14 @@
 [
   {
-    "name": "Bud Spencer születésnapja",
+    "name": "Bud Spencer",
     "date": "1031",
     "picture": "none",
-    "celebrate": "Egyél egy hagymás babot",
+    "celebrate": "Szeresd a hagymás Babot!",
     "description": "Bud Spencer/Carlo Pedersoli az egyik legkedveltebb színész Magyarországon. stb stb stb. Karaktereinek visszatérő motívuma a hagymás bab iránti szenvedélyes rajongás. Ezen a napon főzz egy hagymás babot, és nézz meg legalább egy filmet Tőle. ",
     "dayType": "0"
   },
   {
-    "name": "V napja",
+    "name": "V for Vendetta",
     "date": "1105",
     "picture": "none",
     "celebrate": "Remember, Rememeber",
@@ -16,10 +16,10 @@
     "dayType": "1"
   },
   {
-    "name": "Hunter S Thompson születésnapja",
+    "name": "Hunter S Thompson",
     "date": "0718",
     "picture": "none",
-    "celebrate": "Meginni egy üveg rumot",
+    "celebrate": "Rum and Read",
     "description": " gonzo, stb stb. ",
     "dayType": "0"
   },
@@ -27,7 +27,7 @@
     "name": "Towel Day",
     "date": "0525",
     "picture": "none",
-    "celebrate": "Ne felejtsd el a törülközőt",
+    "celebrate": "Ne felejtsd el a törölközőt",
     "description": "Douglas Adams születésnapja.",
     "dayType": "0"
   },
@@ -35,7 +35,7 @@
     "name": "Independence Day",
     "date": "0704",
     "picture": "none",
-    "celebrate": "Barbecue, Los Santos, etc",
+    "celebrate": "Do Some American Thing",
     "description": "Függetlenség napja, az a nap, ami alapvetően elindította azt, ami ma nyugati kultúrának hívunk",
     "dayType": "1"
   },
@@ -43,15 +43,15 @@
     "name": "Karácsony",
     "date": "1224",
     "picture": "none",
-    "celebrate": "Karácsonyozz!",
+    "celebrate": "Méég több színes fény..",
     "description": "ne már, hogy le kelljen írni.. :D",
     "dayType": "3"
   },
   {
-    "name": "Scatman John születésnapja",
+    "name": "Scatman John",
     "date": "0313",
     "picture": "none",
-    "celebrate": "Hallgasd a zenéjét",
+    "celebrate": "To Scatman's World",
     "description": "...",
     "dayType": "0"
   },
@@ -120,19 +120,27 @@
     "dayType": "2"
   },
   {
-    "name": "testGreen",
-    "date": "0101",
+    "name": "TR-808",
+    "date": "0805",
     "picture": "none",
-    "celebrate": "testGreen",
-    "description": "...",
-    "dayType": "3"
+    "celebrate": "Do some 808",
+    "description": "az ikonikus 808-as dobgép napja",
+    "dayType": "1"
   },
   {
-    "name": "testPurple",
-    "date": "0102",
+    "name": "TR-909",
+    "date": "0909",
     "picture": "none",
-    "celebrate": "Test Purple",
-    "description": "222",
+    "celebrate": "Do some 909",
+    "description": "Az ikonikus 909-es dobgép",
+    "dayType": "1"
+  },
+  {
+    "name": "Lecsó",
+    "date": "0815",
+    "picture": "none",
+    "celebrate": "Iszunk",
+    "description": "ekkor szabadult a világra a BRRRR",
     "dayType": "2"
   }
 ]
