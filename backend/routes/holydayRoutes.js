@@ -9,14 +9,14 @@ router.get("/ping", (req, res) => {
   res.send("Holyday");
 });
 
-router.post("/createTry", HolydayController.testFunct);
-
 // Ask All Holyday
+router.get("/allHolyday", HolydayController.findAllHolydays);
 
 // add HOlday
+router.post("/newHolyday", HolydayController.newHolydayFunct);
 
 // delete Holyday
-
+router.delete("/deleteHolyday", HolydayController.deleteHolyday);
 // modify Holyday
 
 // save one Holyday for Google Calendar

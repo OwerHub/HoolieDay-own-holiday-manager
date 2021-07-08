@@ -11,6 +11,7 @@ app.use(express.json());
 const url = process.env.CONNECTION_STRING; //  ezt majd kitörölni
 
 // mongoose
+
 const mongoose = require("mongoose");
 
 mongoose
@@ -21,6 +22,8 @@ mongoose
   })
   .then(() => console.log("MongoDB Connected"))
   .catch((err) => console.log(err));
+
+//basic routes
 
 const holydayRoutes = require("./routes/holydayRoutes");
 app.use("/api/holyday", holydayRoutes);
