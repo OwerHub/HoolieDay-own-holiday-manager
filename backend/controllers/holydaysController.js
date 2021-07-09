@@ -1,5 +1,7 @@
-const { POINT_CONVERSION_COMPRESSED } = require("constants");
-const { response } = require("express");
+// mik ezek és hogy kerültek ide?
+//const { POINT_CONVERSION_COMPRESSED } = require("constants");
+//const { response } = require("express");
+
 const HolyDayModell = require("../models/HolyDayModell");
 const HolydayModel = require("../models/HolyDayModell");
 
@@ -38,19 +40,14 @@ exports.findAllHolydays = async (req, res) => {
   });
 };
 
+//error-t, nem talált cuccot le kéne kezelni
 exports.deleteHolyday = async (req, res) => {
   if (req.query.id) {
     const response = await HolydayModel.deleteOne({ _id: req.query.id }, (err) => {
-      if (err) {
-        res.send("error" + err);
-      } else {
-        console;
-        res.send("OK");
-      }
+      console.log(err);
     });
+    res.send(response);
   } else {
     res.send("we need an ID");
   }
-
-  console.log(response.status);
 };

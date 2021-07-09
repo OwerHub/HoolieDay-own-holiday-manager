@@ -29,10 +29,10 @@ const holydayRoutes = require("./routes/holydayRoutes");
 app.use("/api/holyday", holydayRoutes);
 
 /* const userRoutes = require("./routes/userRoutes");
-app.use("/api/user", userRoutes);
+app.use("/api/user", userRoutes);*/
 
 const typeRoutes = require("./routes/typeRoutes");
-app.use("/api/type", typeRoutes); */
+app.use("/api/type", typeRoutes);
 
 // --------old code from here----------
 let holydays = require("./holydays.json");

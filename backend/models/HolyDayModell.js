@@ -1,5 +1,7 @@
 const mongoose = require("mongoose");
 
+const modelName = "Holyday";
+
 const holydaySchema = new mongoose.Schema({
   name: { type: String, required: true },
   date: { type: Number, required: true },
@@ -9,4 +11,4 @@ const holydaySchema = new mongoose.Schema({
   type: { type: String, required: true },
 });
 
-module.exports = mongoose.model("HolyDayModell", holydaySchema);
+module.exports = mongoose.model(modelName, holydaySchema);
