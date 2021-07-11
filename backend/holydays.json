@@ -1,5 +1,4 @@
-[
-  {
+[{
     "name": "Bud Spencer",
     "date": "1031",
     "picture": "none",
@@ -84,7 +83,7 @@
     "date": "0723",
     "picture": "none",
     "celebrate": "Rock 'n Roll",
-    "description": "",
+    "description": "...",
     "dayType": "0"
   },
   {
@@ -92,7 +91,7 @@
     "date": "1122",
     "picture": "none",
     "celebrate": "Back To School",
-    "description": "",
+    "description": "...",
     "dayType": "0"
   },
   {
@@ -100,7 +99,7 @@
     "date": "1224",
     "picture": "none",
     "celebrate": "Whisky-Coke and Bass",
-    "description": "",
+    "description": "...",
     "dayType": "0"
   },
   {
@@ -108,7 +107,7 @@
     "date": "0411",
     "picture": "none",
     "celebrate": "Posztolj egy verset az utcára",
-    "description": "",
+    "description": "...",
     "dayType": "1"
   },
   {

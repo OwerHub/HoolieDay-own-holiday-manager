@@ -34,6 +34,9 @@ app.use("/api/user", userRoutes);*/
 const typeRoutes = require("./routes/typeRoutes");
 app.use("/api/type", typeRoutes);
 
+const utilityRoutes = require("./routes/utilityRoutes");
+app.use("/utility", utilityRoutes);
+
 // --------old code from here----------
 let holydays = require("./holydays.json");
 

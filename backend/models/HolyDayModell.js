@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const modelName = "Holyday";
+const modelName = "realholyday";
 
 const holydaySchema = new mongoose.Schema({
   name: { type: String, required: true },
