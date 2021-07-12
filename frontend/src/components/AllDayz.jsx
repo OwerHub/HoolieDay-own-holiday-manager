@@ -7,6 +7,7 @@ function AllDayz() {
   const [isLoading, setLoading] = useState(true);
   const [isData, setData] = useState([]);
   const [sortType, setSortType] = useState("name");
+  const [isTypeArray, setTypeArray] = useState([]);
 
   const [isTypeCheck, setTypeCheck] = useState("11111111");
 
@@ -42,16 +43,17 @@ function AllDayz() {
     setLoading(false);
   }; // fetchend
 
-  const fetchMongo = async () => {
-    url = "http://localhost:8000/api/holyday/allHolyday";
+  const fetchTypes = async () => {
+    url = "http://localhost:8000/api/type/allTypes";
 
     const result = await fetch(url);
     const jsonData = await result.json();
+    setTypeArray(jsonData);
   };
 
   useEffect(() => {
     fetchData();
-    fetchMongo();
+    fetchTypes();
   }, []); // fetch, mikor betöltődik az oldal
 
   function pushDifference(array) {
@@ -104,24 +106,25 @@ function AllDayz() {
       {/* végigiterál a dayTpypesNew tömbön, gombokat hoz létre mindegyik adatai alapján
           a gombok az a type state annyiadik elemével dolgoznak, amennyi az iterátoruk */}
       <div className="typeButtonGroup">
-        {dayTypesNew.map((data, iterator) => (
-          <div
-            className="typeSelectButton"
-            key={"button" + iterator}
-            onClick={() => nullChanger(iterator)}
-            style={{ backgroundColor: data.color }}
-          >
+        {isTypeArray &&
+          isTypeArray.map((data, iterator) => (
             <div
-              className="onoff"
-              style={{
-                backgroundColor: !!parseInt(isTypeCheck.split("")[iterator])
-                  ? "green"
-                  : "red",
-              }}
-            ></div>
-            <div className="buttonText">{data.name}</div>
-          </div>
-        ))}
+              className="typeSelectButton"
+              key={"button" + iterator}
+              onClick={() => nullChanger(iterator)}
+              style={{ backgroundColor: data.color }}
+            >
+              <div
+                className="onoff"
+                style={{
+                  backgroundColor: !!parseInt(isTypeCheck.split("")[iterator])
+                    ? "green"
+                    : "red",
+                }}
+              ></div>
+              <div className="buttonText">{data.name}</div>
+            </div>
+          ))}
       </div>
 
       <div className="typeButton">
@@ -149,6 +152,7 @@ function AllDayz() {
         ) : (
           isData.map((data, iterator) => (
             <OneDay
+              dayTypes={isTypeArray}
               selectByte={isTypeCheck}
               data={data}
               key={"daycomp" + iterator}

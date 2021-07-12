@@ -35,7 +35,7 @@ exports.newHolydayFunct = async (req, res) => {
 
 exports.findAllHolydays = async (req, res) => {
   const response = await HolydayModel.find({}, (err, holydays) => {
-    console.log(holydays);
+    //console.log(holydays);
     res.send(holydays);
   });
 };

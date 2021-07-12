@@ -29,12 +29,12 @@ function OneDay(props) {
       className="onedayDiv"
       style={{
         //backgroundColor: dayTypesNew[props.data.dayType].color,
-        backgroundColor: dayTypesNew[props.data.type].color,
+        backgroundColor: props.dayTypes[props.data.type].color,
         display: !!parseInt(props.selectByte[props.data.type]) ? "block" : "none",
       }}
     >
       <div className="nameDiv">
-        <div className="nameUp">{dayTypesNew[props.data.type].name}</div>
+        <div className="nameUp">{props.dayTypes[props.data.type].name}</div>
         <div className="nameBig">{props.data.name}</div>
       </div>
 
