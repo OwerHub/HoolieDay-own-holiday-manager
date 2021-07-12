@@ -4,7 +4,7 @@ const modelName = "realholyday";
 
 const holydaySchema = new mongoose.Schema({
   name: { type: String, required: true },
-  date: { type: Number, required: true },
+  date: { type: String, required: true },
   picture: { type: String, required: false },
   celebrate: { type: String, required: true },
   description: { type: String, required: true },

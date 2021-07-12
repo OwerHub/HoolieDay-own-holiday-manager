@@ -3,28 +3,37 @@ const app = express();
 require("dotenv").config(); */
 
 let holydaysFromJson = require("../holydays.json");
+let typesFromJson = require("../safety_save/oldtypes");
 const HolydayModel = require("../models/HolyDayModell");
+const TypeModel = require("../models/typeModell");
 
 //console.log(holydays);
 
-exports.copyFromJson = async (req, res) => {
+exports.copyHolydayFromJson = async (req, res) => {
   holydaysFromJson.map((items) => {
-    const HolydayFromJson = new HolydayModel({
+    const oneHolydayFromJson = new HolydayModel({
       name: items.name,
-      date: parseInt(items.date),
+      date: items.date,
       picture: items.picture,
       celebrate: items.celebrate,
       description: "items.description",
       type: items.dayType,
     });
-    const response = HolydayFromJson.save();
-
-    //console.log(items.name);
-    //console.log(parseInt(items.date));
-    //console.log(items.celebrate);
-    //console.log(items.description);
-    //console.log(items.dayType);
-    //console.log(items.picture);
+    const response = oneHolydayFromJson.save();
   });
-  res.send("OK");
+  res.send("OK"); // el lehetne küldeni a válaszokat array-be
+};
+
+exports.copyTypesFromJson = async (req, res) => {
+  typesFromJson.map((item) => {
+    const oneTypeFromJson = new TypeModel({
+      name: item.name, //{ type: String, required: true },
+      color: item.color, //{ type: String, required: true },
+      description: item.description, // { type: String, required: false },
+    });
+    const response = oneTypeFromJson.save();
+    console.log(response);
+  });
+
+  res.send("ok");
 };

@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const modelName = "type";
+const modelName = "realtype";
 
 const typeSchema = new mongoose.Schema({
   name: { type: String, required: true },

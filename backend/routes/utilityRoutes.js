@@ -8,6 +8,7 @@ router.get("/ping", (req, res) => {
   res.send("utils pong");
 });
 
-router.get("/copy", utilController.copyFromJson);
+router.get("/copyHolyday", utilController.copyHolydayFromJson);
+router.get("/copyTypes", utilController.copyTypesFromJson);
 
 module.exports = router;

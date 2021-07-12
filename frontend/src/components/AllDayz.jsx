@@ -11,7 +11,7 @@ function AllDayz() {
   const [isTypeCheck, setTypeCheck] = useState("11111111");
 
   let url = "http://localhost:8000/allDay";
-
+  let url2 = "http://localhost:8000/api/holyday/allHolyday";
   // az isTypeCheck number-sedik elemét az ellentétére változtatja
   function nullChanger(number) {
     let typeVariable = isTypeCheck.split("");
@@ -28,21 +28,30 @@ function AllDayz() {
     setTypeCheck(a);
   }
 
-  console.log(isTypeCheck);
+  ///console.log(isTypeCheck);
 
   // lefetcheli a JSON-t
   const fetchData = async () => {
-    const result = await fetch(url);
+    const result = await fetch(url2);
     const jsonData = await result.json();
     jsonData.sort((a, b) => (a.date > b.date ? 1 : b.date > a.date ? -1 : 0));
 
     let data2 = pushDifference(jsonData);
+
     setData(data2);
     setLoading(false);
   }; // fetchend
 
+  const fetchMongo = async () => {
+    url = "http://localhost:8000/api/holyday/allHolyday";
+
+    const result = await fetch(url);
+    const jsonData = await result.json();
+  };
+
   useEffect(() => {
     fetchData();
+    fetchMongo();
   }, []); // fetch, mikor betöltődik az oldal
 
   function pushDifference(array) {

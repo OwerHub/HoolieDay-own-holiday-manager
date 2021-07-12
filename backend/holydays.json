@@ -4,7 +4,7 @@
     "picture": "none",
     "celebrate": "Szeresd a hagymás Babot!",
     "description": "Bud Spencer/Carlo Pedersoli az egyik legkedveltebb színész Magyarországon. stb stb stb. Karaktereinek visszatérő motívuma a hagymás bab iránti szenvedélyes rajongás. Ezen a napon főzz egy hagymás babot, és nézz meg legalább egy filmet Tőle. ",
-    "dayType": "0"
+    "type": "0"
   },
   {
     "name": "V for Vendetta",
@@ -12,7 +12,7 @@
     "picture": "none",
     "celebrate": "Remember, Rememeber",
     "description": " Guy Fawkes összeesküvés napja, stb, stb stb",
-    "dayType": "1"
+    "type": "1"
   },
   {
     "name": "Hunter S Thompson",
@@ -20,7 +20,7 @@
     "picture": "none",
     "celebrate": "Rum and Read",
     "description": " gonzo, stb stb. ",
-    "dayType": "0"
+    "type": "0"
   },
   {
     "name": "Towel Day",
@@ -28,7 +28,7 @@
     "picture": "none",
     "celebrate": "Ne felejtsd el a törölközőt",
     "description": "Douglas Adams születésnapja.",
-    "dayType": "0"
+    "type": "0"
   },
   {
     "name": "Independence Day",
@@ -36,7 +36,7 @@
     "picture": "none",
     "celebrate": "Do Some American Thing",
     "description": "Függetlenség napja, az a nap, ami alapvetően elindította azt, ami ma nyugati kultúrának hívunk",
-    "dayType": "1"
+    "type": "1"
   },
   {
     "name": "Karácsony",
@@ -44,7 +44,7 @@
     "picture": "none",
     "celebrate": "Méég több színes fény..",
     "description": "ne már, hogy le kelljen írni.. :D",
-    "dayType": "3"
+    "type": "3"
   },
   {
     "name": "Scatman John",
@@ -52,7 +52,7 @@
     "picture": "none",
     "celebrate": "To Scatman's World",
     "description": "...",
-    "dayType": "0"
+    "type": "0"
   },
   {
     "name": "Devils Night",
@@ -60,7 +60,7 @@
     "picture": "none",
     "celebrate": "The Crow",
     "description": "...",
-    "dayType": "1"
+    "type": "1"
   },
   {
     "name": "Peter Steele",
@@ -68,7 +68,7 @@
     "picture": "none",
     "celebrate": "Blood and Fire",
     "description": "...",
-    "dayType": "0"
+    "type": "0"
   },
   {
     "name": "Rejtő Jenő ",
@@ -76,7 +76,7 @@
     "picture": "none",
     "celebrate": "Marínírozott hal, Tourbigo módra!",
     "description": "...",
-    "dayType": "0"
+    "type": "0"
   },
   {
     "name": "Philip Seymour (a Gróf)",
@@ -84,7 +84,7 @@
     "picture": "none",
     "celebrate": "Rock 'n Roll",
     "description": "...",
-    "dayType": "0"
+    "type": "0"
   },
   {
     "name": "Rodney Dangerfield",
@@ -92,7 +92,7 @@
     "picture": "none",
     "celebrate": "Back To School",
     "description": "...",
-    "dayType": "0"
+    "type": "0"
   },
   {
     "name": "Lemmy Kilmister",
@@ -100,7 +100,7 @@
     "picture": "none",
     "celebrate": "Whisky-Coke and Bass",
     "description": "...",
-    "dayType": "0"
+    "type": "0"
   },
   {
     "name": "Költészet napja",
@@ -108,7 +108,7 @@
     "picture": "none",
     "celebrate": "Posztolj egy verset az utcára",
     "description": "...",
-    "dayType": "1"
+    "type": "1"
   },
   {
     "name": "Khiwi",
@@ -116,7 +116,7 @@
     "picture": "none",
     "celebrate": "Bulii!!!!!",
     "description": "...",
-    "dayType": "2"
+    "type": "2"
   },
   {
     "name": "TR-808",
@@ -124,7 +124,7 @@
     "picture": "none",
     "celebrate": "Do some 808",
     "description": "az ikonikus 808-as dobgép napja",
-    "dayType": "1"
+    "type": "1"
   },
   {
     "name": "TR-909",
@@ -132,7 +132,7 @@
     "picture": "none",
     "celebrate": "Do some 909",
     "description": "Az ikonikus 909-es dobgép",
-    "dayType": "1"
+    "type": "1"
   },
   {
     "name": "Lecsó",
@@ -140,6 +140,6 @@
     "picture": "none",
     "celebrate": "Iszunk",
     "description": "ekkor szabadult a világra a BRRRR",
-    "dayType": "2"
+    "type": "2"
   }
 ]
