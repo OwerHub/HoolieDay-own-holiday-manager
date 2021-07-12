@@ -147,7 +147,7 @@ function AllDayz() {
         </div>
       </div>
       <div className="cardContainer">
-        {isLoading ? (
+        {isLoading && !isTypeArray ? (
           <div> Loading </div>
         ) : (
           isData.map((data, iterator) => (

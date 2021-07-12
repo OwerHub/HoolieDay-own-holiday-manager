@@ -4,37 +4,25 @@ import { months, dayTypesNew } from "../utils/progdatas";
 
 function OneDay(props) {
   const [isDescription, setDescription] = useState(false);
+  const [isColor]
 
   let date = props.data.date;
   let month = parseInt(date.substring(0, 2));
   let day = parseInt(date.substring(2, 4));
 
-  /* let dateNow = new Date();
-  let dateThen = new Date(`${month}/${day}/2021`);
-
-  let difference = dateThen.getTime() - dateNow.getTime();
-  let differenceInDay = Math.ceil(difference / (1000 * 3600 * 24));
- */
-
-  /*  let classTry = "edcolor";
-  let classname = dayTypes[props.data.dayType];
-  console.log(dayTypes[props.data.dayType].replace(/\s/g, "").toLowerCase()); */
-
-  /*   console.log(
-    `${props.data.name}  is  ${!!parseInt(props.selectByte[props.data.dayType])}`
-  ); */
+  props.dayTypes.length ? console.log(props.dayTypes) : console.log("not yet");
 
   return (
     <div
       className="onedayDiv"
       style={{
         //backgroundColor: dayTypesNew[props.data.dayType].color,
-        backgroundColor: props.dayTypes[props.data.type].color,
+        backgroundColor: dayTypesNew[props.data.type].color,
         display: !!parseInt(props.selectByte[props.data.type]) ? "block" : "none",
       }}
     >
       <div className="nameDiv">
-        <div className="nameUp">{props.dayTypes[props.data.type].name}</div>
+        <div className="nameUp">{dayTypesNew[props.data.type].name}</div>
         <div className="nameBig">{props.data.name}</div>
       </div>
 
