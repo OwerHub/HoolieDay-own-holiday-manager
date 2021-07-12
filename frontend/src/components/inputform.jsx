@@ -27,11 +27,13 @@ function InputForm(props) {
     object.picture = "none";
     object.celebrate = document.querySelector(".celebrateMethodInput").value;
     object.description = document.querySelector(".descriptionInput").value;
-    object.dayType = document.querySelector(".typeDropDown").value;
+    object.type = document.querySelector(".typeDropDown").value;
     /* 
     console.log(object); */
 
-    fetch("http://localhost:8000/upload", {
+    const urlMongo = "http://localhost:8000/api/holyday/newHolyday";
+    const urlFile = "http://localhost:8000/upload";
+    fetch(urlMongo, {
       method: "POST",
       mode: "cors",
       headers: { "Content-Type": "application/json" },
@@ -56,16 +58,6 @@ function InputForm(props) {
 
       return document.querySelectorAll("input").length / validNum;
     };
-
-    /* if (forInputs() === 1 && document.querySelector(".dayInput").validity.valid) {
-      console.log(true);
-    } else {
-      console.log(false);
-    } */
-
-    /*    console.log(
-      forInputs() === 1 && document.querySelector(".dayInput").validity.valid
-    ); */
 
     setValidate(
       forInputs() === 1 && document.querySelector(".dayInput").validity.valid
