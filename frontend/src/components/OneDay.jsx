@@ -4,7 +4,6 @@ import { months, dayTypesNew } from "../utils/progdatas";
 
 function OneDay(props) {
   const [isDescription, setDescription] = useState(false);
-  const [isColor]
 
   let date = props.data.date;
   let month = parseInt(date.substring(0, 2));
