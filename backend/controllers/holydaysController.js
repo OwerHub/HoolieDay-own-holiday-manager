@@ -1,7 +1,3 @@
-// mik ezek és hogy kerültek ide?
-//const { POINT_CONVERSION_COMPRESSED } = require("constants");
-//const { response } = require("express");
-
 const HolyDayModell = require("../models/HolyDayModell");
 const HolydayModel = require("../models/HolyDayModell");
 
@@ -10,6 +6,7 @@ exports.testFunct = (req, res) => {
 };
 
 exports.newHolydayFunct = async (req, res) => {
+  // ez nem fog kelleni
   const defaultHolyDay = new HolydayModel({
     name: "elseje3",
     date: 232324,
