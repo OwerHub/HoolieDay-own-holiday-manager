@@ -2,12 +2,27 @@ import React, { useState, useEffect } from "react";
 import "./dist/app.css";
 import InputForm from "./components/inputform";
 import AllDazy from "./components/AllDayz";
+import Login from "./components/Login";
 
 function App() {
   const [isIinputForm, setInputForm] = useState(false);
+  const [isGoogleCode, setGoogleCode] = useState(null);
+  // Authorization
+
+  useEffect(() => {
+    const code = new URL(window.location.href).searchParams.get("code"); // itt megkapjuk a
+    const token = { code: code };
+    setGoogleCode(token);
+  }, []);
+
+  console.log(isGoogleCode);
+
   return (
     <div className="App">
       <div id="head">
+        <div className="login">
+          <Login></Login>
+        </div>
         <div id="orderSelect"></div>
         <div id="centerDiv">
           {isIinputForm ? (
