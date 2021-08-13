@@ -6,16 +6,27 @@ import Login from "./components/Login";
 
 function App() {
   const [isIinputForm, setInputForm] = useState(false);
-  const [isGoogleCode, setGoogleCode] = useState(null);
+  //const [isGoogleCode, setGoogleCode] = useState(null);
   // Authorization
+
+  const fetchPostCode = (codeForPost) => {
+    const url = "http://localhost:8000/api/login/sendLoginCode";
+    fetch(url, {
+      method: "POST",
+      mode: "cors",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ code: codeForPost }),
+    });
+  };
 
   useEffect(() => {
     const code = new URL(window.location.href).searchParams.get("code"); // itt megkapjuk a
     const token = { code: code };
-    setGoogleCode(token);
-  }, []);
 
-  console.log(isGoogleCode);
+    if (code) {
+      fetchPostCode(token);
+    }
+  }, []);
 
   return (
     <div className="App">

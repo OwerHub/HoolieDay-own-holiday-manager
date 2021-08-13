@@ -18,13 +18,13 @@ exports.newTypeFunct = async (req, res) => {
   });
 
   const response = await inComingType.save();
-  console.log(response);
+  //console.log(response);
   res.send(response);
 };
 
 exports.findAllTypes = async (req, res) => {
   const response = await TypeModell.find({}, (err, types) => {
-    console.log(types);
+    //console.log(types);
     res.send(types);
   });
 };

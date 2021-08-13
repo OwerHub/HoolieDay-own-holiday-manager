@@ -24,6 +24,8 @@ mongoose
   .catch((err) => console.log(err));
 
 //basic routes
+const loginRoutes = require("./routes/loginRoute");
+app.use("/api/login", loginRoutes);
 
 const holydayRoutes = require("./routes/holydayRoutes");
 app.use("/api/holyday", holydayRoutes);
@@ -60,7 +62,7 @@ app.post("/upload", (req, res) => {
   };
 
   holydays.push(tempObject);
-  console.log(holydays);
+  //console.log(holydays);
 
   let dataString = JSON.stringify(holydays, null, 2);
 

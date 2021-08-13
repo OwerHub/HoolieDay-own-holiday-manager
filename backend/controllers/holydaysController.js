@@ -26,7 +26,7 @@ exports.newHolydayFunct = async (req, res) => {
   });
 
   const response = await inComingHolyDay.save();
-  console.log(req.body);
+  //console.log(req.body);
   res.send(response);
 };
 
