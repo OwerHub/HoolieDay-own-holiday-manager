@@ -1,4 +1,5 @@
 const fetch = require("node-fetch");
+var jwt = require("jsonwebtoken");
 
 const googleFetch = async (code) => {
   // console.log(code);
@@ -13,19 +14,32 @@ const googleFetch = async (code) => {
     code: code,
     client_id: process.env.CLIENT_ID,
     client_secret: process.env.CLIENT_SECRET,
-    redirect_uri: "http://localhost:3000",
+    redirect_uri: "http://localhost:3000/login",
     grant_type: "authorization_code",
   };
 
-  const googleFetchUrl = "https://oauth2.googleapis.com/token";
-
-  const response = await fetch(googleFetchUrl, {
+  // ask datas from google
+  const response = await fetch("https://oauth2.googleapis.com/token", {
     headers: fetchHeaders,
     method: "POST",
     body: JSON.stringify(fetchBody),
   });
 
-  console.log(response);
+  // decoded json datas
+  const tempResponse = await response.json();
+  const IdTokenFromGoogle = tempResponse.id_token;
+  const decodedToken = jwt.decode(IdTokenFromGoogle);
+
+  const userDatas = {
+    name: decodedToken.name,
+    sub: decodedToken.sub,
+    picture: decodedToken.picture,
+    email: decodedToken.email,
+    acess_token: "majd jön",
+    refresh_token: "ez is ",
+  };
+
+  console.log(userDatas);
 };
 
 exports.testFunct = (req, res) => {
