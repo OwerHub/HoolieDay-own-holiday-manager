@@ -5,10 +5,10 @@ import AllDazy from "./components/AllDayz";
 import Login from "./components/Login";
 
 function App() {
-  const [isIinputForm, setInputForm] = useState(false);
-  //const [isGoogleCode, setGoogleCode] = useState(null);
-  // Authorization
+  const [isIinputForm, setInputForm] = useState(false); // ezt majd kiütjük
+  const [isPage, setPage] = useState("login");
 
+  // Authorization
   const fetchPostCode = (codeForPost) => {
     const url = "http://localhost:8000/api/login/sendLoginCode";
     fetch(url, {
@@ -66,9 +66,13 @@ function App() {
         <div id="typeSelect"></div>
       </div>
 
-      <AllDazy></AllDazy>
+      {isPage === "newUser" && "new User"}
 
-      {isIinputForm ? <InputForm close={() => setInputForm(false)}></InputForm> : ""}
+      {isPage === "holydayz" && <AllDazy></AllDazy>}
+
+      {isPage === "newHolyDay" && (
+        <InputForm close={() => setInputForm(false)}></InputForm>
+      )}
     </div>
   );
 }
