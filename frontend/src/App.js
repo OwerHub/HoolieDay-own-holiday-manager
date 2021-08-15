@@ -6,9 +6,9 @@ import Login from "./components/Login";
 
 function App() {
   const [isIinputForm, setInputForm] = useState(false); // ezt majd kiütjük
-  const [isPage, setPage] = useState("login");
+  const [isPage, setPage] = useState("holydayz");
 
-  const [isUserData, setUserData] = useState();
+  const [isUserData, setUserData] = useState("empty");
   const [isHolydays, setHolydays] = useState();
 
   // Authorization and get datas
@@ -27,6 +27,7 @@ function App() {
       name: firstFetched.datas.name,
       picture: firstFetched.datas.picture,
       email: firstFetched.datas.picture,
+      id: firstFetched.datas._id,
     });
 
     if (firstFetched.datas.holydays) {
@@ -34,7 +35,7 @@ function App() {
         console.log("kéne valami holyday");
         setPage("newHolyDay");
       } else {
-        console.log("ezek a holydayek");
+        setPage("holydays");
         console.log(firstFetched.datas.holydays);
       }
     } else {
@@ -46,17 +47,23 @@ function App() {
     localStorage.setItem("token", firstFetched.token);
   };
 
+  //start Sequence
   useEffect(() => {
     const code = new URL(window.location.href).searchParams.get("code"); // itt megkapjuk a
     const token = { code: code };
 
     if (code) {
-      fetchPostCode(token);
+      if (isUserData === "empty") {
+        fetchPostCode(token);
+      } else if (isHolydays.length >= 1) {
+        setPage("holydayz");
+      }
     } else {
       setPage("login");
     }
   }, []);
 
+  console.log(isPage);
   return (
     <div className="App">
       <div id="head">
@@ -100,7 +107,10 @@ function App() {
       {isPage === "holydayz" && <AllDazy></AllDazy>}
 
       {isPage === "newHolyDay" && (
-        <InputForm close={() => setInputForm(false)}></InputForm>
+        <InputForm
+          holydays={() => setHolydays()}
+          close={() => setPage("holydays")}
+        ></InputForm>
       )}
     </div>
   );

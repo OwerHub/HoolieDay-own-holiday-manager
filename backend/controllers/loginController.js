@@ -101,7 +101,7 @@ exports.postCatchLoginCode = async (req, res) => {
     );
   }
 
-  const token = createToken(userDatasFromDatabase.nickName);
+  const token = createToken(userDatasFromDatabase._id);
 
   /*  console.log("From Google");
   console.log(userDatasFromGoogle);
