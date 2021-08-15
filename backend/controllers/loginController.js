@@ -1,6 +1,9 @@
 const fetch = require("node-fetch");
 var jwt = require("jsonwebtoken");
 
+const UserModel = require("../models/UserModel");
+
+// fetch and decoded datas from Google
 const googleFetch = async (code) => {
   // console.log(code);
   //console.log("env", process.env.CLIENT_SECRET);
@@ -39,7 +42,29 @@ const googleFetch = async (code) => {
     refresh_token: "ez is ",
   };
 
-  console.log(userDatas);
+  return userDatas;
+};
+
+// ask sub from database
+const askUserFromDatabase = async (sub) => {
+  const userSearch = await UserModel.findOne({
+    sub: sub,
+  });
+
+  return userSearch;
+};
+
+// create new user
+const createNewUser = async (name, sub) => {
+  const newUser = new UserModel({
+    name: name,
+    sub: sub,
+    nickName: name,
+  });
+
+  const response = await newUser.save();
+
+  return response;
 };
 
 exports.testFunct = (req, res) => {
@@ -50,7 +75,19 @@ exports.postCatchLoginCode = async (req, res) => {
   // kideríteni, miért kell még egy code
   const googleCodeFromFrontend = req.body.code.code;
 
-  googleFetch(googleCodeFromFrontend);
+  const userDatasFromGoogle = await googleFetch(googleCodeFromFrontend);
+
+  let userDatasFromDatabase = await askUserFromDatabase(userDatasFromGoogle.sub);
+
+  if (userDatasFromDatabase === null) {
+    userDatasFromDatabase = await createNewUser(
+      userDatasFromGoogle.name,
+      userDatasFromGoogle.sub
+    );
+  }
+
+  console.log("userdatas:");
+  console.log(userDatasFromDatabase);
 
   res.json({ message: "okay, I catch it", code: googleCodeFromFrontend });
 };
