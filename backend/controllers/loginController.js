@@ -3,6 +3,10 @@ var jwt = require("jsonwebtoken");
 
 const UserModel = require("../models/UserModel");
 
+exports.testFunct = (req, res) => {
+  res.send("im a testfunction in Login");
+};
+
 // fetch and decoded datas from Google
 const googleFetch = async (code) => {
   // console.log(code);
@@ -55,11 +59,12 @@ const askUserFromDatabase = async (sub) => {
 };
 
 // create new user
-const createNewUser = async (name, sub) => {
+const createNewUser = async (name, sub, email) => {
   const newUser = new UserModel({
     name: name,
     sub: sub,
     nickName: name,
+    email: email,
   });
 
   const response = await newUser.save();
@@ -67,9 +72,18 @@ const createNewUser = async (name, sub) => {
   return response;
 };
 
-exports.testFunct = (req, res) => {
-  res.send("im a testfunction in Login");
-};
+// create Token
+function createToken(user) {
+  const token = jwt.sign(
+    {
+      user: user,
+    },
+    process.env.SECRET,
+    { expiresIn: "6h" }
+  );
+
+  return token;
+}
 
 exports.postCatchLoginCode = async (req, res) => {
   // kideríteni, miért kell még egy code
@@ -82,12 +96,29 @@ exports.postCatchLoginCode = async (req, res) => {
   if (userDatasFromDatabase === null) {
     userDatasFromDatabase = await createNewUser(
       userDatasFromGoogle.name,
-      userDatasFromGoogle.sub
+      userDatasFromGoogle.sub,
+      userDatasFromGoogle.email
     );
   }
 
-  console.log("userdatas:");
-  console.log(userDatasFromDatabase);
+  const token = createToken(userDatasFromDatabase.nickName);
 
-  res.json({ message: "okay, I catch it", code: googleCodeFromFrontend });
+  /*  console.log("From Google");
+  console.log(userDatasFromGoogle);
+  console.log("userdatasFromDatabase:");
+  console.log(userDatasFromDatabase);
+  console.log("token", token); */
+
+  const sendAllData = {
+    name: userDatasFromDatabase.nickName,
+    id: userDatasFromDatabase._id,
+    picture: userDatasFromGoogle.picture,
+    email: userDatasFromDatabase.email,
+    holydays: userDatasFromDatabase.holydays,
+    types: userDatasFromDatabase.types,
+  };
+
+  console.log(sendAllData);
+
+  res.status(200).json({ Datas: sendAllData, token: token });
 };

@@ -24,6 +24,7 @@ const userSchema = new mongoose.Schema({
   name: stringReq,
   sub: stringReq,
   nickName: stringReq,
+  email: stringReq,
   holydays: [inHolydaySchema],
   types: [myTypesSchema],
   acess_token: { type: String, default: "token will come" },
