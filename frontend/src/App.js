@@ -8,7 +8,7 @@ function App() {
   const [isIinputForm, setInputForm] = useState(false); // ezt majd kiütjük
   const [isPage, setPage] = useState("holydayz");
 
-  const [isUserData, setUserData] = useState("empty");
+  const [isUserData, setUserData] = useState();
   const [isHolydays, setHolydays] = useState();
 
   // Authorization and get datas
@@ -45,6 +45,8 @@ function App() {
     console.log(firstFetched);
 
     localStorage.setItem("token", firstFetched.token);
+    localStorage.setItem("name", firstFetched.datas.name);
+    localStorage.setItem("picture", firstFetched.datas.picture);
 
     const cat = localStorage.getItem("token");
     console.log("localstorage", cat);
@@ -53,13 +55,14 @@ function App() {
   //start Sequence
   useEffect(() => {
     const localStorageToken = localStorage.getItem("token");
-    console.log("localst", localStorageToken);
+    //console.log("localst in UseEffect", localStorageToken);
     const code = new URL(window.location.href).searchParams.get("code"); // itt megkapjuk a
     const token = { code: code };
 
     if (code) {
-      if (!localStorageToken) {
+      if (localStorageToken === null) {
         console.log("fetchelek");
+        setPage("login");
         fetchPostCode(token);
       } else if (isHolydays) {
         setPage("holydayz");
@@ -69,10 +72,21 @@ function App() {
     }
   }, []);
 
-  console.log(isPage);
+  //console.log(isPage);
+  console.log("localstorage name is ", localStorage.getItem("name"));
+  console.log(isUserData);
+  const nameFromLocalStorage = () => {
+    if (localStorage.getItem("token") !== null) {
+      return localStorage.getItem("name");
+    }
+    return "Please login or refresh the page";
+  };
+
   return (
     <div className="App">
       <div id="head">
+        <div className="headName">Hello {nameFromLocalStorage()}</div>
+
         <div className="NewButton" onClick={() => setPage("newHolyDay")}>
           new Holyday
         </div>

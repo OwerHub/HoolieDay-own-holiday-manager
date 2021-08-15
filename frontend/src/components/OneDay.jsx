@@ -68,8 +68,6 @@ function OneDay(props) {
         Delete
       </div>
 
-      {/*  <div>year : {props.data.year}</div> */}
-
       <button onClick={() => setDescription(!isDescription)} className="hide">
         {" "}
         {isDescription ? "mutass kevesebbet" : "mutass többet"}
