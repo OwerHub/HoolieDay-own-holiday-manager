@@ -67,37 +67,13 @@ function App() {
   return (
     <div className="App">
       <div id="head">
-        <div className="login"></div>
-        <div id="orderSelect"></div>
-        <div id="centerDiv">
-          {isIinputForm ? (
-            <div id="holydaysButton">
-              <div
-                id="HolydaysButton"
-                className="headCenterButtons"
-                onClick={() => setInputForm(!isIinputForm)}
-              >
-                Holydays
-              </div>
-              <div
-                id="HolydaysButton"
-                className="headCenterButtons"
-                onClick={() => setInputForm(!isIinputForm)}
-              >
-                later...
-              </div>
-            </div>
-          ) : (
-            <div
-              id="newInputButton"
-              className="headCenterButtons"
-              onClick={() => setInputForm(!isIinputForm)}
-            >
-              New Input
-            </div>
-          )}
+        <div className="NewButton" onClick={() => setPage("newHolyDay")}>
+          new Holyday
         </div>
-        <div id="typeSelect"></div>
+
+        <div className="holydaysButton" onClick={() => setPage("holydayz")}>
+          HolyDayz
+        </div>
       </div>
 
       {isPage === "login" && <Login setLogin={() => setPage()}></Login>}
@@ -109,7 +85,7 @@ function App() {
       {isPage === "newHolyDay" && (
         <InputForm
           holydays={() => setHolydays()}
-          close={() => setPage("holydays")}
+          close={() => setPage("holydayz")}
         ></InputForm>
       )}
     </div>

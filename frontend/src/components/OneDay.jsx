@@ -3,7 +3,7 @@ import "../styles/dist/oneday.css";
 import { months, dayTypesNew } from "../utils/progdatas";
 
 function OneDay(props) {
-  console.log(props.data);
+  //console.log(props.data);
   const [isDescription, setDescription] = useState(false);
 
   let date = props.data.date;
