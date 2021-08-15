@@ -1,5 +1,8 @@
 const express = require("express");
 const router = express.Router();
+
+const verify = require("../middlewares/tryMiddle");
+
 const app = express(); // ez lehet, csak a teszt alatt kell
 app.use(express.json()); //ez lehet, csak a teszt alatt kell.
 const HolydayController = require("../controllers/holydaysController");
@@ -10,7 +13,7 @@ router.get("/ping", (req, res) => {
 });
 
 // Ask All Holyday
-router.get("/allHolyday", HolydayController.findAllHolydays);
+router.get("/allHolyday", verify, HolydayController.findAllHolydays);
 
 // add HOlday
 router.post("/newHolyday", HolydayController.newHolydayFunct);

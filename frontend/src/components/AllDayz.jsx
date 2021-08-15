@@ -34,7 +34,16 @@ function AllDayz() {
 
   // lefetcheli a JSON-t
   const fetchData = async () => {
-    const result = await fetch(url2);
+    const fetchHeaders = {
+      "Content-Type": "application/json",
+      authorization: localStorage.getItem("token"),
+    };
+
+    const result = await fetch(url2, {
+      method: "GET",
+      mode: "cors",
+      headers: fetchHeaders,
+    });
     const jsonData = await result.json();
     jsonData.sort((a, b) => (a.date > b.date ? 1 : b.date > a.date ? -1 : 0));
 
