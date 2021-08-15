@@ -5,6 +5,7 @@
 }
 
 .App {
+  position: relative;
   text-align: center;
   min-height: 100vh;
   background-color: #f3b61f;
@@ -17,33 +18,17 @@ button {
 
 #head {
   padding: 10px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  justify-content: center;
   background-color: rgba(0, 0, 0, 0.2);
 }
 
-#head #centerDiv {
-  display: -webkit-box;
-  display: -ms-flexbox;
+.serviceHead {
   display: flex;
+  justify-content: space-around;
+  background-color: red;
 }
 
-#head #centerDiv .headCenterButtons {
-  margin: 0 0.5rem;
-  padding: 5px;
-  width: 5rem;
-  border-radius: 5px;
-  border: 2px solid black;
-  cursor: pointer;
+.test {
+  margin: 0;
 }
-
-#head #centerDiv #holydaysButton {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-/*# sourceMappingURL=app.css.map */

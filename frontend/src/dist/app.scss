@@ -1,4 +1,4 @@
-@import "./styles/colors";
+@import "../styles/colors";
 
 * {
   margin: 0;
@@ -25,23 +25,14 @@ button {
 
   background-color: rgba($color: #000000, $alpha: 0.2);
 
-  #centerDiv {
-    .headCenterButtons {
-      margin: 0 0.5rem;
-      padding: 5px;
 
-      width: 5rem;
-      border-radius: 5px;
-      border: 2px solid black;
-
-      cursor: pointer;
-    }
-    display: flex;
-    #holydaysButton {
-      display: flex;
-    }
-  }
 }
+.serviceHead{
+  display: flex;
+  justify-content: space-around;
+  
+}
+
 
 .test{
   margin: 0;

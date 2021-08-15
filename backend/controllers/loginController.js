@@ -73,10 +73,10 @@ const createNewUser = async (name, sub, email) => {
 };
 
 // create Token
-function createToken(user) {
+function createToken(id) {
   const token = jwt.sign(
     {
-      user: user,
+      id: id,
     },
     process.env.SECRET,
     { expiresIn: "6h" }

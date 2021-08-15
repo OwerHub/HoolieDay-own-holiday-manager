@@ -75,3 +75,13 @@
 .test {
   font-size: bold;
 }
+
+.deleteButton {
+  position: absolute;
+  left: 1%;
+  bottom: 3%;
+  width: 10%;
+  background-color: white;
+  border: 2px solid red;
+  color: red;
+}

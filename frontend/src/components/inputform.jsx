@@ -15,7 +15,7 @@ function InputForm(props) {
     return e;
   } // két számjegyre húzza fel az értékeket
 
-  function sendDatas() {
+  async function sendDatas() {
     let object = {};
 
     object.name = document.querySelector(".nameInput").value;
@@ -33,12 +33,13 @@ function InputForm(props) {
 
     const urlMongo = "http://localhost:8000/api/holyday/newHolyday";
     const urlFile = "http://localhost:8000/upload";
-    fetch(urlMongo, {
+    const response = await fetch(urlMongo, {
       method: "POST",
       mode: "cors",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(object),
     });
+
     props.close();
   }
 

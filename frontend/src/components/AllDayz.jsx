@@ -13,6 +13,7 @@ function AllDayz() {
 
   let url = "http://localhost:8000/allDay";
   let url2 = "http://localhost:8000/api/holyday/allHolyday";
+
   // az isTypeCheck number-sedik elemét az ellentétére változtatja
   function nullChanger(number) {
     let typeVariable = isTypeCheck.split("");
@@ -152,6 +153,7 @@ function AllDayz() {
         ) : (
           isData.map((data, iterator) => (
             <OneDay
+              refresh={() => fetchData()}
               dayTypes={isTypeArray}
               selectByte={isTypeCheck}
               data={data}

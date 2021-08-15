@@ -22,7 +22,7 @@ exports.newHolydayFunct = async (req, res) => {
     });
 
     const response = await searchUser.save();
-    console.log("feltöltve");
+    console.log(response.holydays);
     res.send(response.holydays);
   }
 

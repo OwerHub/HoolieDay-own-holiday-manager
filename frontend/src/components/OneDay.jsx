@@ -13,6 +13,20 @@ function OneDay(props) {
   /* props.dayTypes.length ? console.log(props.dayTypes) : console.log("not yet");
   console.log(dayTypesNew); */
 
+  const deleteFunct = async () => {
+    const urlDeleteHolyDay = "http://localhost:8000/api/holyday/deleteHolyday";
+    const response = await fetch(urlDeleteHolyDay, {
+      method: "DELETE",
+      mode: "cors",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ id: props.data._id }),
+    });
+
+    console.log(response);
+
+    props.refresh();
+  };
+
   return (
     <div
       className="onedayDiv"
@@ -48,6 +62,10 @@ function OneDay(props) {
           <span>{props.data.remaining}</span>
         </div>
         <div className="numberDown">DAYZ</div>
+      </div>
+
+      <div className="deleteButton" onClick={() => deleteFunct()}>
+        Delete
       </div>
 
       {/*  <div>year : {props.data.year}</div> */}

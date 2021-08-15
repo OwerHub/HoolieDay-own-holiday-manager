@@ -45,17 +45,23 @@ function App() {
     console.log(firstFetched);
 
     localStorage.setItem("token", firstFetched.token);
+
+    const cat = localStorage.getItem("token");
+    console.log("localstorage", cat);
   };
 
   //start Sequence
   useEffect(() => {
+    const localStorageToken = localStorage.getItem("token");
+    console.log("localst", localStorageToken);
     const code = new URL(window.location.href).searchParams.get("code"); // itt megkapjuk a
     const token = { code: code };
 
     if (code) {
-      if (isUserData === "empty") {
+      if (!localStorageToken) {
+        console.log("fetchelek");
         fetchPostCode(token);
-      } else if (isHolydays.length >= 1) {
+      } else if (isHolydays) {
         setPage("holydayz");
       }
     } else {
@@ -71,8 +77,19 @@ function App() {
           new Holyday
         </div>
 
-        <div className="holydaysButton" onClick={() => setPage("holydayz")}>
+        <div className="" onClick={() => setPage("holydayz")}>
           HolyDayz
+        </div>
+      </div>
+      <div className="serviceHead">
+        <div className="serviceButton" onClick={() => setPage("login")}>
+          login
+        </div>
+        <div
+          className="serviceButton"
+          onClick={() => localStorage.removeItem("token")}
+        >
+          delete Storage
         </div>
       </div>
 
