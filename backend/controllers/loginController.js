@@ -120,5 +120,5 @@ exports.postCatchLoginCode = async (req, res) => {
 
   console.log(sendAllData);
 
-  res.status(200).json({ Datas: sendAllData, token: token });
+  res.status(200).json({ datas: sendAllData, token: token });
 };

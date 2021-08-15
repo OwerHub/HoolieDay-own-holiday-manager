@@ -8,15 +8,32 @@ function App() {
   const [isIinputForm, setInputForm] = useState(false); // ezt majd kiütjük
   const [isPage, setPage] = useState("login");
 
-  // Authorization
-  const fetchPostCode = (codeForPost) => {
+  const [isUserData, setUserData] = useState();
+  const [isHolydays, setHolydays] = useState();
+  // Authorization and get datas
+
+  const fetchPostCode = async (codeForPost) => {
     const url = "http://localhost:8000/api/login/sendLoginCode";
-    fetch(url, {
+
+    const result = await fetch(url, {
       method: "POST",
       mode: "cors",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ code: codeForPost }),
     });
+    const firstFetched = await result.json();
+
+    setUserData({
+      name: firstFetched.datas.name,
+      picture: firstFetched.datas.picture,
+      email: firstFetched.datas.picture,
+    });
+
+    setHolydays(firstFetched.datas.holydays);
+
+    console.log(firstFetched);
+
+    localStorage.setItem("token", firstFetched.token);
   };
 
   useEffect(() => {
@@ -24,16 +41,17 @@ function App() {
     const token = { code: code };
 
     if (code) {
+      console.log("fetchelek");
       fetchPostCode(token);
+    } else {
+      setPage("login");
     }
   }, []);
 
   return (
     <div className="App">
       <div id="head">
-        <div className="login">
-          <Login></Login>
-        </div>
+        <div className="login"></div>
         <div id="orderSelect"></div>
         <div id="centerDiv">
           {isIinputForm ? (
@@ -65,6 +83,8 @@ function App() {
         </div>
         <div id="typeSelect"></div>
       </div>
+
+      {isPage === "login" && <Login setLogin={() => setPage()}></Login>}
 
       {isPage === "newUser" && "new User"}
 
