@@ -10,8 +10,8 @@ function App() {
 
   const [isUserData, setUserData] = useState();
   const [isHolydays, setHolydays] = useState();
-  // Authorization and get datas
 
+  // Authorization and get datas
   const fetchPostCode = async (codeForPost) => {
     const url = "http://localhost:8000/api/login/sendLoginCode";
 
@@ -29,7 +29,17 @@ function App() {
       email: firstFetched.datas.picture,
     });
 
-    setHolydays(firstFetched.datas.holydays);
+    if (firstFetched.datas.holydays) {
+      if (firstFetched.datas.holydays.length === 0) {
+        console.log("kéne valami holyday");
+        setPage("newHolyDay");
+      } else {
+        console.log("ezek a holydayek");
+        console.log(firstFetched.datas.holydays);
+      }
+    } else {
+      console.log("sehol semmi holyday");
+    }
 
     console.log(firstFetched);
 
@@ -41,7 +51,6 @@ function App() {
     const token = { code: code };
 
     if (code) {
-      console.log("fetchelek");
       fetchPostCode(token);
     } else {
       setPage("login");
