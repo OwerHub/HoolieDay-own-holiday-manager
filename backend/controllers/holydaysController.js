@@ -8,7 +8,7 @@ exports.testFunct = (req, res) => {
 exports.newHolydayFunct = async (req, res) => {
   // search User
   const searchUser = await UserModel.findOne({
-    _id: "61189d5746173501f078e047",
+    _id: req.idFromToken,
   });
 
   if (searchUser) {
@@ -34,7 +34,8 @@ exports.newHolydayFunct = async (req, res) => {
 };
 
 exports.findAllHolydays = async (req, res) => {
-  const response = await UserModel.findOne({ _id: "61189d5746173501f078e047" });
+  console.log("token in holydays", req.idFromToken);
+  const response = await UserModel.findOne({ _id: req.idFromToken });
 
   res.send(response.holydays);
 };
@@ -58,4 +59,16 @@ exports.deleteHolyday = async (req, res) => {
   );
 
   res.send(response.holydays);
+};
+
+exports.updateHolyday = async (req, res) => {
+  const response = await UserModel.findOneAndUpdate(
+    {
+      "holydays._id": req.body.id,
+    },
+    { $set: { [`holydays.$.${req.body.key}`]: req.body.value } },
+    { new: true }
+  );
+
+  res.send(response);
 };

@@ -16,12 +16,13 @@ router.get("/ping", (req, res) => {
 router.get("/allHolyday", verify, HolydayController.findAllHolydays);
 
 // add HOlday
-router.post("/newHolyday", HolydayController.newHolydayFunct);
+router.post("/newHolyday", verify, HolydayController.newHolydayFunct);
 
 // delete Holyday
-router.delete("/deleteHolyday", HolydayController.deleteHolyday);
+router.delete("/deleteHolyday", verify, HolydayController.deleteHolyday);
 
 // modify Holyday
+router.put("/modifyHolyday", verify, HolydayController.updateHolyday);
 
 // save one Holyday for Google Calendar
 
