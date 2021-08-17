@@ -9,8 +9,7 @@ function OneDay(props) {
   let month = parseInt(date.substring(0, 2));
   let day = parseInt(date.substring(2, 4));
 
-  /* props.dayTypes.length ? console.log(props.dayTypes) : console.log("not yet");
-  console.log(dayTypesNew); */
+  const fieldsOfInput = ["name", "celebrate", "description"];
 
   const deleteFunct = async () => {
     const urlDeleteHolyDay = "http://localhost:8000/api/holyday/deleteHolyday";
@@ -38,18 +37,21 @@ function OneDay(props) {
     console.log(response);
   };
 
+  const updateFunct = async (type) => {
+    const inputValue = document.querySelector(`.modalInput${type}`).value;
+    inputValue && console.log(inputValue);
+  };
+
   return (
     <div
       className="onedayDiv"
       style={{
-        //backgroundColor: dayTypesNew[props.data.dayType].color,
         backgroundColor:
           props.dayTypes.length && props.dayTypes[props.data.type].color,
         display: !!parseInt(props.selectByte[props.data.type]) ? "block" : "none",
       }}
     >
       <div className="nameDiv">
-        {/* <div className="nameUp">{dayTypesNew[props.data.type].name}</div> */}
         <div className="nameUp">
           {props.dayTypes.length && props.dayTypes[props.data.type].name}
         </div>
@@ -57,13 +59,11 @@ function OneDay(props) {
       </div>
 
       <div className="dateDiv">
-        {/*  <span>dátum: </span> */}
         <span>{months[month - 1]} </span>
         <span>{day}</span>
       </div>
 
       <div className="toDoDiv">
-        {/*    <span>teendő: </span> */}
         <span>{props.data.celebrate}</span>
       </div>
 
@@ -82,7 +82,12 @@ function OneDay(props) {
         Delete
       </div>
 
-      <div className="updateButton onedayButton">Update</div>
+      <div
+        className="updateButton onedayButton"
+        onClick={() => setModalType("update")}
+      >
+        Update
+      </div>
 
       <div className="sendButton onedayButton">Send To Google</div>
 
@@ -96,7 +101,32 @@ function OneDay(props) {
         </div>
       )}
 
-      <div className="updateModal"></div>
+      {isModalType === "update" && (
+        <div className="updateModal">
+          <div className="updateModalHead">Update</div>
+          <div className="updateInputs">
+            {fieldsOfInput.map((inputData, iterator) => (
+              <div className="inputBlock">
+                <input
+                  className={"modalInput" + inputData}
+                  type="text"
+                  classname="updateInput "
+                  placeholder={props.data[inputData]}
+                />
+                <div
+                  className="updateFieldsButton"
+                  onClick={() => updateFunct(inputData)}
+                >
+                  update
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="closeUpdate" onClick={() => setModalType("none")}>
+            x
+          </div>
+        </div>
+      )}
     </div>
   );
 }

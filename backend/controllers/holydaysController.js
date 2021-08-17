@@ -84,7 +84,6 @@ exports.saveToGoogle = async (req, res) => {
 
   const dataWhatNeed = {
     acess_token: userResponse.acess_token,
-    refresh_token: userResponse.acess_token,
     refresh_token: userResponse.refresh_token,
     sub: userResponse.sub,
     email: userResponse.email,

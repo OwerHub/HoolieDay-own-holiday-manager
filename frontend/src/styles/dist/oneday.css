@@ -112,16 +112,19 @@
   color: white;
 }
 
-.deleteModal {
+.Modal, .updateModal, .deleteModal {
   position: absolute;
   top: 2vh;
   left: calc(50% - 25vw );
-  height: 10vh;
   width: 50vw;
   background-color: white;
   border-radius: 0.5rem;
   display: flex;
   flex-direction: column;
+}
+
+.deleteModal {
+  height: 10vh;
 }
 .deleteModal .deleteHead {
   margin: 0.8rem 0 0 0;
@@ -146,4 +149,34 @@
 }
 .deleteModal .deleteButtons div:nth-child(2) {
   color: blue;
+}
+
+.updateModal {
+  z-index: 5;
+  border: 2px solid black;
+}
+.updateModal .updateInputs {
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+}
+.updateModal .updateInputs .inputBlock {
+  display: flex;
+  justify-content: space-around;
+  margin: 0 0 8px 0px;
+}
+.updateModal .updateInputs .inputBlock input {
+  width: 70%;
+}
+.updateModal .updateInputs .inputBlock .updateFieldsButton {
+  border: 1px solid darkgrey;
+  border-radius: 2px;
+  padding: 1px 3px;
+}
+.updateModal .closeUpdate {
+  position: absolute;
+  top: 0rem;
+  right: 0.8rem;
+  font-size: 150%;
+  cursor: pointer;
 }

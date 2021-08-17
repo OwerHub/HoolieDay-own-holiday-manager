@@ -135,18 +135,25 @@
   }
 }
 
-.deleteModal{
+
+.Modal{
   position: absolute;
   top: 2vh;
   left: calc(50% - 25vw );
-  height: 10vh;
   width: 50vw;
-
-
+  
   background-color: white;
   border-radius: .5rem;
   display: flex;
   flex-direction: column;
+}
+
+
+.deleteModal{
+  @extend .Modal;
+  height: 10vh;
+
+ 
   .deleteHead{
     margin: .8rem 0 0 0;
     font-size: 150%;
@@ -175,4 +182,38 @@
   }
  
 
+}
+
+.updateModal{
+  @extend.Modal;
+  z-index: 5;
+  border: 2px solid black;
+
+  .updateInputs{
+    padding: .5rem;
+    display: flex;
+    flex-direction: column;
+    .inputBlock{
+      display: flex;
+      justify-content: space-around;
+      margin: 0 0 8px 0px;
+      input{
+        
+        width: 70%;
+      }
+      .updateFieldsButton{
+        border: 1px solid darkgrey;
+        border-radius: 2px;
+        padding: 1px 3px;
+      }
+    }
+  }
+
+    .closeUpdate{
+      position: absolute;
+      top: 0rem;
+      right: .8rem;
+      font-size: 150%;
+      cursor: pointer
+    }
 }

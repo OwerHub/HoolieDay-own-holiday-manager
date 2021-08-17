@@ -34,6 +34,7 @@ const googleFetch = async (code) => {
 
   // decoded json datas
   const tempResponse = await response.json();
+  console.log("tempresponse:", tempResponse);
   const IdTokenFromGoogle = tempResponse.id_token;
   const decodedToken = jwt.decode(IdTokenFromGoogle);
   console.log(decodedToken);
@@ -91,6 +92,7 @@ exports.postCatchLoginCode = async (req, res) => {
   const googleCodeFromFrontend = req.body.code.code;
 
   const userDatasFromGoogle = await googleFetch(googleCodeFromFrontend);
+  console.log(userDatasFromGoogle);
 
   let userDatasFromDatabase = await askUserFromDatabase(userDatasFromGoogle.sub);
 
