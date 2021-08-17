@@ -25,5 +25,6 @@ router.delete("/deleteHolyday", verify, HolydayController.deleteHolyday);
 router.put("/modifyHolyday", verify, HolydayController.updateHolyday);
 
 // save one Holyday for Google Calendar
+router.post("/saveToGoogle", verify, HolydayController.saveToGoogle);
 
 module.exports = router;

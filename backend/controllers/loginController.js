@@ -36,6 +36,7 @@ const googleFetch = async (code) => {
   const tempResponse = await response.json();
   const IdTokenFromGoogle = tempResponse.id_token;
   const decodedToken = jwt.decode(IdTokenFromGoogle);
+  console.log(decodedToken);
 
   const userDatas = {
     name: decodedToken.name,

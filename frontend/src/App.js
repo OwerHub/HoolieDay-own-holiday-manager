@@ -57,6 +57,7 @@ function App() {
     const localStorageToken = localStorage.getItem("token");
     //console.log("localst in UseEffect", localStorageToken);
     const code = new URL(window.location.href).searchParams.get("code"); // itt megkapjuk a
+    console.log(code);
     const token = { code: code };
 
     if (code) {

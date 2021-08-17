@@ -1,5 +1,5 @@
-const HolyDayModell = require("../models/HolyDayModell");
-const HolydayModel = require("../models/HolyDayModell");
+/* const HolyDayModell = require("../models/HolyDayModell");
+const HolydayModel = require("../models/HolyDayModell"); */
 const UserModel = require("../models/UserModel");
 exports.testFunct = (req, res) => {
   res.send("im a testfunction");
@@ -71,4 +71,27 @@ exports.updateHolyday = async (req, res) => {
   );
 
   res.send(response);
+};
+
+exports.saveToGoogle = async (req, res) => {
+  const userResponse = await UserModel.findOne({ _id: req.idFromToken });
+
+  const selectedHolyday = userResponse.holydays.filter(
+    (holyday) => holyday._id == req.body.id
+  ); // két egyenlőségjellel működik csak, ellenőrizni
+
+  console.log(selectedHolyday);
+
+  const dataWhatNeed = {
+    acess_token: userResponse.acess_token,
+    refresh_token: userResponse.acess_token,
+    refresh_token: userResponse.refresh_token,
+    sub: userResponse.sub,
+    email: userResponse.email,
+    holydayName: selectedHolyday[0].name,
+    date: selectedHolyday[0].date,
+    celebrate: selectedHolyday[0].celebrate,
+  };
+
+  res.send(dataWhatNeed);
 };

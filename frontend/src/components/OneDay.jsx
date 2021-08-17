@@ -3,8 +3,7 @@ import "../styles/dist/oneday.css";
 import { months, dayTypesNew } from "../utils/progdatas";
 
 function OneDay(props) {
-  //console.log(props.data);
-  const [isDescription, setDescription] = useState(false);
+  const [isModalType, setModalType] = useState("none");
 
   let date = props.data.date;
   let month = parseInt(date.substring(0, 2));
@@ -25,6 +24,18 @@ function OneDay(props) {
     console.log(response);
 
     props.refresh();
+    setModalType("none");
+  };
+
+  const sendToGoogleFunct = async () => {
+    const urlFetchToGoogle = "http://localhost:8000/api/holyday/fetchToGoogle";
+    const response = await fetch(urlFetchToGoogle, {
+      method: "POST",
+      mode: "cors",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ id: props.data._id }),
+    });
+    console.log(response);
   };
 
   return (
@@ -64,16 +75,28 @@ function OneDay(props) {
         <div className="numberDown">DAYZ</div>
       </div>
 
-      <div className="deleteButton" onClick={() => deleteFunct()}>
+      <div
+        className="deleteButton onedayButton"
+        onClick={() => setModalType("delete")}
+      >
         Delete
       </div>
 
-      <button onClick={() => setDescription(!isDescription)} className="hide">
-        {" "}
-        {isDescription ? "mutass kevesebbet" : "mutass többet"}
-      </button>
+      <div className="updateButton onedayButton">Update</div>
 
-      {isDescription ? <div> {props.data.description} </div> : ""}
+      <div className="sendButton onedayButton">Send To Google</div>
+
+      {isModalType === "delete" && (
+        <div className="deleteModal">
+          <div className="deleteHead">Are You Sure Delete This Div?</div>
+          <div className="deleteButtons">
+            <div onClick={() => deleteFunct()}>yess, of course</div>
+            <div onClick={() => setModalType("none")}>no way</div>
+          </div>
+        </div>
+      )}
+
+      <div className="updateModal"></div>
     </div>
   );
 }

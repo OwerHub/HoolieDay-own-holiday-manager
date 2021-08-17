@@ -59,12 +59,8 @@
   color: whitesmoke;
 }
 
-.hide {
-  display: none;
-}
-
 .toDoDiv {
-  margin: 2rem 0 0 0;
+  margin: 1rem 0 0 0;
   font-size: 200%;
   color: whitesmoke;
   font-weight: bolder;
@@ -81,7 +77,73 @@
   left: 1%;
   bottom: 3%;
   width: 10%;
-  background-color: white;
+  height: 2rem;
   border: 2px solid red;
   color: red;
+}
+
+.updateButton {
+  position: absolute;
+  height: 35px;
+  left: 15%;
+  bottom: 3%;
+  width: 10%;
+  border: 2px solid purple;
+  color: purple;
+}
+
+.sendButton {
+  position: absolute;
+  height: 25px;
+  right: 10%;
+  bottom: 3%;
+  width: 15%;
+  border: 2px solid lightblue;
+  color: blue;
+}
+
+.onedayButton {
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+.onedayButton:hover {
+  background-color: purple;
+  color: white;
+}
+
+.deleteModal {
+  position: absolute;
+  top: 2vh;
+  left: calc(50% - 25vw );
+  height: 10vh;
+  width: 50vw;
+  background-color: white;
+  border-radius: 0.5rem;
+  display: flex;
+  flex-direction: column;
+}
+.deleteModal .deleteHead {
+  margin: 0.8rem 0 0 0;
+  font-size: 150%;
+  color: red;
+  font-weight: bolder;
+}
+.deleteModal .deleteButtons {
+  margin: 0.4rem 0 0 0;
+  display: flex;
+  justify-content: space-around;
+  font-weight: bold;
+}
+.deleteModal .deleteButtons div {
+  cursor: pointer;
+}
+.deleteModal .deleteButtons div:hover {
+  transform: scale(1.3);
+}
+.deleteModal .deleteButtons div:first-child {
+  color: red;
+}
+.deleteModal .deleteButtons div:nth-child(2) {
+  color: blue;
 }
