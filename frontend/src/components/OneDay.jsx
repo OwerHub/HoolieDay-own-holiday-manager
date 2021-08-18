@@ -39,7 +39,28 @@ function OneDay(props) {
 
   const updateFunct = async (type) => {
     const inputValue = document.querySelector(`.modalInput${type}`).value;
-    inputValue && console.log(inputValue);
+
+    inputValue && console.log(type, inputValue);
+
+    if (inputValue) {
+      const urlUpdate = "http://localhost:8000/api/holyday/modifyHolyday";
+
+      const response = await fetch(urlUpdate, {
+        method: "PUT",
+        mode: "cors",
+        headers: { "Content-Type": "application/json" },
+
+        body: JSON.stringify({
+          id: props.data._id,
+          key: type,
+          value: inputValue,
+        }),
+      });
+
+      console.log(response);
+    }
+
+    setModalType("none");
   };
 
   return (
@@ -106,7 +127,7 @@ function OneDay(props) {
           <div className="updateModalHead">Update</div>
           <div className="updateInputs">
             {fieldsOfInput.map((inputData, iterator) => (
-              <div className="inputBlock">
+              <div className="inputBlock" key={iterator}>
                 <input
                   className={"modalInput" + inputData}
                   type="text"

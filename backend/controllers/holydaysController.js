@@ -70,7 +70,8 @@ exports.updateHolyday = async (req, res) => {
     { new: true }
   );
 
-  res.send(response);
+  //console.log("response in update: ", response);
+  res.json(response.holydays);
 };
 
 exports.saveToGoogle = async (req, res) => {

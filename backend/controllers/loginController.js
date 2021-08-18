@@ -44,8 +44,8 @@ const googleFetch = async (code) => {
     sub: decodedToken.sub,
     picture: decodedToken.picture,
     email: decodedToken.email,
-    acess_token: "majd jön",
-    refresh_token: "ez is ",
+    acess_token: tempResponse.acess_token,
+    refresh_token: tempResponse.refresh_token,
   };
 
   return userDatas;
@@ -73,6 +73,10 @@ const createNewUser = async (name, sub, email) => {
 
   return response;
 };
+
+/* const updateTokens = async (sub, acess_token, refresh_token)  ={
+  const response = await UserModel.findOneAndUpdate({})
+} */
 
 // create Token
 function createToken(id) {
@@ -102,15 +106,10 @@ exports.postCatchLoginCode = async (req, res) => {
       userDatasFromGoogle.sub,
       userDatasFromGoogle.email
     );
+  } else {
   }
 
   const token = createToken(userDatasFromDatabase._id);
-
-  /*  console.log("From Google");
-  console.log(userDatasFromGoogle);
-  console.log("userdatasFromDatabase:");
-  console.log(userDatasFromDatabase);
-  console.log("token", token); */
 
   const sendAllData = {
     name: userDatasFromDatabase.nickName,
