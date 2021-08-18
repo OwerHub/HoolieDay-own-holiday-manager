@@ -110,7 +110,6 @@ function OneDay(props) {
                 <input
                   className={"modalInput" + inputData}
                   type="text"
-                  classname="updateInput "
                   placeholder={props.data[inputData]}
                 />
                 <div

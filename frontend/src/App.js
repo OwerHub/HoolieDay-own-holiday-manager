@@ -75,7 +75,7 @@ function App() {
 
   //console.log(isPage);
   console.log("localstorage name is ", localStorage.getItem("name"));
-  console.log(isUserData);
+
   const nameFromLocalStorage = () => {
     if (localStorage.getItem("token") !== null) {
       return localStorage.getItem("name");
