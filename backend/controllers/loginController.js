@@ -124,3 +124,16 @@ exports.postCatchLoginCode = async (req, res) => {
 
   res.status(200).json({ datas: sendAllData, token: token });
 };
+
+exports.updateUserKey = async (req, res) => {
+  const response = await UserModel.findOneAndUpdate(
+    {
+      _id: req.body.id, // átírni majd a token_ID-re
+    },
+    { [req.body.key]: req.body.value },
+    { new: true }
+  );
+
+  console.log("response in update: ", response);
+  res.json({ newName: response.nickName });
+};

@@ -72,44 +72,41 @@
   font-size: bold;
 }
 
-.deleteButton {
+.oneDayButtonGroup {
   position: absolute;
-  left: 1%;
-  bottom: 3%;
-  width: 10%;
-  height: 2rem;
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  bottom: -0.8rem;
+  left: 0.5rem;
+}
+
+.onedayButton {
+  height: 1.5rem;
+  width: 32%;
+  border-radius: 1px;
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.9);
+  font-weight: bold;
+}
+.onedayButton:hover {
+  background-color: purple;
+  color: white;
+}
+
+.deleteButton {
   border: 2px solid red;
   color: red;
 }
 
 .updateButton {
-  position: absolute;
-  height: 35px;
-  left: 15%;
-  bottom: 3%;
-  width: 10%;
   border: 2px solid purple;
   color: purple;
 }
 
-.sendButton {
-  position: absolute;
-  height: 25px;
-  right: 10%;
-  bottom: 3%;
-  width: 15%;
+.sendGoogleButton {
   border: 2px solid lightblue;
   color: blue;
-}
-
-.onedayButton {
-  border-radius: 5px;
-  cursor: pointer;
-  background-color: rgba(255, 255, 255, 0.5);
-}
-.onedayButton:hover {
-  background-color: purple;
-  color: white;
 }
 
 .Modal, .updateModal, .deleteModal {

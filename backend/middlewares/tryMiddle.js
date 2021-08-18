@@ -1,13 +1,24 @@
-//const jwt = require("jsonwebtoken");
+const jwt = require("jsonwebtoken");
 
 module.exports = (req, res, next) => {
   const token = req.headers.authorization;
-  console.log("middleware runs");
-  //console.log("auth", token);
+  //const token = req.headers.authorization.split(" ")[1];
 
   const SECRET = "secretToken"; // temp burn
 
-  req.idFromToken = "61189d5746173501f078e047";
+  console.log("middleware runs");
+  console.log("auth", token);
 
-  next();
+  jwt.verify(token, SECRET, (err, decoded) => {
+    if (err) {
+      console.log("error", err);
+      res.status(403).send("access denied");
+    } else {
+      console.log("decoded", decoded);
+      //req.idFromToken = "61189d5746173501f078e047";
+      req.idFromToken = decoded.id;
+
+      next();
+    }
+  });
 };

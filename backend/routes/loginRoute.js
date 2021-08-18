@@ -6,4 +6,6 @@ router.get("/ping", loginController.testFunct);
 
 router.post("/sendLoginCode", loginController.postCatchLoginCode);
 
+router.put("/updateUserData", loginController.updateUserKey);
+
 module.exports = router;

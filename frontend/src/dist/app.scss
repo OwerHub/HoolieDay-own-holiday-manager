@@ -37,3 +37,48 @@ button {
 .test{
   margin: 0;
 }
+
+.newName{
+  position: fixed;
+  background-color: lightblue;
+  height: 10rem;
+  width: 50vw;
+  padding: .5rem;
+
+  top: 30vh;
+  left: 25vw;
+  border-radius: 5px;
+  .newNameHead{
+    margin: 5px 0  ;
+  }
+  .newNameInput{
+    margin: .5rem 0 0 0 ;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    //background-color: red;
+    padding: .5rem;
+    input{
+      margin: .5rem 0 ;
+    }
+    .newNameButtons{
+      display: flex;
+      justify-content: space-around;
+      width: 70%;
+      div{
+        font-weight: bolder;
+        display: inline;
+        cursor: pointer;
+        &:nth-child(1){
+          color: red
+        }
+        &:nth-child(2){
+          color: blue
+        }
+        &:hover{
+          transform: scale(1.3);
+        }
+      }
+    }
+  }
+}

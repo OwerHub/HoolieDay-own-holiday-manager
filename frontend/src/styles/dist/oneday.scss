@@ -92,48 +92,45 @@
 }
 
 
-.deleteButton{
+.oneDayButtonGroup{
   position: absolute;
-  left: 1%;
-  bottom: 3%;
-  width: 10%;
-  height: 2rem;
- 
-  border: 2px solid red;
-  color: red
-  
-}
+  width: 90%;
 
-.updateButton{
-  position: absolute;
-  height: 35px;
-  left: 15%;
-  bottom: 3%;
-  width: 10%;
-  border: 2px solid purple;
-  color: purple
+  display: flex;
+  justify-content: space-between;
+  bottom: -.8rem;
+  left: .5rem;;
 }
-
-.sendButton{
-  position: absolute;
-  height: 25px;
-  right: 10%;
-  bottom: 3%;
-  width: 15%;
- 
-  border: 2px solid lightblue;
-  color: blue
-}
-
 .onedayButton{
-  border-radius: 5px;
+  height: 1.5rem;
+  width: 32%;
+  border-radius: 1px;
   cursor: pointer;
-  background-color: rgba(white, .5);
+  background-color: rgba(white, .9);
+  font-weight: bold;
   &:hover{
     background-color: purple;
     color: white
   }
 }
+
+
+.deleteButton{
+  border: 2px solid red;
+  color: red
+}
+
+.updateButton{
+  border: 2px solid purple;
+  color: purple
+}
+
+.sendGoogleButton{
+  border: 2px solid lightblue;
+  color: blue
+}
+
+
 
 
 .Modal{
@@ -217,3 +214,4 @@
       cursor: pointer
     }
 }
+

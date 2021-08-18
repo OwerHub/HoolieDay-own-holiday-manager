@@ -5,7 +5,6 @@ import AllDazy from "./components/AllDayz";
 import Login from "./components/Login";
 
 function App() {
-  const [isIinputForm, setInputForm] = useState(false); // ezt majd kiütjük
   const [isPage, setPage] = useState("holydayz");
 
   const [isUserData, setUserData] = useState();
@@ -73,20 +72,45 @@ function App() {
     }
   }, []);
 
-  //console.log(isPage);
   console.log("localstorage name is ", localStorage.getItem("name"));
 
   const nameFromLocalStorage = () => {
     if (localStorage.getItem("token") !== null) {
-      return localStorage.getItem("name");
+      return ` Hello ${localStorage.getItem("name")}`;
     }
     return "Please login or refresh the page";
+  };
+
+  const renameFunction = async () => {
+    const updateURL = "http://localhost:8000/api/login/updateUserData";
+    const value = document.querySelector(".newNameInputField").value;
+    console.log("renameValue is:", value);
+    if (value) {
+      const response = await fetch(updateURL, {
+        method: "PUT",
+        mode: "cors",
+        headers: { "Content-Type": "application/json" },
+
+        body: JSON.stringify({
+          id: "61189d5746173501f078e047", // átmenetileg beégetve
+          key: "nickName",
+          value: value,
+        }),
+      });
+      const responseJson = await response.json();
+      console.log("nameResponse is ", responseJson.newName);
+      localStorage.setItem("name", responseJson.newName);
+    } // if vége
+
+    setPage("none");
   };
 
   return (
     <div className="App">
       <div id="head">
-        <div className="headName">Hello {nameFromLocalStorage()}</div>
+        <div className="headName" onClick={() => setPage("newName")}>
+          {nameFromLocalStorage()}
+        </div>
 
         <div className="NewButton" onClick={() => setPage("newHolyDay")}>
           new Holyday
@@ -119,6 +143,22 @@ function App() {
           holydays={() => setHolydays()}
           close={() => setPage("holydayz")}
         ></InputForm>
+      )}
+
+      {isPage === "newName" && (
+        <div className="newName">
+          <div className="newNameHead">
+            <div>{nameFromLocalStorage()}</div>
+            <div>please give me the new name</div>
+          </div>
+          <div className="newNameInput">
+            <input type="text" className="newNameInputField" />
+            <div className="newNameButtons">
+              <div onClick={() => renameFunction()}>Okay</div>
+              <div onClick={() => setPage("holydayz")}> Nope</div>
+            </div>
+          </div>
+        </div>
       )}
     </div>
   );

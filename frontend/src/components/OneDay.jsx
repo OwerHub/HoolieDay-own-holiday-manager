@@ -13,6 +13,7 @@ function OneDay(props) {
 
   const deleteFunct = async () => {
     const urlDeleteHolyDay = "http://localhost:8000/api/holyday/deleteHolyday";
+
     const response = await fetch(urlDeleteHolyDay, {
       method: "DELETE",
       mode: "cors",
@@ -28,12 +29,14 @@ function OneDay(props) {
 
   const sendToGoogleFunct = async () => {
     const urlFetchToGoogle = "http://localhost:8000/api/holyday/fetchToGoogle";
+
     const response = await fetch(urlFetchToGoogle, {
       method: "POST",
       mode: "cors",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ id: props.data._id }),
     });
+
     console.log(response);
   };
 
@@ -96,21 +99,23 @@ function OneDay(props) {
         <div className="numberDown">DAYZ</div>
       </div>
 
-      <div
-        className="deleteButton onedayButton"
-        onClick={() => setModalType("delete")}
-      >
-        Delete
-      </div>
+      <div className="oneDayButtonGroup">
+        <div
+          className="deleteButton onedayButton"
+          onClick={() => setModalType("delete")}
+        >
+          Delete
+        </div>
 
-      <div
-        className="updateButton onedayButton"
-        onClick={() => setModalType("update")}
-      >
-        Update
-      </div>
+        <div
+          className="updateButton onedayButton"
+          onClick={() => setModalType("update")}
+        >
+          Update
+        </div>
 
-      <div className="sendButton onedayButton">Send To Google</div>
+        <div className="sendGoogleButton onedayButton">Send To </div>
+      </div>
 
       {isModalType === "delete" && (
         <div className="deleteModal">

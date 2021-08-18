@@ -31,3 +31,46 @@ button {
 .test {
   margin: 0;
 }
+
+.newName {
+  position: fixed;
+  background-color: lightblue;
+  height: 10rem;
+  width: 50vw;
+  padding: 0.5rem;
+  top: 30vh;
+  left: 25vw;
+  border-radius: 5px;
+}
+.newName .newNameHead {
+  margin: 5px 0;
+}
+.newName .newNameInput {
+  margin: 0.5rem 0 0 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.5rem;
+}
+.newName .newNameInput input {
+  margin: 0.5rem 0;
+}
+.newName .newNameInput .newNameButtons {
+  display: flex;
+  justify-content: space-around;
+  width: 70%;
+}
+.newName .newNameInput .newNameButtons div {
+  font-weight: bolder;
+  display: inline;
+  cursor: pointer;
+}
+.newName .newNameInput .newNameButtons div:nth-child(1) {
+  color: red;
+}
+.newName .newNameInput .newNameButtons div:nth-child(2) {
+  color: blue;
+}
+.newName .newNameInput .newNameButtons div:hover {
+  transform: scale(1.3);
+}
