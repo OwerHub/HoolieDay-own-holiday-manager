@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import OneDay from "./OneDay";
 import "../styles/dist/alldayz.css";
 import { dayTypesNew } from "../utils/progdatas";
+import FetchModule from "../utils/fetch";
 
 function AllDayz() {
   const [isLoading, setLoading] = useState(true);
@@ -34,17 +35,23 @@ function AllDayz() {
 
   // lefetcheli a JSON-t
   const fetchData = async () => {
+    /* 
     const fetchHeaders = {
       "Content-Type": "application/json",
       authorization: localStorage.getItem("token"),
-    };
-
+    }; */
+    /* 
     const result = await fetch(url2, {
       method: "GET",
       mode: "cors",
       headers: fetchHeaders,
     });
-    const jsonData = await result.json();
+    const jsonData = await result.json(); */
+
+    const jsonData = await FetchModule(url2, "GET");
+
+    console.log("datas from fetchmodule", jsonData);
+
     jsonData.sort((a, b) => (a.date > b.date ? 1 : b.date > a.date ? -1 : 0));
 
     let data2 = pushDifference(jsonData);

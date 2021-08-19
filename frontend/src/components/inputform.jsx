@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { months, dayTypesNew } from "../utils/progdatas.js";
 import "../styles/dist/inputform.css";
+import FetchModule from "../utils/fetch";
 
 function InputForm(props) {
   const [isMax, setMax] = useState(31);
@@ -33,12 +34,15 @@ function InputForm(props) {
 
     const urlMongo = "http://localhost:8000/api/holyday/newHolyday";
     const urlFile = "http://localhost:8000/upload";
-    const response = await fetch(urlMongo, {
+
+    /* const response = await fetch(urlMongo, {
       method: "POST",
       mode: "cors",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(object),
-    });
+    }); */
+
+    const response = await FetchModule(urlMongo, "POST", object);
 
     props.close();
   }

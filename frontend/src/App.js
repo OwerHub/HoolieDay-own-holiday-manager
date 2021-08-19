@@ -3,6 +3,7 @@ import "./dist/app.css";
 import InputForm from "./components/inputform";
 import AllDazy from "./components/AllDayz";
 import Login from "./components/Login";
+import FetchModule from "./utils/fetch";
 
 function App() {
   const [isPage, setPage] = useState("holydayz");
@@ -86,7 +87,7 @@ function App() {
     const value = document.querySelector(".newNameInputField").value;
     console.log("renameValue is:", value);
     if (value) {
-      const response = await fetch(updateURL, {
+      /*  const response = await fetch(updateURL, {
         method: "PUT",
         mode: "cors",
         headers: { "Content-Type": "application/json" },
@@ -97,8 +98,14 @@ function App() {
           value: value,
         }),
       });
-      const responseJson = await response.json();
-      console.log("nameResponse is ", responseJson.newName);
+      const responseJson = await response.json(); */
+
+      const responseJson = await FetchModule(updateURL, "PUT", {
+        key: "nickName",
+        value: value,
+      });
+
+      console.log("Response is ", responseJson);
       localStorage.setItem("name", responseJson.newName);
     } // if vége
 

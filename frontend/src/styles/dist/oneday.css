@@ -72,6 +72,12 @@
   font-size: bold;
 }
 
+.description {
+  margin: 0.5rem 0 1.5rem 0;
+  color: white;
+  font-weight: bold;
+}
+
 .oneDayButtonGroup {
   position: absolute;
   width: 90%;
