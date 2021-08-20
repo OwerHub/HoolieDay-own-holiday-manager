@@ -10,9 +10,9 @@ app.use(express.json());
 
 const url = process.env.CONNECTION_STRING; //  ezt majd kitörölni
 
-// mongoose
+// mongoose KISZERVEZVE
 
-const mongoose = require("mongoose");
+/* const mongoose = require("mongoose");
 
 mongoose
   .connect(url, {
@@ -22,7 +22,7 @@ mongoose
   })
   .then(() => console.log("MongoDB Connected"))
   .catch((err) => console.log(err));
-
+ */
 //basic routes
 const loginRoutes = require("./routes/loginRoute");
 app.use("/api/login", loginRoutes);
@@ -73,6 +73,9 @@ app.post("/upload", (req, res) => {
 });
 //
 
-app.listen(PORT, function () {
+// kiszerveztem start-ba
+/* app.listen(PORT, function () {
   console.log("Express server listening on port ", PORT); // eslint-disable-line
-});
+}); */
+
+module.exports = app;

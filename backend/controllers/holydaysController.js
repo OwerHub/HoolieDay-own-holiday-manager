@@ -1,5 +1,3 @@
-/* const HolyDayModell = require("../models/HolyDayModell");
-const HolydayModel = require("../models/HolyDayModell"); */
 const UserModel = require("../models/UserModel");
 exports.testFunct = (req, res) => {
   res.send("im a testfunction");
