@@ -4,7 +4,7 @@ var jwt = require("jsonwebtoken");
 const UserModel = require("../models/UserModel");
 
 exports.testFunct = (req, res) => {
-  res.send("im a testfunction in Login");
+  res.json({ message: "im a testfunction in Login" });
 };
 
 // fetch and decoded datas from Google
@@ -34,17 +34,17 @@ const googleFetch = async (code) => {
 
   // decoded json datas
   const tempResponse = await response.json();
-  console.log("tempresponse:", tempResponse);
+  //console.log("tempresponse:", tempResponse);
   const IdTokenFromGoogle = tempResponse.id_token;
   const decodedToken = jwt.decode(IdTokenFromGoogle);
-  console.log(decodedToken);
+  //console.log("decodedToken", decodedToken);
 
   const userDatas = {
     name: decodedToken.name,
     sub: decodedToken.sub,
     picture: decodedToken.picture,
     email: decodedToken.email,
-    acess_token: tempResponse.acess_token,
+    access_token: tempResponse.access_token,
     refresh_token: tempResponse.refresh_token,
   };
 
@@ -74,7 +74,7 @@ const createNewUser = async (name, sub, email) => {
   return response;
 };
 
-/* const updateTokens = async (sub, acess_token, refresh_token)  ={
+/* const updateTokens = async (sub, access_token, refresh_token)  ={
   const response = await UserModel.findOneAndUpdate({})
 } */
 
@@ -96,7 +96,7 @@ exports.postCatchLoginCode = async (req, res) => {
   const googleCodeFromFrontend = req.body.code.code;
 
   const userDatasFromGoogle = await googleFetch(googleCodeFromFrontend);
-  console.log(userDatasFromGoogle);
+  console.log("Userdata from google, login 99:", userDatasFromGoogle);
 
   let userDatasFromDatabase = await askUserFromDatabase(userDatasFromGoogle.sub);
 
@@ -107,7 +107,32 @@ exports.postCatchLoginCode = async (req, res) => {
       userDatasFromGoogle.email
     );
   } else {
+    console.log(
+      "this is a acess token when wh have got a user",
+      userDatasFromGoogle.access_token
+    );
+    console.log(
+      "this is a refresh token when wh have got a user",
+      userDatasFromGoogle.refresh_token
+    );
+
+    /*  const response_tokens = await UserModel.findOneAndUpdate(
+      {
+        sub: userDatasFromGoogle.sub,
+      },
+      {
+        $set: {
+          acess_token: userDatasFromGoogle.access_token,
+          refresh_token: userDatasFromGoogle.refresh_token,
+        },
+      },
+      {
+        new: true,
+      }
+    ); */
   }
+
+  //console.log("login 134 updateAcessAndRefreshTOkens", response_tokens);
 
   const token = createToken(userDatasFromDatabase._id);
 
@@ -126,8 +151,6 @@ exports.postCatchLoginCode = async (req, res) => {
 };
 
 exports.updateUserKey = async (req, res) => {
-  console.log("loginCOntroller, 130, updateUserKey req.body");
-
   const response = await UserModel.findOneAndUpdate(
     {
       _id: req.idFromToken, // átírni majd a token_ID-re
@@ -136,6 +159,6 @@ exports.updateUserKey = async (req, res) => {
     { new: true }
   );
 
-  console.log("response in update: ", response);
+  console.log(" (holydayController146) response in update: ", response);
   res.json({ newName: response.nickName });
 };

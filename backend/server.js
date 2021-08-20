@@ -33,6 +33,7 @@ app.use("/api/holyday", holydayRoutes);
 const userRoutes = require("./routes/userRoutes");
 app.use("/api/user", userRoutes);
 
+// ezek itt nem fontosak
 const typeRoutes = require("./routes/typeRoutes");
 app.use("/api/type", typeRoutes);
 

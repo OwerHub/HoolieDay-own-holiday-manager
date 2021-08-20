@@ -22,7 +22,7 @@ exports.newHolydayFunct = async (req, res) => {
     });
 
     const response = await searchUser.save();
-    console.log(response.holydays);
+    //console.log(response.holydays);
     res.send(response.holydays);
   }
 
@@ -79,12 +79,12 @@ exports.saveToGoogle = async (req, res) => {
 
   const selectedHolyday = userResponse.holydays.filter(
     (holyday) => holyday._id == req.body.id
-  ); // két egyenlőségjellel működik csak, ellenőrizni
+  ); // két egyenlőségjellel mert Login-ra küldöm a dolgokat.
 
-  console.log(selectedHolyday);
+  console.log("saveToGoogle SelectedHolyday, 84", selectedHolyday);
 
   const dataWhatNeed = {
-    acess_token: userResponse.acess_token,
+    access_token: userResponse.access_token,
     refresh_token: userResponse.refresh_token,
     sub: userResponse.sub,
     email: userResponse.email,

@@ -75,6 +75,7 @@ function OneDay(props) {
     }
 
     setModalType("none");
+    props.refresh();
   };
 
   return (

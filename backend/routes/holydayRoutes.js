@@ -9,7 +9,7 @@ const HolydayController = require("../controllers/holydaysController");
 
 // test
 router.get("/ping", (req, res) => {
-  res.send("Holyday");
+  res.send("Holyday Pong");
 });
 
 // Ask All Holyday
