@@ -23,7 +23,7 @@ mongoose
   .then(() => console.log("MongoDB Connected"))
   .catch((err) => console.log(err));
  */
-//basic routes
+
 const loginRoutes = require("./routes/loginRoute");
 app.use("/api/login", loginRoutes);
 
@@ -33,15 +33,15 @@ app.use("/api/holyday", holydayRoutes);
 const userRoutes = require("./routes/userRoutes");
 app.use("/api/user", userRoutes);
 
-// ezek itt nem fontosak
 const typeRoutes = require("./routes/typeRoutes");
 app.use("/api/type", typeRoutes);
 
+// ezek itt nem fontosak
 const utilityRoutes = require("./routes/utilityRoutes");
 app.use("/utility", utilityRoutes);
 
 // --------old code from here----------
-let holydays = require("./holydays.json");
+/* let holydays = require("./holydays.json");
 
 app.get("/ping", function (req, res) {
   res.send("pong");
@@ -70,7 +70,7 @@ app.post("/upload", (req, res) => {
   fs.writeFile("./holydays.json", dataString, function (err) {
     if (err) return console.log(err);
   });
-});
+}); */
 //
 
 // kiszerveztem start-ba
