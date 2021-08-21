@@ -4,7 +4,7 @@ const request = supertest(app);
 const jwt = require("jsonwebtoken");
 const mongoose = require("mongoose");
 const UserModel = require("../models/UserModel");
-
+const TypeModel = require("../models/typeModell");
 const { dbConnect, dbDisconnect, dbDelete } = require("./utils/dbHandler.utils");
 
 // a beégetett tokent beolvasni
@@ -105,7 +105,7 @@ describe("Holydays tests", () => {
 
     const responseSaveNewHolyday = await newUser.save(); */
 
-    const responseSaveNewHolyday = await createUserFunct(Userid);
+    const CreateNewUser = await createUserFunct(Userid);
 
     const response = await createHolyDayFunct(
       "Holyday1Name",
@@ -207,5 +207,86 @@ describe("Holydays tests", () => {
 
     expect(response.status).toBe(200);
     expect(response.body.length).toBe(1);
+  });
+});
+
+describe("user tests", () => {
+  const Userid = new mongoose.Types.ObjectId();
+  const token = createToken(Userid);
+
+  it("modify Nickname", async () => {
+    const CreateNewUser = await createUserFunct(Userid);
+
+    const reqBody = {
+      key: "nickName",
+      value: "newNickName",
+    };
+
+    const response = await request
+      .put("/api/login/updateUserData")
+      .set("authorization", token)
+      .send(reqBody);
+
+    expect(response.status).toBe(200);
+    expect(response.body.newName).toBe("newNickName");
+  });
+});
+
+// defaultTypes -------------------
+
+const createType = async () => {
+  const reqBody = {
+    name: "type1Name",
+    color: "124585",
+    description: "type1Description",
+  };
+};
+
+const createTypeFunct = async (name, color, description, token) => {
+  const reqBody = {
+    name: name,
+    color: color,
+    description: description,
+  };
+
+  const response = await request
+    .post("/api/type/newType")
+    .set("authorization", token)
+    .send(reqBody);
+
+  return response;
+};
+
+describe("default Types tests", () => {
+  const Userid = new mongoose.Types.ObjectId();
+  const token = createToken(Userid);
+
+  it("Create New Type type/newType", async () => {
+    const response = await createTypeFunct(
+      "type1Name",
+      "type1Color",
+      "type1Description",
+      token
+    );
+
+    expect(response.status).toBe(200);
+    expect(response.body.name).toBe("type1Name");
+  });
+
+  it("ask all types type/allTypes", async () => {
+    const responseCreateType = await createTypeFunct(
+      "type2Name",
+      "type2Color",
+      "type2Description",
+      token
+    );
+
+    const response = await request
+      .get("/api/type/allTypes")
+      .set("authorization", token);
+
+    expect(response.status).toBe(200);
+    expect(response.body.length).toBe(2);
+    expect(response.body[1].name).toBe("type2Name");
   });
 });

@@ -159,6 +159,6 @@ exports.updateUserKey = async (req, res) => {
     { new: true }
   );
 
-  console.log(" (holydayController146) response in update: ", response);
+  //console.log(" response in update: ", response);
   res.json({ newName: response.nickName });
 };
