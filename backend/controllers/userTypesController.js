@@ -1,6 +1,6 @@
 const UserModel = require("../models/UserModel");
 
-const tempID = "61189d5746173501f078e047";
+//const tempID = "61189d5746173501f078e047";
 
 exports.testFunct = (req, res) => {
   res.send("im a testfunction in UserTypesController");
@@ -9,9 +9,9 @@ exports.testFunct = (req, res) => {
 // newUserType
 exports.newUserType = async (req, res) => {
   const searchUser = await UserModel.findOne({
-    _id: tempID,
+    _id: req.idFromToken,
   });
-
+  console.log("searchUser in UserType", searchUser);
   if (searchUser) {
     searchUser.types.push({
       name: req.body.name,
@@ -23,14 +23,12 @@ exports.newUserType = async (req, res) => {
     //console.log(response.holydays);
     res.send(response.types);
   }
-
-  res.send(searchUser);
 };
 
 // FindAll UserType
 exports.findAllUserTpyes = async (req, res) => {
   //console.log("token in holydays", req.idFromToken);
-  const response = await UserModel.findOne({ _id: tempID });
+  const response = await UserModel.findOne({ _id: req.idFromToken });
 
   res.send(response.types);
 };

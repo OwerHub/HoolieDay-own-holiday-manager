@@ -242,17 +242,28 @@ const createType = async () => {
   };
 };
 
-const createTypeFunct = async (name, color, description, token) => {
+const createTypeFunct = async (
+  name,
+  color,
+  description,
+  token,
+  userType = false
+) => {
+  let url;
+
   const reqBody = {
     name: name,
     color: color,
     description: description,
   };
 
-  const response = await request
-    .post("/api/type/newType")
-    .set("authorization", token)
-    .send(reqBody);
+  if (userType) {
+    url = "/api/userType/newUserType";
+  } else {
+    url = "/api/type/newType";
+  }
+
+  const response = await request.post(url).set("authorization", token).send(reqBody);
 
   return response;
 };
@@ -288,5 +299,86 @@ describe("default Types tests", () => {
     expect(response.status).toBe(200);
     expect(response.body.length).toBe(2);
     expect(response.body[1].name).toBe("type2Name");
+  });
+});
+
+//--- User Types
+// Ezt még lehet egyszerűsíteni
+
+describe("user Type Tests", () => {
+  const Userid = new mongoose.Types.ObjectId();
+  const token = createToken(Userid);
+
+  // tömbben egyszerűbb
+  let userTypeId1;
+  let userTypeId2;
+
+  it("create new UserType in /api/userType/newUserType", async () => {
+    // ezt majd ikiszervezem
+    const CreateNewUser = await createUserFunct(Userid);
+
+    const response = await createTypeFunct(
+      "userType1Name",
+      "userType1Color",
+      "userType1Description",
+      token,
+      true
+    );
+
+    userTypeId1 = response.body[0]._id;
+    expect(response.status).toBe(200);
+    expect(response.body[0].name).toBe("userType1Name");
+  });
+
+  it("ask all userType in /api/userType/allUserTypes", async () => {
+    const createresponse = await createTypeFunct(
+      "userType2Name",
+      "userType2Color",
+      "userType2Description",
+      token,
+      true
+    );
+
+    const response = await request
+      .get("/api/userType/allUserTypes")
+      .set("authorization", token);
+
+    userTypeId2 = response.body[1]._id;
+    expect(response.status).toBe(200);
+    expect(response.body[1].name).toBe("userType2Name");
+    expect(response.body.length).toBe(2);
+  });
+
+  it("modify Usertype in /api/userType/updateUserTypes", async () => {
+    console.log("idéék", userTypeId1, userTypeId2);
+
+    const reqBody = {
+      id: userTypeId2,
+      key: "name",
+      value: "modifyUserTypeName",
+    };
+
+    const response = await request
+      .put("/api/userType/updateUserTypes")
+      .set("authorization", token)
+      .send(reqBody);
+
+    console.log();
+    expect(response.status).toBe(200);
+    expect(response.body[1].name).toBe("modifyUserTypeName");
+  });
+
+  it("delete userType in /api/userType/deleteUserTypes", async () => {
+    const reqBody = {
+      id: userTypeId2,
+    };
+
+    const response = await request
+      .delete("/api/userType/deleteUserTypes")
+      .set("authorization", token)
+      .send(reqBody);
+
+    expect(response.status).toBe(200);
+    expect(response.body.length).toBe(1);
   });
 });
