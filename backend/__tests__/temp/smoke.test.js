@@ -1,8 +1,8 @@
-const app = require("../server"); // Link to your server file
+const app = require("../../server"); // Link to your server file
 const supertest = require("supertest");
 const request = supertest(app);
 
-const { dbConnect, dbDisconnect, dbDelete } = require("./utils/dbHandler.utils");
+const { dbConnect, dbDisconnect, dbDelete } = require("../utils/dbHandler.utils");
 const mongoose = require("mongoose");
 
 describe("Smoke tests", () => {
@@ -19,7 +19,7 @@ describe("Smoke tests", () => {
     //given
 
     //when
-    const response = await request.get("/endpoint/not/exists");
+    const response = await request.get("/endpoint_not_valid");
 
     //then
     expect(response.status).toBe(404);

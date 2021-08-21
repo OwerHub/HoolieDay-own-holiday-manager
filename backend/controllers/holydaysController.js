@@ -32,7 +32,7 @@ exports.newHolydayFunct = async (req, res) => {
 };
 
 exports.findAllHolydays = async (req, res) => {
-  console.log("token in holydays", req.idFromToken);
+  //console.log("token in holydays", req.idFromToken);
   const response = await UserModel.findOne({ _id: req.idFromToken });
 
   res.send(response.holydays);

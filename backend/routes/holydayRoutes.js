@@ -12,6 +12,11 @@ router.get("/ping", (req, res) => {
   res.send("Holyday Pong");
 });
 
+//test
+router.get("/pong", verify, (req, res) => {
+  res.send("verified pong");
+});
+
 // Ask All Holyday
 router.get("/allHolyday", verify, HolydayController.findAllHolydays);
 
