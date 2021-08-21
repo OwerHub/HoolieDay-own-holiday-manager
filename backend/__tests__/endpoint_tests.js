@@ -48,6 +48,44 @@ describe("test basic routes", () => {
   ///------------------------------------
 }); // describe ENd
 
+const createUserFunct = async (Userid) => {
+  const newUser = new UserModel({
+    _id: Userid,
+    name: "testName",
+    sub: "666545423",
+    nickName: "nickname",
+    email: "email",
+  });
+
+  const responseSaveNewHolyday = await newUser.save();
+};
+
+const createHolyDayFunct = async (
+  name,
+  date,
+  picture,
+  celebrate,
+  description,
+  type,
+  token
+) => {
+  const newHolyday = {
+    name: name,
+    date: date,
+    picture: picture,
+    celebrate: celebrate,
+    description: description,
+    type: type,
+  };
+
+  const response = await request
+    .post("/api/holyday/newHolyday")
+    .set("authorization", token)
+    .send(newHolyday);
+
+  return response;
+};
+
 describe("Holydays tests", () => {
   // create basic variables
   let holyday1ID;
@@ -57,7 +95,7 @@ describe("Holydays tests", () => {
 
   it("createHolyday", async () => {
     // create new User
-    const newUser = new UserModel({
+    /* const newUser = new UserModel({
       _id: Userid,
       name: "testName",
       sub: "666545423",
@@ -65,10 +103,22 @@ describe("Holydays tests", () => {
       email: "email",
     });
 
-    const responseSaveNewHolyday = await newUser.save();
+    const responseSaveNewHolyday = await newUser.save(); */
+
+    const responseSaveNewHolyday = await createUserFunct(Userid);
+
+    const response = await createHolyDayFunct(
+      "Holyday1Name",
+      "Holyday1Date",
+      "Holyday1Picture",
+      "Holyday1Celebrate",
+      "Holyday1description",
+      "Holyday1Type",
+      token
+    );
 
     // create first Holyday
-    const newHolyday = {
+    /*   const newHolyday = {
       name: "Holyday1Name",
       date: "Holyday2Name",
       picture: "Holyday1Picture",
@@ -80,7 +130,7 @@ describe("Holydays tests", () => {
     const response = await request
       .post("/api/holyday/newHolyday")
       .set("authorization", token)
-      .send(newHolyday);
+      .send(newHolyday); */
 
     holyday1ID = response.body[0]._id;
     //console.log("response body is", response.body[0]._id);
@@ -89,7 +139,7 @@ describe("Holydays tests", () => {
   });
 
   it("create new Holyday and test getAllHolyday", async () => {
-    const newHolyday2 = {
+    /*  const newHolyday2 = {
       name: "Holyday2Name",
       date: "Holyday2Date",
       picture: "Holyday2Picture",
@@ -101,7 +151,17 @@ describe("Holydays tests", () => {
     const responseNew2 = await request
       .post("/api/holyday/newHolyday")
       .set("authorization", token)
-      .send(newHolyday2);
+      .send(newHolyday2); */
+
+    const responseNew2 = await createHolyDayFunct(
+      "Holyday2Name",
+      "Holyday2Date",
+      "Holyday2Picture",
+      "Holyday2Celebrate",
+      "Holyday2description",
+      "Holyday2Type",
+      token
+    );
 
     holyday2ID = responseNew2.body[1]._id;
 
