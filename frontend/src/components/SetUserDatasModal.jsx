@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from "react";
 import FetchModule from "../utils/fetch";
+import InputTypeForm from "./InputTypeForm";
 
 function SetUserDatas(props) {
   const [isUserTypes, setUserTypes] = useState();
+  const [isOpenInput, setOpenInput] = useState(false);
+  const [isValues, setValues] = useState();
   const properties = ["name", "color", "description"];
 
   const renameFunction = async () => {
@@ -29,9 +32,32 @@ function SetUserDatas(props) {
     setUserTypes(response);
   };
 
+  const openInputField = (iterator) => {
+    if (iterator) {
+      const values = [
+        isUserTypes[iterator].name,
+        isUserTypes[iterator].color,
+        isUserTypes[iterator].description,
+        isUserTypes[iterator]._id,
+      ];
+
+      setValues(values);
+    }
+
+    setOpenInput(true);
+  };
+
+  //console.log("isValues", isValues);
+
   useEffect(() => {
     AskAllUserTypesFetch();
   }, []);
+
+  const closeFunct = () => {
+    AskAllUserTypesFetch();
+    setValues();
+    setOpenInput(false);
+  };
 
   return (
     <div className="setUserDatasField">
@@ -54,7 +80,7 @@ function SetUserDatas(props) {
       </div>
 
       <div className="userTypesDiv">
-        <div>These Are your Types</div>
+        <div>These are Your Types</div>
         <div className="userTypeContainer">
           {isUserTypes &&
             isUserTypes.map((data, iterator) => (
@@ -62,6 +88,7 @@ function SetUserDatas(props) {
                 className="oneType"
                 key={`userType${iterator}`}
                 style={{ background: data.color }}
+                onClick={() => openInputField(iterator)}
               >
                 <div>{data.name}</div>
                 <div>{data.description}</div>
@@ -70,18 +97,17 @@ function SetUserDatas(props) {
         </div>
       </div>
 
-      <div className="inputUserTypes">
-        <div>Write the new datas</div>
-        {properties.map((data, iterator) => (
-          <div className="inputMapField">
-            <div>{data}</div>
-            <div>
-              <input type="text" />
-              <div className="inputFieldButton">send</div>
-            </div>
-          </div>
-        ))}
+      <div className="newTypeDiv">
+        <div onClick={() => openInputField()}>create New Type</div>
       </div>
+
+      {isOpenInput && (
+        <InputTypeForm
+          properties={properties}
+          values={isValues}
+          close={() => closeFunct()}
+        ></InputTypeForm>
+      )}
     </div>
   );
 }

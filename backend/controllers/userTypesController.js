@@ -35,6 +35,7 @@ exports.findAllUserTpyes = async (req, res) => {
 
 // update UserType
 exports.updateUserTypes = async (req, res) => {
+  console.log("in update");
   const response = await UserModel.findOneAndUpdate(
     {
       "types._id": req.body.id,
