@@ -1,0 +1,19 @@
+version: "3"
+services:
+  holyday_frontend:
+    image: owerwild/holyday_frontend
+    ports:
+      - 3000:3000
+    networks:
+      - holyday-network
+
+  holyday-backend:
+    image: owerwild/holyday_backend
+    ports:
+      - 8000:8000
+    networks:
+      - holyday-network
+
+networks:
+  holyday-network:
+    driver: bridge
