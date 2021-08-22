@@ -41,15 +41,17 @@ button {
 .setUserDatasField{
   position: fixed;
   background-color: lightblue;
-  height: 10rem;
+  min-height: 10rem;
   width: 50vw;
-  padding: .5rem;
+  padding: 1rem .5rem;
+
+  
 
   top: 30vh;
   left: 25vw;
   border-radius: 5px;
   .userNameInSetField{
-    margin: 5px 0  ;
+    margin: 0 0  ;
   }
   .newNameDiv{
     border: 1px solid black;
@@ -86,4 +88,58 @@ button {
     }
   }
  
+.userTypesDiv{
+  margin: 1rem 0 0 0 ;
+  border: 1px solid black;
+  border-radius: .5rem;
+  .userTypeContainer{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: .3rem 0;
+    .oneType{
+      width: 33%;
+      margin: .5rem;
+      border-radius: .5rem;
+    }
+  }
+}
+
+.inputUserTypes{
+  position: absolute;
+  top:2rem;
+  width: 80%;
+  background-color: white;
+
+left: 0;
+right: 0;
+margin: auto;
+
+  display: flex;
+  flex-direction: column;
+  padding: .8rem .5rem;
+  .inputMapField{
+    div{
+      &:nth-child(2){
+        display: flex;
+        justify-content: space-between;
+       
+        div{
+          border: 1px solid black;
+          border-radius: 3px;
+          padding: 0 2px;
+          cursor: pointer;
+          &:hover{
+            background-color: red;
+          }
+        }
+      }
+  }
+  input{
+    width: 80%;
+  }
+
+ }
+}
+
 }

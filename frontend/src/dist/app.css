@@ -35,15 +35,15 @@ button {
 .setUserDatasField {
   position: fixed;
   background-color: lightblue;
-  height: 10rem;
+  min-height: 10rem;
   width: 50vw;
-  padding: 0.5rem;
+  padding: 1rem 0.5rem;
   top: 30vh;
   left: 25vw;
   border-radius: 5px;
 }
 .setUserDatasField .userNameInSetField {
-  margin: 5px 0;
+  margin: 0 0;
 }
 .setUserDatasField .newNameDiv {
   border: 1px solid black;
@@ -77,4 +77,48 @@ button {
 }
 .setUserDatasField .newNameDiv .newNameInput .newNameButtons div:hover {
   transform: scale(1.3);
+}
+.setUserDatasField .userTypesDiv {
+  margin: 1rem 0 0 0;
+  border: 1px solid black;
+  border-radius: 0.5rem;
+}
+.setUserDatasField .userTypesDiv .userTypeContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 0.3rem 0;
+}
+.setUserDatasField .userTypesDiv .userTypeContainer .oneType {
+  width: 33%;
+  margin: 0.5rem;
+  border-radius: 0.5rem;
+}
+.setUserDatasField .inputUserTypes {
+  position: absolute;
+  top: 2rem;
+  width: 80%;
+  background-color: white;
+  left: 0;
+  right: 0;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  padding: 0.8rem 0.5rem;
+}
+.setUserDatasField .inputUserTypes .inputMapField div:nth-child(2) {
+  display: flex;
+  justify-content: space-between;
+}
+.setUserDatasField .inputUserTypes .inputMapField div:nth-child(2) div {
+  border: 1px solid black;
+  border-radius: 3px;
+  padding: 0 2px;
+  cursor: pointer;
+}
+.setUserDatasField .inputUserTypes .inputMapField div:nth-child(2) div:hover {
+  background-color: red;
+}
+.setUserDatasField .inputUserTypes .inputMapField input {
+  width: 80%;
 }

@@ -3,6 +3,8 @@ import "./dist/app.css";
 import InputForm from "./components/inputform";
 import AllDazy from "./components/AllDayz";
 import Login from "./components/Login";
+import SetUserModal from "./components/SetUserDatasModal";
+
 import FetchModule from "./utils/fetch";
 
 function App() {
@@ -82,23 +84,6 @@ function App() {
     return "Please login or refresh the page";
   };
 
-  const renameFunction = async () => {
-    const updateURL = "http://localhost:8000/api/login/updateUserData";
-    const value = document.querySelector(".newNameInputField").value;
-    console.log("renameValue is:", value);
-    if (value) {
-      const responseJson = await FetchModule(updateURL, "PUT", {
-        key: "nickName",
-        value: value,
-      });
-
-      console.log("Response is ", responseJson);
-      localStorage.setItem("name", responseJson.newName);
-    } // if vége
-
-    setPage("none");
-  };
-
   return (
     <div className="App">
       <div id="head">
@@ -140,23 +125,10 @@ function App() {
       )}
 
       {isPage === "userDatasModal" && (
-        <div className="setUserDatasField">
-          <div className="userNameInSetField">
-            <div>{nameFromLocalStorage()}</div>
-          </div>
-          <div className="newNameDiv">
-            <div className="newNameHead">
-              <div>please give me the new name</div>
-            </div>
-            <div className="newNameInput">
-              <input type="text" className="newNameInputField" />
-              <div className="newNameButtons">
-                <div onClick={() => setPage("holydayz")}> Nope</div>
-                <div onClick={() => renameFunction()}>Okay</div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <SetUserModal
+          nameFromLocalStorage={nameFromLocalStorage}
+          close={() => setPage("holydayz")}
+        ></SetUserModal>
       )}
     </div>
   );
