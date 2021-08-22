@@ -65,7 +65,7 @@
   font-size: 180%;
   font-weight: bold;
 }
-@media (min-width: 770px) {
+@media (min-width: 769px) {
   .remainingDiv {
     transform: translate(0.5rem, 0.5rem);
     position: absolute;
@@ -73,7 +73,7 @@
     bottom: 0;
   }
 }
-@media (max-width: 768px) and (min-width: 513px) {
+@media (max-width: 769px) and (min-width: 513px) {
   .remainingDiv {
     transform: translate(0.5rem, -0.9rem);
     position: absolute;

@@ -32,7 +32,7 @@ button {
   margin: 0;
 }
 
-.newName {
+.setUserDatasField {
   position: fixed;
   background-color: lightblue;
   height: 10rem;
@@ -42,35 +42,39 @@ button {
   left: 25vw;
   border-radius: 5px;
 }
-.newName .newNameHead {
+.setUserDatasField .userNameInSetField {
   margin: 5px 0;
 }
-.newName .newNameInput {
-  margin: 0.5rem 0 0 0;
+.setUserDatasField .newNameDiv {
+  border: 1px solid black;
+  border-radius: 0.5rem;
+}
+.setUserDatasField .newNameDiv .newNameInput {
+  margin: 0 0 0 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 0.5rem;
 }
-.newName .newNameInput input {
+.setUserDatasField .newNameDiv .newNameInput input {
   margin: 0.5rem 0;
 }
-.newName .newNameInput .newNameButtons {
+.setUserDatasField .newNameDiv .newNameInput .newNameButtons {
   display: flex;
   justify-content: space-around;
   width: 70%;
 }
-.newName .newNameInput .newNameButtons div {
+.setUserDatasField .newNameDiv .newNameInput .newNameButtons div {
   font-weight: bolder;
   display: inline;
   cursor: pointer;
 }
-.newName .newNameInput .newNameButtons div:nth-child(1) {
+.setUserDatasField .newNameDiv .newNameInput .newNameButtons div:nth-child(1) {
   color: red;
 }
-.newName .newNameInput .newNameButtons div:nth-child(2) {
+.setUserDatasField .newNameDiv .newNameInput .newNameButtons div:nth-child(2) {
   color: blue;
 }
-.newName .newNameInput .newNameButtons div:hover {
+.setUserDatasField .newNameDiv .newNameInput .newNameButtons div:hover {
   transform: scale(1.3);
 }

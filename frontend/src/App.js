@@ -39,10 +39,10 @@ function App() {
         console.log(firstFetched.datas.holydays);
       }
     } else {
-      console.log("sehol semmi holyday");
+      console.log("sehol semmi holyday ");
     }
 
-    console.log(firstFetched);
+    //console.log(firstFetched);
 
     localStorage.setItem("token", firstFetched.token);
     localStorage.setItem("name", firstFetched.datas.name);
@@ -87,19 +87,6 @@ function App() {
     const value = document.querySelector(".newNameInputField").value;
     console.log("renameValue is:", value);
     if (value) {
-      /*  const response = await fetch(updateURL, {
-        method: "PUT",
-        mode: "cors",
-        headers: { "Content-Type": "application/json" },
-
-        body: JSON.stringify({
-          id: "61189d5746173501f078e047", // átmenetileg beégetve
-          key: "nickName",
-          value: value,
-        }),
-      });
-      const responseJson = await response.json(); */
-
       const responseJson = await FetchModule(updateURL, "PUT", {
         key: "nickName",
         value: value,
@@ -115,7 +102,7 @@ function App() {
   return (
     <div className="App">
       <div id="head">
-        <div className="headName" onClick={() => setPage("newName")}>
+        <div className="headName" onClick={() => setPage("userDatasModal")}>
           {nameFromLocalStorage()}
         </div>
 
@@ -152,17 +139,21 @@ function App() {
         ></InputForm>
       )}
 
-      {isPage === "newName" && (
-        <div className="newName">
-          <div className="newNameHead">
+      {isPage === "userDatasModal" && (
+        <div className="setUserDatasField">
+          <div className="userNameInSetField">
             <div>{nameFromLocalStorage()}</div>
-            <div>please give me the new name</div>
           </div>
-          <div className="newNameInput">
-            <input type="text" className="newNameInputField" />
-            <div className="newNameButtons">
-              <div onClick={() => renameFunction()}>Okay</div>
-              <div onClick={() => setPage("holydayz")}> Nope</div>
+          <div className="newNameDiv">
+            <div className="newNameHead">
+              <div>please give me the new name</div>
+            </div>
+            <div className="newNameInput">
+              <input type="text" className="newNameInputField" />
+              <div className="newNameButtons">
+                <div onClick={() => setPage("holydayz")}> Nope</div>
+                <div onClick={() => renameFunction()}>Okay</div>
+              </div>
             </div>
           </div>
         </div>

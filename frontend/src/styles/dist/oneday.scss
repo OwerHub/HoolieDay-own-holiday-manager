@@ -80,7 +80,7 @@
     font-size: 180%;
     font-weight: bold;
   }
-  @include media(">769px"  , ) {
+  @include media(">768px"  , ) {
     transform: translate(0.5rem, 0.5rem);
     position: absolute;
     right: 0;
@@ -89,7 +89,7 @@
   }
   
   
-  @include media("<769px" , ">512px" ) {
+  @include media("<770px" , ">512px" ) {
     transform: translate(.5rem, -.9rem);
     position: absolute;
     right: 0;
