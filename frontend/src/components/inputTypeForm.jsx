@@ -6,6 +6,7 @@ function InputTypeForm(props) {
     const inputValue = document.querySelector(`.typeInput${data}`).value;
   };
 
+  // bele lehet építeni a del-t is
   const fetchNew = async (data) => {
     // ezt lehet még mappolni
     let name = document.querySelector(`.typeInputname`).value;
@@ -22,7 +23,7 @@ function InputTypeForm(props) {
       };
 
       const response = await FetchModule(url, "POST", fetchBody);
-      //console.log("response is", response);
+
       props.close();
     } //newEnd
 
@@ -36,9 +37,18 @@ function InputTypeForm(props) {
           { key: data, value: inputValue, id: props.values[3] }
         );
         props.close();
-        //console.log("response in form", response);
       }
-    }
+    } // updateEnd
+  };
+
+  const fetchDelete = async () => {
+    const response = await FetchModule(
+      "http://localhost:8000/api/userType/deleteUserTypes",
+      "DELETE",
+      { id: props.values[3] }
+    );
+    console.log(response);
+    props.close();
   };
 
   return (
@@ -63,8 +73,13 @@ function InputTypeForm(props) {
         </div>
       ))}
       <div className="closeButton" onClick={() => props.close()}>
-        close
+        X
       </div>
+      {props.values && (
+        <div className="sendNew" onClick={() => fetchDelete()}>
+          delete
+        </div>
+      )}
       {!props.values && (
         <div className="sendNew" onClick={() => fetchNew()}>
           create

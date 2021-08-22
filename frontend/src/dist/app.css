@@ -33,12 +33,14 @@ button {
 }
 
 .setUserDatasField {
-  position: fixed;
+  position: sticky;
   background-color: lightblue;
   min-height: 10rem;
   width: 50vw;
   padding: 1rem 0.5rem;
-  top: 30vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  top: 12vh;
   left: 25vw;
   border-radius: 5px;
 }
