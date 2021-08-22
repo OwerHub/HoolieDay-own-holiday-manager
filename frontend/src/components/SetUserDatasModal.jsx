@@ -101,6 +101,9 @@ function SetUserDatas(props) {
         <div onClick={() => openInputField()}>create New Type</div>
       </div>
 
+      <div className="signOutDiv">
+        <div>sign Out</div>
+      </div>
       {isOpenInput && (
         <InputTypeForm
           properties={properties}

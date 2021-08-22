@@ -1,6 +1,7 @@
 @import "../styles/dist/colors";
+@import "../styles/dist/include";
 
-* {
+*{
   margin: 0;
   padding: 0;
 }
@@ -42,16 +43,20 @@ button {
   position: sticky;
   background-color: lightblue;
   min-height: 10rem;
-  width: 50vw;
   padding: 1rem .5rem;
   overflow-y:scroll;
   overflow-x:hidden;
-
-  
-
   top: 12vh;
-  left: 25vw;
   border-radius: 5px;
+  @include media("<=769px"  , ) {
+    left: 10vw;
+    width: 80vw;
+  }
+  @include media(">769px"  , ) {
+    left: 25vw;
+    width: 50vw;
+    }
+
   .userNameInSetField{
     margin: 0 0  ;
   }
@@ -100,9 +105,16 @@ button {
     justify-content: space-around;
     padding: .3rem 0;
     .oneType{
-      width: 33%;
       margin: .5rem;
       border-radius: .5rem;
+      @include media("<=769px"  , ) {
+        
+        width: 80%;
+      }
+      @include media(">769px"  , ) {
+        width: 33%;
+      
+        }
     }
   }
 }
@@ -153,16 +165,18 @@ margin: auto;
   justify-content: center;
   padding: 1rem;
   div{
-    background-color: darkred;
+    //background-color: darkred;
     border-radius: 5px;
+    border: 5px solid darkred;
     height: 3rem;
     width: 50%;
     min-width: 250px;
     display: flex;
-    color: white;
+    color: darkred;
     font-weight: bolder;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
   }
 }
 .sendNew{
@@ -175,6 +189,28 @@ margin: auto;
   border: 3px solid red;
   color: red;
   cursor: pointer;
+}
+
+.signOutDiv{
+  margin: 1rem 0 0 0 ;
+  border: 1px solid black; 
+  border-radius: .5rem;
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+  div{
+    background-color: darkred;
+    border-radius: 5px;
+    height: 3rem;
+    width: 50%;
+    min-width: 250px;
+    display: flex;
+    color: white;
+    font-weight: bolder;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
 }
 
 }
