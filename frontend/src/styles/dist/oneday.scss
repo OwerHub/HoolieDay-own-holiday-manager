@@ -1,4 +1,6 @@
-@import "../colors";
+@import "./colors";
+@import "./include";
+
 
 .onedayDiv {
   position: relative;
@@ -15,6 +17,12 @@
   justify-content: center;
   align-items: center;
   
+  @include media("<769px"  , ) {
+    border: red;
+    padding: 4vh
+    }
+
+
 }
 
 .nameDiv {
@@ -38,17 +46,26 @@
 
   background-color: white;
 
-  transform: translate(-1.5rem, -1rem);
   
+  @include media(">512px" ,  ) {
+    transform: translate(-1.5rem, -1rem);
+    
+    }
+
+
+  @include media("<514px" ,  ) {
+    transform: translate(-.6rem, -1rem);
+    }
+
+
 }
 
 .remainingDiv {
-  position: absolute;
+ /*  position: absolute;
   right: 0;
-  bottom: 0;
+  bottom: 0; */
 
   padding: 2px;
-  transform: translate(0.5rem, 0.5rem);
   background-color: white;
   border: 2px solid black;
   div:nth-child(odd) {
@@ -63,12 +80,46 @@
     font-size: 180%;
     font-weight: bold;
   }
+  @include media(">769px"  , ) {
+    transform: translate(0.5rem, 0.5rem);
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    
+  }
+  
+  
+  @include media("<769px" , ">512px" ) {
+    transform: translate(.5rem, -.9rem);
+    position: absolute;
+    right: 0;
+    top: 0;
+    }
+
+    @include media("<514px" ,  ) {
+      transform: translate(0rem, -.9rem);
+      position: absolute;
+      right: 0;
+      top: 0;
+      }
+
+
 }
 
 .dateDiv {
-  position: absolute;
+  @include media(">769px"  , ) {
+    position: absolute;
+    right: 2rem;
+    top: 1rem;
+    
+  }
+  @include media("<512px"  , ) {
+    margin: 1.5rem 0 0 0 ;
+    
+  }
+/*   position: absolute;
   right: 2rem;
-  top: 1rem;
+  top: 1rem; */
   color: whitesmoke;
 }
 
