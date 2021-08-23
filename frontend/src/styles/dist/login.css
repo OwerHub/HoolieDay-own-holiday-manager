@@ -1,6 +1,6 @@
 /* from: https://colorpalettes.net/color-palette-2911/ */
 .loginOutDiv {
-  background-color: magenta;
+  background-color: #197cbe;
   margin: 2rem auto;
   padding: 2rem;
   width: 80%;
@@ -9,10 +9,12 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  border-radius: 10px;
 }
 .loginOutDiv .welcomeDiv {
   font-size: 150%;
   font-weight: bolder;
+  cursor: pointer;
 }
 .loginOutDiv p {
   width: 50%;

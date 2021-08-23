@@ -2,7 +2,7 @@
 @import "./include";
 
 .loginOutDiv{
-	background-color: magenta;
+	background-color: hsl(204, 77, 42);
 	margin: 2rem auto;
 	padding: 2rem;
 	width: 80%;
@@ -11,9 +11,11 @@
 	flex-direction: column;
 	justify-content: space-between;
 	align-items: center;
+	border-radius: 10px;
 	.welcomeDiv{
 		font-size: 150%;
 		font-weight: bolder;
+		cursor: pointer;
 	}
 	.loginBottomText{
 

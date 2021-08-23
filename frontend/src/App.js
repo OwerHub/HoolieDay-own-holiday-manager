@@ -39,7 +39,7 @@ function App() {
         console.log("kéne valami holyday");
         setPage("newHolyDay");
       } else {
-        setPage("holydays");
+        setPage("welcomeScreen");
         console.log(firstFetched.datas.holydays);
       }
     } else {
@@ -70,7 +70,7 @@ function App() {
         setPage("login");
         fetchPostCode(token);
       } else if (isHolydays) {
-        setPage("holydayz");
+        setPage("holydayz"); // ezt már próbáltam
       }
     } else {
       setPage("login");
@@ -78,7 +78,7 @@ function App() {
   }, []);
 
   console.log("localstorage name is ", localStorage.getItem("name"));
-
+  console.log("isPage is", isPage);
   const nameFromLocalStorage = () => {
     if (localStorage.getItem("token") !== null) {
       return ` Hello ${localStorage.getItem("name")}`;

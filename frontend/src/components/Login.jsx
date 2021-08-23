@@ -11,16 +11,19 @@ function Login() {
 
   return (
     <div className="loginOutDiv">
-      <div className="welcomeDiv">Welcome in Holyday</div>
+      <div className="loginUpper">
+        <div className="welcomeDiv">Welcome in Holyday</div>
+        <div>0.9.5 Vizsgaverzió</div>
+      </div>
       <div className="LoginButton" onClick={loginAuth}>
         Login with Google
       </div>
       <div className="loginBottomText">
         <p>
-          A bejelentkezés után frissítsd a képernyőt, vagy nyomd meg a [new Holyday]
-          illetve a [HolyDayz] gombot
+          Ha a bejelentkezés után nem látod fent a neved, kérlek frissítsd az oldalt,
+          vagy kattints rá bármelyik gombra
         </p>
-        <p>When you log out, please push the [new Holyday] or [HolyDayz] button</p>
+        <p>De ez nem fog megtörténni, mert jó vagyok :D</p>
       </div>
     </div>
   );
