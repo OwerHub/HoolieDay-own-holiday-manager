@@ -95,16 +95,19 @@ function App() {
     <div className="App">
       <div id="head">
         <div className="userNameOrLoginPage">
-          <div className="headName" onClick={() => setPage("userDatasModal")}>
+          <div
+            className="headName headButton"
+            onClick={() => setPage("userDatasModal")}
+          >
             {nameFromLocalStorage()}
           </div>
         </div>
 
-        <div className="NewButton" onClick={() => setPage("newHolyDay")}>
+        <div className="NewButton headButton" onClick={() => setPage("newHolyDay")}>
           new Holyday
         </div>
 
-        <div className="" onClick={() => setPage("holydayz")}>
+        <div className="headButton" onClick={() => setPage("holydayz")}>
           HolyDayz
         </div>
       </div>

@@ -246,3 +246,12 @@ button {
 .WelcomeScreenOut .helloButton {
   cursor: pointer;
 }
+
+.headButton {
+  padding: 2px 4px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.headButton:hover {
+  color: white;
+}
