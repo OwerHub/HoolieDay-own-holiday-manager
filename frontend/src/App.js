@@ -84,11 +84,18 @@ function App() {
     return "Please login or refresh the page";
   };
 
+  const logoutFunct = () => {
+    localStorage.clear();
+    setPage("login");
+  };
+
   return (
     <div className="App">
       <div id="head">
-        <div className="headName" onClick={() => setPage("userDatasModal")}>
-          {nameFromLocalStorage()}
+        <div className="userNameOrLoginPage">
+          <div className="headName" onClick={() => setPage("userDatasModal")}>
+            {nameFromLocalStorage()}
+          </div>
         </div>
 
         <div className="NewButton" onClick={() => setPage("newHolyDay")}>
@@ -102,12 +109,6 @@ function App() {
       <div className="serviceHead">
         <div className="serviceButton" onClick={() => setPage("login")}>
           login
-        </div>
-        <div
-          className="serviceButton"
-          onClick={() => localStorage.removeItem("token")}
-        >
-          delete Storage
         </div>
       </div>
 
@@ -128,6 +129,7 @@ function App() {
         <SetUserModal
           nameFromLocalStorage={nameFromLocalStorage}
           close={() => setPage("holydayz")}
+          logout={() => logoutFunct()}
         ></SetUserModal>
       )}
     </div>

@@ -1,6 +1,4 @@
 const FetchModule = async (url, method, body) => {
-  console.log("in fetchModule");
-
   const fetchHeaders = {
     "Content-Type": "application/json",
     authorization: localStorage.getItem("token"),

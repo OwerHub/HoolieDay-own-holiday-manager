@@ -35,27 +35,14 @@ function AllDayz() {
 
   // lefetcheli a JSON-t
   const fetchData = async () => {
-    /* 
-    const fetchHeaders = {
-      "Content-Type": "application/json",
-      authorization: localStorage.getItem("token"),
-    }; */
-    /* 
-    const result = await fetch(url2, {
-      method: "GET",
-      mode: "cors",
-      headers: fetchHeaders,
-    });
-    const jsonData = await result.json(); */
-
     const jsonData = await FetchModule(url2, "GET");
 
-    console.log("datas from fetchmodule", jsonData);
+    //console.log("datas from fetchmodule", jsonData);
 
     jsonData.sort((a, b) => (a.date > b.date ? 1 : b.date > a.date ? -1 : 0));
 
     let data2 = pushDifference(jsonData);
-
+    //console.log("data2 in Holydays", data2);
     setData(data2);
     setLoading(false);
   }; // fetchend

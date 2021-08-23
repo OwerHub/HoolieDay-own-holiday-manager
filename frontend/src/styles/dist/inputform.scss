@@ -1,12 +1,13 @@
 @import "./colors";
+@import "./include";
 
 .inputModal{
-	position: fixed;
+	position: sticky;
 	top: 1vh;
 	left:2.5vw ;
 	width: 95vw;
-	height: 95vh;
-
+	min-height: 95vh;
+	padding: 0 0 1vh 0;
 	background-color: rgba($color: #000000, $alpha: .5);
 
 	z-index: 5;
@@ -20,12 +21,20 @@
 .form{
 	position: relative;
 	margin: 10vh 0 0 0;
-	width: 50vw;
-	height: 70vh;
+	
+	min-height: 70vh;
 	background-color: $green;
 	border-radius: 2px;
 	color: whitesmoke;
+	@include media("<769px"  , ) {
+		width: 90vw;
 	
+	}
+	
+	@include media(">=768px"  , ) {
+			width: 50vw;
+   
+    }
 	
 	.dateCont{
 		.dayInput{

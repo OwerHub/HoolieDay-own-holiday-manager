@@ -9,6 +9,7 @@
   text-align: center;
   min-height: 100vh;
   background-color: #f3b61f;
+  padding: 0 0 12vh 0;
 }
 
 button {
@@ -127,6 +128,11 @@ button {
   flex-direction: column;
   padding: 0.8rem 0.5rem;
 }
+.setUserDatasField .inputUserTypes .inputTypeFormHead {
+  max-width: 60%;
+  font-weight: bolder;
+  margin: 0 auto;
+}
 .setUserDatasField .inputUserTypes .inputMapField {
   margin: 0.5rem 0 0 0;
 }
@@ -145,6 +151,7 @@ button {
 }
 .setUserDatasField .inputUserTypes .inputMapField input {
   width: 80%;
+  margin: 0 auto;
 }
 .setUserDatasField .newTypeDiv {
   margin: 1rem 0 0 0;
@@ -167,15 +174,35 @@ button {
   align-items: center;
   cursor: pointer;
 }
+@media (max-width: 769px) {
+  .setUserDatasField .newTypeDiv div {
+    min-width: 200px;
+  }
+}
+@media (min-width: 770px) {
+  .setUserDatasField .newTypeDiv div {
+    min-width: 250px;
+  }
+}
 .setUserDatasField .sendNew {
   height: 1.5rem;
-  width: 30%;
+  /*  width: 30%; */
   min-width: 200px;
   margin: 1rem auto 0.5rem;
   border-radius: 3px;
   border: 3px solid red;
   color: red;
   cursor: pointer;
+}
+@media (max-width: 513px) {
+  .setUserDatasField .sendNew {
+    min-width: 180px;
+  }
+}
+@media (min-width: 513px) {
+  .setUserDatasField .sendNew {
+    min-width: 250px;
+  }
 }
 .setUserDatasField .signOutDiv {
   margin: 1rem 0 0 0;
@@ -190,11 +217,20 @@ button {
   border-radius: 5px;
   height: 3rem;
   width: 50%;
-  min-width: 250px;
   display: flex;
   color: white;
   font-weight: bolder;
   justify-content: center;
   align-items: center;
   cursor: pointer;
+}
+@media (max-width: 769px) {
+  .setUserDatasField .signOutDiv div {
+    min-width: 200px;
+  }
+}
+@media (min-width: 770px) {
+  .setUserDatasField .signOutDiv div {
+    min-width: 250px;
+  }
 }

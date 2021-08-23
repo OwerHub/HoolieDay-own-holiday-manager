@@ -53,7 +53,9 @@ function InputTypeForm(props) {
 
   return (
     <div className="inputUserTypes">
-      <div>{props.values ? "update datas" : "Write the new datas"}</div>
+      <div className="inputTypeFormHead">
+        {props.values ? "update datas" : "Write the new datas"}
+      </div>
       {props.properties.map((data, iterator) => (
         <div className="inputMapField" key={`inputData${iterator}`}>
           <div>{data}</div>
