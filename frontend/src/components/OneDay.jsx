@@ -15,13 +15,6 @@ function OneDay(props) {
   const deleteFunct = async () => {
     const urlDeleteHolyDay = "http://localhost:8000/api/holyday/deleteHolyday";
 
-    /*  const response = await fetch(urlDeleteHolyDay, {
-      method: "DELETE",
-      mode: "cors",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ id: props.data._id }),
-    }); */
-
     const response = await FetchModule(urlDeleteHolyDay, "DELETE", {
       id: props.data._id,
     });
@@ -52,18 +45,6 @@ function OneDay(props) {
 
     if (inputValue) {
       const urlUpdate = "http://localhost:8000/api/holyday/modifyHolyday";
-
-      /*       const response = await fetch(urlUpdate, {
-        method: "PUT",
-        mode: "cors",
-        headers: { "Content-Type": "application/json" },
-
-        body: JSON.stringify({
-          id: props.data._id,
-          key: type,
-          value: inputValue,
-        }),
-      }); */
 
       const response = await FetchModule(urlUpdate, "PUT", {
         id: props.data._id,

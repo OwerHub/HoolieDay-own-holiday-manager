@@ -234,3 +234,15 @@ button {
     min-width: 250px;
   }
 }
+
+.WelcomeScreenOut {
+  position: fixed;
+  background-color: red;
+  min-width: 70vw;
+  min-height: 70vh;
+  margin: 10vh 15vw;
+  top: 3vh;
+}
+.WelcomeScreenOut .helloButton {
+  cursor: pointer;
+}

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import "../styles/dist/login.css";
 
 function Login() {
   const urlScopeCalendar = `https://accounts.google.com/o/oauth2/v2/auth?response_type=code&client_id=856443790783-ur90d5sq8jvuouqjabb91npiide0k9p9.apps.googleusercontent.com&scope=https://www.googleapis.com/auth/calendar%20openid%20email%20profile&access_type=offline&redirect_uri=http%3A//localhost:3000/login`;
@@ -9,8 +10,18 @@ function Login() {
   };
 
   return (
-    <div className="LoginButton" onClick={loginAuth}>
-      This is Login Button
+    <div className="loginOutDiv">
+      <div className="welcomeDiv">Welcome in Holyday</div>
+      <div className="LoginButton" onClick={loginAuth}>
+        Login with Google
+      </div>
+      <div className="loginBottomText">
+        <p>
+          A bejelentkezés után frissítsd a képernyőt, vagy nyomd meg a [new Holyday]
+          illetve a [HolyDayz] gombot
+        </p>
+        <p>When you log out, please push the [new Holyday] or [HolyDayz] button</p>
+      </div>
     </div>
   );
 }

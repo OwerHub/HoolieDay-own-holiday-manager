@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from "react";
 import "./dist/app.css";
+
 import InputForm from "./components/inputform";
 import AllDazy from "./components/AllDayz";
 import Login from "./components/Login";
 import SetUserModal from "./components/SetUserDatasModal";
+import WelcomeScreen from "./components/WelcomeScreen";
 
 import FetchModule from "./utils/fetch";
 
 function App() {
-  const [isPage, setPage] = useState("holydayz");
+  const [isPage, setPage] = useState();
 
   const [isUserData, setUserData] = useState();
   const [isHolydays, setHolydays] = useState();
@@ -131,6 +133,10 @@ function App() {
           close={() => setPage("holydayz")}
           logout={() => logoutFunct()}
         ></SetUserModal>
+      )}
+
+      {isPage === "welcomeScreen" && (
+        <WelcomeScreen close={() => setPage("holydayz")}></WelcomeScreen>
       )}
     </div>
   );

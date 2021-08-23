@@ -1,0 +1,28 @@
+/* from: https://colorpalettes.net/color-palette-2911/ */
+.loginOutDiv {
+  background-color: magenta;
+  margin: 2rem auto;
+  padding: 2rem;
+  width: 80%;
+  min-height: 55vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+.loginOutDiv .welcomeDiv {
+  font-size: 150%;
+  font-weight: bolder;
+}
+.loginOutDiv p {
+  width: 50%;
+  margin: 1rem auto;
+}
+.loginOutDiv .LoginButton {
+  margin: 1rem 0;
+  background-color: mediumblue;
+  border-radius: 10px;
+  width: 10rem;
+  padding: 1rem;
+  color: white;
+}
