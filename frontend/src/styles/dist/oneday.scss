@@ -6,10 +6,12 @@
   position: relative;
   margin: 2rem auto;
   padding: 5px 3rem;
-  border: 2px solid black;
+  //border: 2px solid black;
 
   min-height: 13vh;
   width: 80vw;
+    background-color: rgb(48, 48, 48);
+  
 
   
 
@@ -26,6 +28,7 @@
 }
 
 .nameDiv {
+  color: black;
   .nameUp{
     padding: 0 5px 0 ;
     font-size: 50%;
@@ -68,6 +71,7 @@
   padding: 2px;
   background-color: white;
   border: 2px solid black;
+  color: black;
   div:nth-child(odd) {
     padding: 0 10px;
     font-size: 70%;
@@ -131,9 +135,10 @@
   
   margin: 1rem 0 0 0 ;
   font-size: 200%;
-  color: whitesmoke;
+  //color: whitesmoke;
   font-weight: bolder;
-  text-shadow: 3px 3px 1px black;
+  //text-shadow: 3px 3px 1px black;
+  text-shadow: 1px 1px 2px white;
   z-index: 3;
   
 }

@@ -8,8 +8,9 @@
   position: relative;
   text-align: center;
   min-height: 100vh;
-  background-color: #f3b61f;
+  background-color: #141414;
   padding: 0 0 12vh 0;
+  color: white;
 }
 
 button {
@@ -22,6 +23,7 @@ button {
   display: flex;
   justify-content: space-around;
   background-color: rgba(0, 0, 0, 0.2);
+  color: white;
 }
 
 .serviceHead {

@@ -73,23 +73,22 @@ exports.updateHolyday = async (req, res) => {
 };
 
 exports.saveToGoogle = async (req, res) => {
-  const userResponse = await UserModel.findOne({ _id: req.idFromToken });
+  const userDataResponse = await UserModel.findOne({ _id: req.idFromToken });
 
+  const dataWhatNeed = {
+    date: req.body.date,
+    celebrate: req.body.celebrate,
+    description: req.body.description,
+    name: req.body.name,
+    access_token: userDataResponse.acess_token,
+    refresh_token: userDataResponse.refresh_token,
+  };
+
+  res.send({ dataWhatNeed });
+  /* 
+  -----EZ SE LETT VOLNA ROSSZ MEGOLDÁS
   const selectedHolyday = userResponse.holydays.filter(
     (holyday) => holyday._id == req.body.id
   ); // két egyenlőségjellel mert Login-ra küldöm a dolgokat.
-
-  console.log("saveToGoogle SelectedHolyday, 84", selectedHolyday);
-
-  const dataWhatNeed = {
-    access_token: userResponse.access_token,
-    refresh_token: userResponse.refresh_token,
-    sub: userResponse.sub,
-    email: userResponse.email,
-    holydayName: selectedHolyday[0].name,
-    date: selectedHolyday[0].date,
-    celebrate: selectedHolyday[0].celebrate,
-  };
-
-  res.send(dataWhatNeed);
+ */
 };

@@ -74,10 +74,6 @@ const createNewUser = async (name, sub, email) => {
   return response;
 };
 
-/* const updateTokens = async (sub, access_token, refresh_token)  ={
-  const response = await UserModel.findOneAndUpdate({})
-} */
-
 // create Token
 function createToken(id) {
   const token = jwt.sign(
@@ -91,12 +87,38 @@ function createToken(id) {
   return token;
 }
 
+// update access and refresh tokens
+const UpdateAcessAndRefreshTokens = async (
+  new_acess_token,
+  new_refresh_token,
+  sub
+) => {
+  const response = await UserModel.findOneAndUpdate(
+    { sub: sub },
+    { acess_token: new_acess_token, refresh_token: new_refresh_token },
+    { new: true }
+  );
+  //console.log("response in TokensUpddateFunc", response);
+};
+
+const addDefaultTypesToUserTypes = async (types) => {
+  const tryType = {
+    _id: "6120caaca8da16204c448f6d",
+    name: "FIRST",
+    color: "FIRST",
+    description: "FIRST",
+  };
+
+  const newTypes = [tryType].concat(types);
+
+  console.log(newTypes);
+};
+
 exports.postCatchLoginCode = async (req, res) => {
-  // kideríteni, miért kell még egy code
   const googleCodeFromFrontend = req.body.code.code;
 
   const userDatasFromGoogle = await googleFetch(googleCodeFromFrontend);
-  console.log("Userdata from google, login 99:", userDatasFromGoogle);
+  //console.log("Userdata from google, login 99:", userDatasFromGoogle);
 
   let userDatasFromDatabase = await askUserFromDatabase(userDatasFromGoogle.sub);
 
@@ -107,34 +129,27 @@ exports.postCatchLoginCode = async (req, res) => {
       userDatasFromGoogle.email
     );
   } else {
-    console.log(
+    /* console.log(
       "this is a acess token when wh have got a user",
       userDatasFromGoogle.access_token
     );
     console.log(
       "this is a refresh token when wh have got a user",
       userDatasFromGoogle.refresh_token
-    );
-
-    /*  const response_tokens = await UserModel.findOneAndUpdate(
-      {
-        sub: userDatasFromGoogle.sub,
-      },
-      {
-        $set: {
-          acess_token: userDatasFromGoogle.access_token,
-          refresh_token: userDatasFromGoogle.refresh_token,
-        },
-      },
-      {
-        new: true,
-      }
     ); */
+
+    UpdateAcessAndRefreshTokens(
+      userDatasFromGoogle.access_token,
+      userDatasFromGoogle.refresh_token,
+      userDatasFromGoogle.sub
+    );
   }
 
   //console.log("login 134 updateAcessAndRefreshTOkens", response_tokens);
 
   const token = createToken(userDatasFromDatabase._id);
+
+  addDefaultTypesToUserTypes(userDatasFromDatabase.types);
 
   const sendAllData = {
     name: userDatasFromDatabase.nickName,
@@ -145,7 +160,7 @@ exports.postCatchLoginCode = async (req, res) => {
     types: userDatasFromDatabase.types,
   };
 
-  console.log(sendAllData);
+  //console.log(sendAllData);
 
   res.status(200).json({ datas: sendAllData, token: token });
 };

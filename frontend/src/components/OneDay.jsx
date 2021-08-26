@@ -25,15 +25,27 @@ function OneDay(props) {
     setModalType("none");
   };
 
+  //console.log("props.data", props.data);
   const sendToGoogleFunct = async () => {
-    const urlFetchToGoogle = "http://localhost:8000/api/holyday/fetchToGoogle";
+    const urlFetchToGoogle = "http://localhost:8000/api/holyday/saveToGoogle";
 
-    const response = await fetch(urlFetchToGoogle, {
+    const hoolieDayDatas = {
+      id: props.data._id,
+      date: props.data.date,
+      celebrate: props.data.celebrate,
+      description: props.data.description,
+      name: props.data.name,
+      type: props.data.type,
+    };
+
+    const response = await FetchModule(urlFetchToGoogle, "POST", hoolieDayDatas);
+
+    /* const response = await fetch(urlFetchToGoogle, {
       method: "POST",
       mode: "cors",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ id: props.data._id }),
-    });
+    }); */
 
     console.log(response);
   };
@@ -63,8 +75,9 @@ function OneDay(props) {
     <div
       className="onedayDiv"
       style={{
-        backgroundColor:
-          props.dayTypes.length && props.dayTypes[props.data.type].color,
+        border: ` 3px solid ${
+          props.dayTypes.length && props.dayTypes[props.data.type].color
+        }`,
         display: !!parseInt(props.selectByte[props.data.type]) ? "block" : "none",
       }}
     >
@@ -80,7 +93,12 @@ function OneDay(props) {
         <span>{day}</span>
       </div>
 
-      <div className="toDoDiv">
+      <div
+        className="toDoDiv"
+        style={{
+          color: props.dayTypes.length && props.dayTypes[props.data.type].color,
+        }}
+      >
         <span>{props.data.celebrate}</span>
       </div>
 
@@ -109,7 +127,12 @@ function OneDay(props) {
           Update
         </div>
 
-        <div className="sendGoogleButton onedayButton">Send To </div>
+        <div
+          className="sendGoogleButton onedayButton"
+          onClick={() => sendToGoogleFunct()}
+        >
+          Send To{" "}
+        </div>
       </div>
 
       {isModalType === "delete" && (
