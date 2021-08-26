@@ -238,10 +238,9 @@ button {
 .WelcomeScreenOut {
   position: fixed;
   background-color: red;
-  min-width: 70vw;
-  min-height: 70vh;
-  margin: 10vh 15vw;
-  top: 3vh;
+  width: 100%;
+  min-height: 15vh;
+  top: 0;
 }
 .WelcomeScreenOut .helloButton {
   cursor: pointer;
