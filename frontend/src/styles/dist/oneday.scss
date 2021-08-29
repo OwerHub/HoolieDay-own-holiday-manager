@@ -168,28 +168,29 @@
   width: 32%;
   border-radius: 1px;
   cursor: pointer;
-  background-color: rgba(white, .9);
+  //background-color: rgba(white, .9);
   font-weight: bold;
   &:hover{
-    background-color: purple;
-    color: white
+    background-color: white;
+    color:black
+  
   }
 }
 
 
 .deleteButton{
-  border: 2px solid red;
-  color: red
+  //border: 2px solid red;
+  background-color: red
 }
 
 .updateButton{
-  border: 2px solid purple;
-  color: purple
+  //border: 2px solid purple;
+  background-color: purple
 }
 
 .sendGoogleButton{
-  border: 2px solid lightblue;
-  color: blue
+  //border: 2px solid lightblue;
+  background-color: blue
 }
 
 

@@ -9,9 +9,10 @@ function WelcomeScreen(props) {
 
   return (
     <div className="WelcomeScreenOut">
-      <div className="helloText">Hello</div>
+      <div className="helloText">Hello User, Welcome in HoolieDays</div>
+      <div>Tudom, hogy rosszul írtam a Holiday-s mindenhol </div>
       <div className="helloButton" onClick={() => closeFunct()}>
-        Come in
+        <span>Enter</span>
       </div>
     </div>
   );

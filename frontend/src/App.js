@@ -79,6 +79,7 @@ function App() {
 
   console.log("localstorage name is ", localStorage.getItem("name"));
   console.log("isPage is", isPage);
+
   const nameFromLocalStorage = () => {
     if (localStorage.getItem("token") !== null) {
       return ` Hello ${localStorage.getItem("name")}`;
@@ -95,12 +96,24 @@ function App() {
     <div className="App">
       <div id="head">
         <div className="userNameOrLoginPage">
-          <div
+          {localStorage.getItem("token") !== null ? (
+            <div
+              className="headName headButton"
+              onClick={() => setPage("userDatasModal")}
+            >
+              Hello {localStorage.getItem("name")}
+            </div>
+          ) : (
+            <div className="headName headButton" onClick={() => setPage("login")}>
+              Please login or refresh the page
+            </div>
+          )}
+          {/* <div
             className="headName headButton"
             onClick={() => setPage("userDatasModal")}
           >
             {nameFromLocalStorage()}
-          </div>
+          </div> */}
         </div>
 
         <div className="NewButton headButton" onClick={() => setPage("newHolyDay")}>
@@ -111,11 +124,11 @@ function App() {
           HolyDayz
         </div>
       </div>
-      <div className="serviceHead">
+      {/*      <div className="serviceHead">
         <div className="serviceButton" onClick={() => setPage("login")}>
           login
         </div>
-      </div>
+      </div> */}
 
       {isPage === "login" && <Login setLogin={() => setPage()}></Login>}
 

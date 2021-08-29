@@ -17,7 +17,8 @@
   position: relative;
   margin: 10vh 0 0 0;
   min-height: 70vh;
-  background-color: #105001;
+  background-color: #252525;
+  border: 2px solid green;
   border-radius: 2px;
   color: whitesmoke;
 }

@@ -51,6 +51,7 @@ button {
   overflow-x:hidden;
   top: 12vh;
   border-radius: 5px;
+  color: black;
   @include media("<=769px"  , ) {
     left: 10vw;
     width: 80vw;
@@ -246,12 +247,25 @@ margin: auto;
 // WelcomeScreen
 .WelcomeScreenOut{
   position: fixed;
-  background-color: red;
+  background-color: rgb(51, 0, 0);
   width: 100%;
-  min-height: 15vh;
+  min-height: 13vh;
   top: 0;
-
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  .helloText{
+    font-weight: bolder;
+  }
   .helloButton{
+    width: 5rem;
+    background-color: rgba(black, .3);
+    border: 1px solid white;
+    border-radius: 5px;
+    padding: .5rem 0;
+    font-weight: bold;
     cursor: pointer;
   }
 }

@@ -44,6 +44,7 @@ button {
   overflow-x: hidden;
   top: 12vh;
   border-radius: 5px;
+  color: black;
 }
 @media (max-width: 769px) {
   .setUserDatasField {
@@ -239,12 +240,26 @@ button {
 
 .WelcomeScreenOut {
   position: fixed;
-  background-color: red;
+  background-color: #330000;
   width: 100%;
-  min-height: 15vh;
+  min-height: 13vh;
   top: 0;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+.WelcomeScreenOut .helloText {
+  font-weight: bolder;
 }
 .WelcomeScreenOut .helloButton {
+  width: 5rem;
+  background-color: rgba(0, 0, 0, 0.3);
+  border: 1px solid white;
+  border-radius: 5px;
+  padding: 0.5rem 0;
+  font-weight: bold;
   cursor: pointer;
 }
 

@@ -1,0 +1,732 @@
+openapi: 3.0.0
+info:
+  title: HolyDayz
+  description: Create and manage your own celebrate holydays
+  version: 0.8.8
+servers:
+  - url: localhost:8000/Api
+    description: localhost server API
+tags:
+- name: login
+  description: login and user queries
+- name: Holydayz
+  description: Create, delete, ask, or modify User's Holday
+- name: Types
+  description: Create , ask , or modify default Types
+- name: UserTypes
+  description: Create,or manipulate user's own types
+
+paths:
+
+  /login/ping:
+    get:
+      tags: 
+      - login
+      summary: simple answer to a simple query
+      description: check the server and the route 
+      responses: 
+       '200':    # status code
+          description: everithing is okay
+          content: 
+            text/plain:
+              schema:
+                type: string
+                example: pong
+        
+  /users/sendLoginCode:
+    get:
+      tags:
+      - login
+      summary: verify the google code.
+      description: verify the openID code.
+      parameters: 
+        - in: body
+          name: 
+          schema: 
+            type: object
+            properties:
+              token:
+                type: string
+                example: 24fqgq2g4FFQF4Q-CE2qc2QV2Q-V343V23V!Q"V4
+      responses:
+        '200':
+          description: user Created
+          content:
+            application/json:
+              schema: 
+               $ref: '#/definitions/UserHolyday'
+          
+  /users/updateUserData:
+    put:
+      tags:
+      - login
+      summary: change user parameter's value
+      parameters: 
+        - in: header
+          name: token
+          schema: 
+            type: string
+            format: token
+            required: true
+            description: token (id in token ) for verify
+        - in: body
+          name: change's parameter
+          description: the parameters of changin
+          schema: 
+            type: object
+            required:
+              - key
+              - value
+            properties: 
+              key:
+                type: string
+                example: nickName
+              value: 
+                type: string
+                example: Kandisz Nóra
+      responses: 
+        "201":
+          description: user putted
+          content:
+            application/json:
+              schema: 
+                type: object
+                properties:
+                  nickName:
+                    type: string
+                    description: give back the new nickname.
+                    example: Kandisz Nóra
+                  
+        "403":
+          description: authentication failed. 
+          content: 
+            text/plain:
+              schema:
+                type: string
+                example: Acess Denied
+    
+          
+  /holydays/ping:
+    get:
+      tags: 
+      - Holydayz
+      summary: simple answer to a simple query
+      description: check the server and the route 
+      responses: 
+       '200':    # status code
+          description: everithing is okay
+          content: 
+            text/plain:
+              schema:
+                type: string
+       
+  /holydays/allHolyday:
+    get:
+      tags:
+      - Holydayz
+      summary: get all holyday.
+      description: get all holyday from the user
+      parameters: 
+        - in: header
+          name: token
+          schema: 
+            type: string
+            format: token
+            required: true
+            description: token (id in token ) for verify
+        
+      responses: 
+        "200":
+          description: get back all holyday
+          content:
+            application/json:
+              schema: 
+                type: array
+                items:
+                  $ref: '#/definitions/holyday' 
+                
+                  
+        "403":
+          description: authentication failed. 
+          content: 
+            text/plain:
+              schema:
+                type: string
+                example: Acess Denied     
+  
+  /holydays/newHolyday:
+    post:
+      tags:
+      - Holydayz
+      summary: post new holyday.
+      description: post new holyday
+      parameters: 
+        - in: header
+          name: token
+          schema: 
+            type: string
+            format: token
+            required: true
+            description: token (id in token ) for verify
+        - in: body
+          name: holyday
+          schema: 
+            type: object
+            required:
+              - key
+              - value
+            properties: 
+              name:
+                type: string
+                example: nickName
+              date: 
+                type: string
+                example: 0522
+              picture: 
+                type: string
+                example: https://www.pictures.42
+              celebrate: 
+                type: string
+                example: Bring the Towel
+              description:
+                type: string
+                example: Douglas Adams Birhtday
+              type:
+                type: string
+                example: 0  
+        
+        
+      responses: 
+        "200":
+          description: get back all holyday
+          content:
+            application/json:
+              schema: 
+                type: array
+                properties:
+                  nickName:
+                    type: string
+                    description: give back the new nickname.
+                    example: Kandisz Nóra
+                
+                  
+        "403":
+          description: authentication failed. 
+          content: 
+            text/plain:
+              schema:
+                type: string
+                example: Acess Denied
+ 
+  /holydays/updateUserData:
+    put:
+      tags:
+      - Holydayz
+      summary: change a holydays value
+      parameters: 
+        - in: header
+          name: token
+          schema: 
+            type: string
+            format: token
+            required: true
+            description: token (id in token ) for verify
+        - in: body
+          name: change's parameter
+          description: the parameters of changin
+          schema: 
+            type: object
+            required:
+              - key
+              - value
+            properties: 
+              key:
+                type: string
+                example: name
+              value: 
+                type: string
+                example: Childs Day
+      responses: 
+        "200":
+          description: get back all holyday
+          content:
+            application/json:
+              schema: 
+                type: array
+                items:
+                  $ref: '#/definitions/holyday' 
+                  
+        "403":
+          description: authentication failed. 
+          content: 
+            text/plain:
+              schema:
+                type: string
+                example: Acess Denied
+
+  /holydays/deleteHolyday:
+    delete:
+      tags:
+      - Holydayz
+      summary: change a holydays value
+      parameters: 
+        - in: header
+          name: token
+          schema: 
+            type: string
+            format: token
+            required: true
+            description: token (id in token ) for verify
+        - in: body
+          name: change's parameter
+          description: the parameters of changin
+          schema: 
+            type: object
+            required:
+              - id
+          
+            properties: 
+              id:
+                type: string
+                example: 611dc9a410b8401de0431b55
+      responses: 
+        "200":
+          description: get back all holyday
+          content:
+            application/json:
+              schema: 
+                type: array
+                items:
+                  $ref: '#/definitions/holyday' 
+                  
+        "403":
+          description: authentication failed. 
+          content: 
+            text/plain:
+              schema:
+                type: string
+                example: Acess Denied
+          
+  /holydays/sendToGoogle:
+    post:
+      tags:
+      - Holydayz
+      summary: send holyday to Google.
+      description: post new holyday
+      parameters: 
+        - in: header
+          name: token
+          schema: 
+            type: string
+            format: token
+            required: true
+            description: token (id in token ) for verify
+        - in: body
+          name: holyday
+          schema: 
+            type: object
+            required:
+              - id
+            properties: 
+              id:
+                type: string
+                example: 611dc9a410b8401de0431b55
+              
+        
+        
+      responses: 
+        "200":
+          description: get back all holyday
+          content:
+            application/json:
+              schema: 
+                type: object
+                properties:
+                  message:
+                    type: string
+                    description: give back the new nickname.
+                    example: Holyday's Saved
+                
+                  
+        "403":
+          description: authentication failed. 
+          content: 
+            text/plain:
+              schema:
+                type: string
+                example: Acess Denied
+    
+    
+  /types/newType:
+    post:
+      tags:
+      - Types
+      summary: post new holyday.
+      description: post new holyday
+      parameters: 
+        - in: header
+          name: token
+          schema: 
+            type: string
+            format: token
+            required: true
+            description: token (id in token ) for verify
+        - in: body
+          name: holyday
+          schema: 
+            type: object
+            required:
+              - key
+              - value
+            properties: 
+              name:
+                type: string
+                example: nickName
+              color: 
+                type: string
+                example: 0522
+              description: 
+                type: string
+                example: https://www.pictures.42
+  
+        
+        
+      responses: 
+        "200":
+          description: get back all types
+          content:
+            application/json:
+              schema: 
+                type: array
+                items:
+                  $ref: '#/definitions/type' 
+                  
+                
+                  
+        "403":
+          description: authentication failed. 
+          content: 
+            text/plain:
+              schema:
+                type: string
+                example: Acess Denied
+    
+  /types/alltypes:
+    get:
+      tags:
+      - Types
+      summary: post new holyday.
+      description: post new holyday
+      parameters: 
+        - in: header
+          name: token
+          schema: 
+            type: string
+            format: token
+            required: true
+            description: token (id in token ) for verify
+        
+  
+        
+        
+      responses: 
+        "200":
+          description: get back all types
+          content:
+            application/json:
+              schema: 
+                type: array
+                items:
+                  $ref: '#/definitions/type' 
+                  
+                
+                  
+        "403":
+          description: authentication failed. 
+          content: 
+            text/plain:
+              schema:
+                type: string
+                example: Acess Denied
+        
+  /userType/ping:
+    get:
+      tags: 
+      - UserTypes
+      summary: simple answer to a simple query
+      description: check the server and the route 
+      responses: 
+       '200':    # status code
+          description: everithing is okay
+          content: 
+            text/plain:
+              schema:
+                type: string
+                example: im a testfunction in UserTypesController
+    
+       "404":
+          description: cant reach the server 
+          
+  /usertypes/alluserTypes:
+    get:
+      tags:
+      - UserTypes
+      summary: Get all usertype.
+      description: get all usertype
+      parameters: 
+        - in: header
+          name: token
+          schema: 
+            type: string
+            format: token
+            required: true
+            description: token (id in token ) for verify
+        
+      responses: 
+        "200":
+          description: get back all types
+          content:
+            application/json:
+              schema: 
+                type: array
+                items:
+                  $ref: '#/definitions/type' 
+                  
+                
+                  
+        "403":
+          description: authentication failed. 
+          content: 
+            text/plain:
+              schema:
+                type: string
+                example: Acess Denied
+                
+  /userType/newUserType:
+    post:
+      tags:
+      - UserTypes
+      summary: make a new type in user Document
+      parameters: 
+        - in: header
+          name: token
+          schema: 
+            type: string
+            format: token
+            required: true
+            description: token (id in token ) for verify
+        - in: body
+          name: holyday
+          schema: 
+            type: object
+            required:
+              - key
+              - value
+            properties: 
+              name:
+                type: string
+                example: Friends
+              color: 
+                type: string
+                example: 0522
+              description: 
+                type: string
+                example: important holydays with my best friends
+               
+        
+      responses: 
+        "200":
+          description: get back all types from user
+          content:
+            application/json:
+              schema: 
+                type: array
+                items:
+                  $ref: '#/definitions/type' 
+                
+                
+                  
+        "403":
+          description: authentication failed. 
+          content: 
+            text/plain:
+              schema:
+                type: string
+                example: Acess Denied
+
+
+
+  /userType/updateUserTypes:   
+    put:
+      tags: 
+      - UserTypes
+      summary: change user parameter's value
+      parameters: 
+        - in: header
+          name: token
+          schema: 
+            type: string
+            format: token
+            required: true
+            description: token (id in token ) for verify
+        - in: body
+          name: change's parameter
+          description: the parameters of changin
+          schema: 
+            type: object
+            required:
+              - key
+              - value
+            properties: 
+              key:
+                type: string
+                example: name
+              value: 
+                type: string
+                example: newTypeName
+      responses: 
+        "200":
+          description: get back all types from user
+          content:
+            application/json:
+              schema: 
+                type: array
+                items:
+                  $ref: '#/definitions/type'    
+                  
+        "403":
+          description: authentication failed. 
+          content: 
+            text/plain:
+              schema:
+                type: string     
+                example: Acess Denied
+  /userType/deleteUserType:   
+    delete:
+      tags: 
+      - UserTypes 
+      summary: change a holydays value
+      parameters: 
+        - in: header
+          name: token
+          schema: 
+            type: string
+            format: token
+            required: true
+            description: token (id in token ) for verify
+        - in: body
+          name: change's parameter
+          description: the parameters of changin
+          schema: 
+            type: object
+            required:
+              - id
+          
+            properties: 
+              id:
+                type: string
+                example: 611dc9a410b8401de0431b55
+                
+      responses: 
+        "200":
+          description: get back all types from user
+          content:
+            application/json:
+              schema: 
+                type: array
+                items:
+                  $ref: '#/definitions/type'
+                  
+        "403":
+          description: authentication failed. 
+          content: 
+            text/plain:
+              schema:
+                type: string
+                example: Acess Denied
+        
+definitions:
+  UserHolyday:
+    type: object
+    required: 
+    - id
+    - name
+    properties: 
+      
+      token:
+        type: string
+        description: a generated token with user ID.
+        example: token 
+      name:
+        type: string
+        description: username
+        example: Git Áron
+      id:
+        type: string
+        description: users id from database.
+        example: aad3qrfw45g34
+      picture:
+        type: string
+        description: user pictres from google database
+        example: /picures
+      email:
+        type: string
+        description: user email (not required this time)
+        example: gazgeza.etmail.com
+      holydays:
+        type: array
+        items: 
+          $ref: '#/definitions/holyday'
+      types:
+        type: array
+        items: 
+          $ref: '#/definitions/type'
+          
+  holyday: 
+    type: object
+    required:
+    - id
+    - url
+    properties: 
+      id: 
+        type: string
+        example: 6118dc68d984bd23205d88c7
+      name: 
+        type: string
+        example: Douglas Adams
+      date: 
+        type: string
+        example: 0522
+      picture: 
+        type: string
+        example: https://www.pictures.42
+      celebrate: 
+        type: string
+        example: Bring the Towel
+      description:
+        type: string
+        example: Douglas Adams Birhtday
+      type:
+        type: string
+        example: 0
+  type: 
+    type: object
+    required:
+    - id
+    properties: 
+      id: 
+        type: string
+        example: 60ebd85a8fc86c355891706f
+      name: 
+        type: string
+        example: Day of
+      color: 
+        type: string
+        example: "#630001"
+      description: 
+        type: string
+        example: day to remember
+      
+  
+      
+                      

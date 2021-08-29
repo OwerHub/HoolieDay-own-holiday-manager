@@ -143,27 +143,23 @@
   width: 32%;
   border-radius: 1px;
   cursor: pointer;
-  background-color: rgba(255, 255, 255, 0.9);
   font-weight: bold;
 }
 .onedayButton:hover {
-  background-color: purple;
-  color: white;
+  background-color: white;
+  color: black;
 }
 
 .deleteButton {
-  border: 2px solid red;
-  color: red;
+  background-color: red;
 }
 
 .updateButton {
-  border: 2px solid purple;
-  color: purple;
+  background-color: purple;
 }
 
 .sendGoogleButton {
-  border: 2px solid lightblue;
-  color: blue;
+  background-color: blue;
 }
 
 .Modal, .updateModal, .deleteModal {
