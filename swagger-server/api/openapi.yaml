@@ -1,0 +1,531 @@
+openapi: 3.0.0
+info:
+  title: HolyDayz
+  description: Create and manage your own celebrate holydays
+  version: 0.8.8
+servers:
+- url: localhost:8000/Api
+  description: localhost server API
+tags:
+- name: login
+  description: login and user queries
+- name: Holydayz
+  description: "Create, delete, ask, or modify User's Holday"
+- name: Types
+  description: "Create , ask , or modify default Types"
+- name: UserTypes
+  description: "Create,or manipulate user's own types"
+paths:
+  /login/ping:
+    get:
+      tags:
+      - login
+      summary: simple answer to a simple query
+      description: check the server and the route
+      operationId: loginPingGET
+      responses:
+        "200":
+          description: everithing is okay
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: pong
+                x-content-type: text/plain
+      x-swagger-router-controller: Login
+  /users/sendLoginCode:
+    get:
+      tags:
+      - login
+      summary: verify the google code.
+      description: verify the openID code.
+      operationId: usersSendLoginCodeGET
+      parameters: []
+      responses:
+        "200":
+          description: user Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/definitions/UserHolyday'
+      x-swagger-router-controller: Login
+  /users/updateUserData:
+    put:
+      tags:
+      - login
+      summary: change user parameter's value
+      operationId: usersUpdateUserDataPUT
+      parameters:
+      - name: token
+        in: header
+        required: false
+        style: simple
+        explode: false
+        schema:
+          type: string
+          description: token (id in token ) for verify
+          format: token
+      responses:
+        "201":
+          description: user putted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/inline_response_201'
+        "403":
+          description: authentication failed.
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: Acess Denied
+                x-content-type: text/plain
+      x-swagger-router-controller: Login
+  /holydays/ping:
+    get:
+      tags:
+      - Holydayz
+      summary: simple answer to a simple query
+      description: check the server and the route
+      operationId: holydaysPingGET
+      responses:
+        "200":
+          description: everithing is okay
+          content:
+            text/plain:
+              schema:
+                type: string
+                x-content-type: text/plain
+      x-swagger-router-controller: Holydayz
+  /holydays/allHolyday:
+    get:
+      tags:
+      - Holydayz
+      summary: get all holyday.
+      description: get all holyday from the user
+      operationId: holydaysAllHolydayGET
+      parameters:
+      - name: token
+        in: header
+        required: false
+        style: simple
+        explode: false
+        schema:
+          type: string
+          description: token (id in token ) for verify
+          format: token
+      responses:
+        "200":
+          description: get back all holyday
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/definitions/holyday'
+                x-content-type: application/json
+        "403":
+          description: authentication failed.
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: Acess Denied
+                x-content-type: text/plain
+      x-swagger-router-controller: Holydayz
+  /holydays/newHolyday:
+    post:
+      tags:
+      - Holydayz
+      summary: post new holyday.
+      description: post new holyday
+      operationId: holydaysNewHolydayPOST
+      parameters:
+      - name: token
+        in: header
+        required: false
+        style: simple
+        explode: false
+        schema:
+          type: string
+          description: token (id in token ) for verify
+          format: token
+      responses:
+        "200":
+          description: get back all holyday
+          content:
+            application/json:
+              schema:
+                type: array
+                properties:
+                  nickName:
+                    type: string
+                    description: give back the new nickname.
+                    example: Kandisz Nóra
+                example:
+                  nickName: Kandisz Nóra
+                x-content-type: application/json
+        "403":
+          description: authentication failed.
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: Acess Denied
+                x-content-type: text/plain
+      x-swagger-router-controller: Holydayz
+  /holydays/updateUserData:
+    put:
+      tags:
+      - Holydayz
+      summary: change a holydays value
+      operationId: holydaysUpdateUserDataPUT
+      parameters:
+      - name: token
+        in: header
+        required: false
+        style: simple
+        explode: false
+        schema:
+          type: string
+          description: token (id in token ) for verify
+          format: token
+      responses:
+        "200":
+          description: get back all holyday
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/definitions/holyday'
+                x-content-type: application/json
+        "403":
+          description: authentication failed.
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: Acess Denied
+                x-content-type: text/plain
+      x-swagger-router-controller: Holydayz
+  /holydays/deleteHolyday:
+    delete:
+      tags:
+      - Holydayz
+      summary: change a holydays value
+      operationId: holydaysDeleteHolydayDELETE
+      parameters:
+      - name: token
+        in: header
+        required: false
+        style: simple
+        explode: false
+        schema:
+          type: string
+          description: token (id in token ) for verify
+          format: token
+      responses:
+        "200":
+          description: get back all holyday
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/definitions/holyday'
+                x-content-type: application/json
+        "403":
+          description: authentication failed.
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: Acess Denied
+                x-content-type: text/plain
+      x-swagger-router-controller: Holydayz
+  /holydays/sendToGoogle:
+    post:
+      tags:
+      - Holydayz
+      summary: send holyday to Google.
+      description: post new holyday
+      operationId: holydaysSendToGooglePOST
+      parameters:
+      - name: token
+        in: header
+        required: false
+        style: simple
+        explode: false
+        schema:
+          type: string
+          description: token (id in token ) for verify
+          format: token
+      responses:
+        "200":
+          description: get back all holyday
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/inline_response_200'
+        "403":
+          description: authentication failed.
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: Acess Denied
+                x-content-type: text/plain
+      x-swagger-router-controller: Holydayz
+  /types/newType:
+    post:
+      tags:
+      - Types
+      summary: post new holyday.
+      description: post new holyday
+      operationId: typesNewTypePOST
+      parameters:
+      - name: token
+        in: header
+        required: false
+        style: simple
+        explode: false
+        schema:
+          type: string
+          description: token (id in token ) for verify
+          format: token
+      responses:
+        "200":
+          description: get back all types
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/definitions/type'
+                x-content-type: application/json
+        "403":
+          description: authentication failed.
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: Acess Denied
+                x-content-type: text/plain
+      x-swagger-router-controller: Types
+  /types/alltypes:
+    get:
+      tags:
+      - Types
+      summary: post new holyday.
+      description: post new holyday
+      operationId: typesAlltypesGET
+      parameters:
+      - name: token
+        in: header
+        required: false
+        style: simple
+        explode: false
+        schema:
+          type: string
+          description: token (id in token ) for verify
+          format: token
+      responses:
+        "200":
+          description: get back all types
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/definitions/type'
+                x-content-type: application/json
+        "403":
+          description: authentication failed.
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: Acess Denied
+                x-content-type: text/plain
+      x-swagger-router-controller: Types
+  /userType/ping:
+    get:
+      tags:
+      - UserTypes
+      summary: simple answer to a simple query
+      description: check the server and the route
+      operationId: userTypePingGET
+      responses:
+        "200":
+          description: everithing is okay
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: im a testfunction in UserTypesController
+                x-content-type: text/plain
+        "404":
+          description: cant reach the server
+      x-swagger-router-controller: UserTypes
+  /usertypes/alluserTypes:
+    get:
+      tags:
+      - UserTypes
+      summary: Get all usertype.
+      description: get all usertype
+      operationId: usertypesAlluserTypesGET
+      parameters:
+      - name: token
+        in: header
+        required: false
+        style: simple
+        explode: false
+        schema:
+          type: string
+          description: token (id in token ) for verify
+          format: token
+      responses:
+        "200":
+          description: get back all types
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/definitions/type'
+                x-content-type: application/json
+        "403":
+          description: authentication failed.
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: Acess Denied
+                x-content-type: text/plain
+      x-swagger-router-controller: UserTypes
+  /userType/newUserType:
+    post:
+      tags:
+      - UserTypes
+      summary: make a new type in user Document
+      operationId: userTypeNewUserTypePOST
+      parameters:
+      - name: token
+        in: header
+        required: false
+        style: simple
+        explode: false
+        schema:
+          type: string
+          description: token (id in token ) for verify
+          format: token
+      responses:
+        "200":
+          description: get back all types from user
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/definitions/type'
+                x-content-type: application/json
+        "403":
+          description: authentication failed.
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: Acess Denied
+                x-content-type: text/plain
+      x-swagger-router-controller: UserTypes
+  /userType/updateUserTypes:
+    put:
+      tags:
+      - UserTypes
+      summary: change user parameter's value
+      operationId: userTypeUpdateUserTypesPUT
+      parameters:
+      - name: token
+        in: header
+        required: false
+        style: simple
+        explode: false
+        schema:
+          type: string
+          description: token (id in token ) for verify
+          format: token
+      responses:
+        "200":
+          description: get back all types from user
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/definitions/type'
+                x-content-type: application/json
+        "403":
+          description: authentication failed.
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: Acess Denied
+                x-content-type: text/plain
+      x-swagger-router-controller: UserTypes
+  /userType/deleteUserType:
+    delete:
+      tags:
+      - UserTypes
+      summary: change a holydays value
+      operationId: userTypeDeleteUserTypeDELETE
+      parameters:
+      - name: token
+        in: header
+        required: false
+        style: simple
+        explode: false
+        schema:
+          type: string
+          description: token (id in token ) for verify
+          format: token
+      responses:
+        "200":
+          description: get back all types from user
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/definitions/type'
+                x-content-type: application/json
+        "403":
+          description: authentication failed.
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: Acess Denied
+                x-content-type: text/plain
+      x-swagger-router-controller: UserTypes
+components:
+  schemas:
+    inline_response_201:
+      type: object
+      properties:
+        nickName:
+          type: string
+          description: give back the new nickname.
+          example: Kandisz Nóra
+      example:
+        nickName: Kandisz Nóra
+    inline_response_200:
+      type: object
+      properties:
+        message:
+          type: string
+          description: give back the new nickname.
+          example: Holyday's Saved
+      example:
+        message: Holyday's Saved
