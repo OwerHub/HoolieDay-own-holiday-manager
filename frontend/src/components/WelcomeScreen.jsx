@@ -11,7 +11,10 @@ function WelcomeScreen(props) {
     <div className="WelcomeScreenOut">
       <div className="helloText">Hello User, Welcome in HoolieDays</div>
       <div>Tudom, hogy rosszul írtam a Holiday-s mindenhol </div>
-      <div className="helloButton" onClick={() => closeFunct()}>
+      <div
+        className="helloButton rainbowButtonOut height1rem"
+        onClick={() => closeFunct()}
+      >
         <span>Enter</span>
       </div>
     </div>

@@ -6,6 +6,7 @@ import AllDazy from "./components/AllDayz";
 import Login from "./components/Login";
 import SetUserModal from "./components/SetUserDatasModal";
 import WelcomeScreen from "./components/WelcomeScreen";
+import Head from "./components/Head";
 
 import FetchModule from "./utils/fetch";
 
@@ -94,26 +95,21 @@ function App() {
 
   return (
     <div className="App">
-      <div id="head">
+      <Head setPage={(isPage) => setPage(isPage)}></Head>
+      {/*   <div id="head">
         <div className="userNameOrLoginPage">
           {localStorage.getItem("token") !== null ? (
             <div
               className="headName headButton"
               onClick={() => setPage("userDatasModal")}
             >
-              Hello {localStorage.getItem("name")}
+              <span>Hello {localStorage.getItem("name")}</span>
             </div>
           ) : (
             <div className="headName headButton" onClick={() => setPage("login")}>
               Please login or refresh the page
             </div>
           )}
-          {/* <div
-            className="headName headButton"
-            onClick={() => setPage("userDatasModal")}
-          >
-            {nameFromLocalStorage()}
-          </div> */}
         </div>
 
         <div className="NewButton headButton" onClick={() => setPage("newHolyDay")}>
@@ -123,7 +119,7 @@ function App() {
         <div className="headButton" onClick={() => setPage("holydayz")}>
           HolyDayz
         </div>
-      </div>
+      </div> */}
       {/*      <div className="serviceHead">
         <div className="serviceButton" onClick={() => setPage("login")}>
           login
