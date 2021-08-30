@@ -1,10 +1,17 @@
+import "../styles/dist/head.css";
+//import React, { useState, useEffect } from "react";
+
 function HeadFunct(props) {
+  console.log("props in Head", props.isPage);
+
   return (
-    <div id="head">
+    <div id="head" className="testHead">
       <div className="userNameOrLoginPage">
         {localStorage.getItem("token") !== null ? (
           <div
-            className="headName headButton"
+            className={` headName headButton   ${
+              props.isPage === "userDatasModal" && "selectedHead"
+            }`}
             onClick={() => props.setPage("userDatasModal")}
           >
             <span>Hello {localStorage.getItem("name")}</span>
@@ -26,13 +33,18 @@ function HeadFunct(props) {
       </div>
 
       <div
-        className="NewButton headButton"
+        className={`NewButton headButton ${
+          props.isPage === "newHolyDay" && "selectedHead"
+        }`}
         onClick={() => props.setPage("newHolyDay")}
       >
         new Holyday
       </div>
 
-      <div className="headButton" onClick={() => props.setPage("holydayz")}>
+      <div
+        className={`headButton ${props.isPage === "holydayz" && "selectedHead"}`}
+        onClick={() => props.setPage("holydayz")}
+      >
         HolyDayz
       </div>
     </div>

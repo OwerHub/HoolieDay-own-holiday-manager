@@ -204,6 +204,7 @@
 .updateModal {
   z-index: 5;
   border: 2px solid black;
+  background-color: #4d004d;
 }
 .updateModal .updateInputs {
   padding: 0.5rem;
@@ -222,6 +223,11 @@
   border: 1px solid darkgrey;
   border-radius: 2px;
   padding: 1px 3px;
+  cursor: pointer;
+}
+.updateModal .updateInputs .inputBlock .updateFieldsButton:hover {
+  background-color: whitesmoke;
+  color: purple;
 }
 .updateModal .closeUpdate {
   position: absolute;

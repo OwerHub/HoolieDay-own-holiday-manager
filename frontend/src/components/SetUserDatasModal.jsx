@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import FetchModule from "../utils/fetch";
 import InputTypeForm from "./InputTypeForm";
+import "../styles/dist/setUserTypes.css";
 
 function SetUserDatas(props) {
   const [isUserTypes, setUserTypes] = useState();

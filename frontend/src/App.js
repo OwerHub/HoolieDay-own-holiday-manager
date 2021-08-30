@@ -47,8 +47,6 @@ function App() {
       console.log("sehol semmi holyday ");
     }
 
-    //console.log(firstFetched);
-
     localStorage.setItem("token", firstFetched.token);
     localStorage.setItem("name", firstFetched.datas.name);
     localStorage.setItem("picture", firstFetched.datas.picture);
@@ -60,9 +58,7 @@ function App() {
   //start Sequence
   useEffect(() => {
     const localStorageToken = localStorage.getItem("token");
-    //console.log("localst in UseEffect", localStorageToken);
     const code = new URL(window.location.href).searchParams.get("code"); // itt megkapjuk a
-    console.log(code);
     const token = { code: code };
 
     if (code) {
@@ -71,7 +67,7 @@ function App() {
         setPage("login");
         fetchPostCode(token);
       } else if (isHolydays) {
-        setPage("holydayz"); // ezt már próbáltam
+        setPage("holydayz");
       }
     } else {
       setPage("login");
@@ -95,36 +91,7 @@ function App() {
 
   return (
     <div className="App">
-      <Head setPage={(isPage) => setPage(isPage)}></Head>
-      {/*   <div id="head">
-        <div className="userNameOrLoginPage">
-          {localStorage.getItem("token") !== null ? (
-            <div
-              className="headName headButton"
-              onClick={() => setPage("userDatasModal")}
-            >
-              <span>Hello {localStorage.getItem("name")}</span>
-            </div>
-          ) : (
-            <div className="headName headButton" onClick={() => setPage("login")}>
-              Please login or refresh the page
-            </div>
-          )}
-        </div>
-
-        <div className="NewButton headButton" onClick={() => setPage("newHolyDay")}>
-          new Holyday
-        </div>
-
-        <div className="headButton" onClick={() => setPage("holydayz")}>
-          HolyDayz
-        </div>
-      </div> */}
-      {/*      <div className="serviceHead">
-        <div className="serviceButton" onClick={() => setPage("login")}>
-          login
-        </div>
-      </div> */}
+      <Head setPage={(isPage) => setPage(isPage)} isPage={isPage}></Head>
 
       {isPage === "login" && <Login setLogin={() => setPage()}></Login>}
 

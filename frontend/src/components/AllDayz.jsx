@@ -109,6 +109,7 @@ function AllDayz() {
     <div>
       {/* végigiterál a dayTpypesNew tömbön, gombokat hoz létre mindegyik adatai alapján
           a gombok az a type state annyiadik elemével dolgoznak, amennyi az iterátoruk */}
+      <div>Please Select the type(s)</div>
       <div className="typeButtonGroup">
         {isTypeArray &&
           isTypeArray.map((data, iterator) => (
