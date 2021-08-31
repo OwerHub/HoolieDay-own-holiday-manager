@@ -8,6 +8,9 @@ import SetUserModal from "./components/SetUserDatasModal";
 import WelcomeScreen from "./components/WelcomeScreen";
 import Head from "./components/Head";
 
+// test
+import LoadingWave from "./components/LoadingWave";
+
 import FetchModule from "./utils/fetch";
 
 function App() {

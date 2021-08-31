@@ -3,10 +3,13 @@ import "../styles/dist/oneday.css";
 import { months } from "../utils/progdatas";
 import GoogleAnswer from "./GoogleAnswer";
 import FetchModule from "../utils/fetch";
+import LoadingWave from "./LoadingWave";
 
 function OneDay(props) {
   const [isModalType, setModalType] = useState("none");
   const [isGoogleAnswer, setGoogleAnswer] = useState();
+  const [isLoading, setLoading] = useState(false);
+
   let date = props.data.date;
   let month = parseInt(date.substring(0, 2));
   let day = parseInt(date.substring(2, 4));
@@ -28,6 +31,7 @@ function OneDay(props) {
 
   //console.log("props.data", props.data);
   const sendToGoogleFunct = async () => {
+    setLoading(true);
     let thisYear = new Date().getFullYear();
     const urlFetchToGoogle = "http://localhost:8000/api/holyday/saveToGoogle";
 
@@ -59,6 +63,7 @@ function OneDay(props) {
       body: JSON.stringify({ id: props.data._id }),
     }); */
     setGoogleAnswer(response);
+    setLoading(false);
     setModalType("googleAnswer");
     console.log(response);
   };
@@ -190,6 +195,8 @@ function OneDay(props) {
           close={() => setModalType("none")}
         ></GoogleAnswer>
       )}
+
+      {isLoading && <LoadingWave></LoadingWave>}
     </div>
   );
 }
