@@ -3,6 +3,7 @@ import OneDay from "./OneDay";
 import "../styles/dist/alldayz.css";
 import { dayTypesNew } from "../utils/progdatas";
 import FetchModule from "../utils/fetch";
+import GoogleAnswer from "./GoogleAnswer";
 
 function AllDayz() {
   const [isLoading, setLoading] = useState(true);

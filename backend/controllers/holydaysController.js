@@ -135,7 +135,7 @@ async function askHoolieDaysCalendar(auth) {
 
   console.log("findmyCalendars", findMyCalendar);
   if (findMyCalendar.length === 1) {
-    return { message: "I find my calendar", data: findMyCalendar[0] };
+    return { message: "", data: findMyCalendar[0] };
   } else {
     const res = await createNewCalendar(auth);
     return { message: "I create new calendar", data: res };
@@ -220,5 +220,8 @@ exports.saveToGoogle = async (req, res) => {
 
   console.log("return eventresponse :", eventResponse.status);
 
-  res.json({ message: "ezt is megcsináljuk", googleStatus: eventResponse.status });
+  res.json({
+    calendarMessage: calendarID.message,
+    googleStatus: eventResponse.status,
+  });
 };

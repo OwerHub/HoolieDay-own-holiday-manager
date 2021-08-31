@@ -1,0 +1,30 @@
+@import "./colors";
+@import "./include";
+
+.googleAnswerOut{
+	position: fixed;
+	z-index: 10;
+	background-color: rgb(52, 0, 134);
+	height: 76vh;
+	width: 76vw;
+	top: 12vh;
+	left: 12vw;
+	//filter: blur(5px);
+
+}
+
+.googleAnswerIn{
+	position: absolute;
+ background-color: rgb(30, 31, 30);
+ margin: .5vh .5vw;
+ height: 75vh;
+ width: 75vw;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	div{
+		font-size: 150%;
+
+	}
+}
+

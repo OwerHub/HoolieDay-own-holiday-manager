@@ -1,0 +1,24 @@
+/* from: https://colorpalettes.net/color-palette-2911/ */
+.googleAnswerOut {
+  position: fixed;
+  z-index: 10;
+  background-color: #340086;
+  height: 76vh;
+  width: 76vw;
+  top: 12vh;
+  left: 12vw;
+}
+
+.googleAnswerIn {
+  position: absolute;
+  background-color: #1e1f1e;
+  margin: 0.5vh 0.5vw;
+  height: 75vh;
+  width: 75vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.googleAnswerIn div {
+  font-size: 150%;
+}

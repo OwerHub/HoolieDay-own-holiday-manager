@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import "../styles/dist/oneday.css";
-import { months, dayTypesNew } from "../utils/progdatas";
+import { months } from "../utils/progdatas";
+import GoogleAnswer from "./GoogleAnswer";
 import FetchModule from "../utils/fetch";
 
 function OneDay(props) {
   const [isModalType, setModalType] = useState("none");
-
+  const [isGoogleAnswer, setGoogleAnswer] = useState();
   let date = props.data.date;
   let month = parseInt(date.substring(0, 2));
   let day = parseInt(date.substring(2, 4));
@@ -57,7 +58,8 @@ function OneDay(props) {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ id: props.data._id }),
     }); */
-
+    setGoogleAnswer(response);
+    setModalType("googleAnswer");
     console.log(response);
   };
 
@@ -180,6 +182,13 @@ function OneDay(props) {
             x
           </div>
         </div>
+      )}
+
+      {isModalType === "googleAnswer" && (
+        <GoogleAnswer
+          datas={isGoogleAnswer}
+          close={() => setModalType("none")}
+        ></GoogleAnswer>
       )}
     </div>
   );
