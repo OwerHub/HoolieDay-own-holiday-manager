@@ -102,42 +102,68 @@ function listEvents(auth) {
   );
 }
 
-async function addEventToCalendar(auth) {
+async function createNewCalendar(auth) {
+  console.log("in CreateFunction");
+  const calendar = google.calendar({ version: "v3", auth });
+  var newCalendar = {
+    requestBody: {
+      summary: "HoolieDays",
+      description: "Hooliedays Calendar",
+      //timeZone: "Europe/Budapest",
+      //etag: "my_etag",
+      //id: "234234234HoolieDay",
+    },
+  };
+
+  const res = await calendar.calendars.insert(newCalendar);
+  //console.log(res.data.id);
+  return res.data.id;
+}
+
+async function askHoolieDaysCalendar(auth) {
+  const calendar = google.calendar({ version: "v3", auth });
+
+  const reqCalendars = await calendar.calendarList.list({});
+
+  const findMyCalendar = await reqCalendars.data.items
+    .filter(function (calendar) {
+      return calendar.summary === "HoolieDays";
+    })
+    .map(function (calendar) {
+      return calendar.id;
+    });
+
+  console.log("findmyCalendars", findMyCalendar);
+  if (findMyCalendar.length === 1) {
+    return { message: "I find my calendar", data: findMyCalendar[0] };
+  } else {
+    const res = await createNewCalendar(auth);
+    return { message: "I create new calendar", data: res };
+  }
+}
+
+async function addEventToCalendar(auth, calendarID) {
   const calendar = google.calendar({ version: "v3", auth });
   var event = {
-    summary: "test2",
-    //location: "800 Howard St., San Francisco, CA 94103",
+    summary: "testColor8",
     description: "A chance to hear more about Google's developer products.",
+    colorId: "8",
     start: {
-      //dateTime: "2021-08-31T19:00:00Z",
       date: "2021-09-02",
       timeZone: "Europe/Budapest",
     },
     end: {
-      //dateTime: "2021-08-31T21:00:00Z",
       date: "2021-09-02",
       timeZone: "Europe/Budapest",
     },
-    /*  'recurrence': [
-      'RRULE:FREQ=DAILY;COUNT=2'
-    ], */
-    /*  'attendees': [
-      {'email': 'lpage@example.com'},
-      {'email': 'sbrin@example.com'},
-    ], */
-    /*    'reminders': {
-      'useDefault': false,
-      'overrides': [
-        {'method': 'email', 'minutes': 24 * 60},
-        {'method': 'popup', 'minutes': 10},
-      ],
-    }, */
   };
+
+  console.log("calendarID.data in AddEvent", calendarID.data);
 
   const response = await calendar.events
     .insert({
       auth: auth,
-      calendarId: "primary",
+      calendarId: calendarID.data,
       resource: event,
     })
     .catch((err) => {
@@ -172,13 +198,23 @@ exports.saveToGoogle = async (req, res) => {
 
   oauth2Client.setCredentials(tokens);
 
-  const response = await addEventToCalendar(oauth2Client);
+  const calendarID = await askHoolieDaysCalendar(oauth2Client);
+
+  console.log("calendarID= ", calendarID.data);
+  const eventResponse = await addEventToCalendar(oauth2Client, calendarID);
+
+  console.log("return eventresponse :", eventResponse.data);
+
+  res.send({ dataWhatNeed });
+
+  //console.log("return data: ", await createNewCalendar(oauth2Client));
+  /* const response = await addEventToCalendar(oauth2Client);
 
   if (response.status == "200") {
     res.json(response.data);
   } else {
     res.status(400).send("Wrong");
-  }
+  } */
 
   /*   console.log("main response", response);
 
