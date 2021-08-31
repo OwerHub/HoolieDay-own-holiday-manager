@@ -27,14 +27,25 @@ function OneDay(props) {
 
   //console.log("props.data", props.data);
   const sendToGoogleFunct = async () => {
+    let thisYear = new Date().getFullYear();
     const urlFetchToGoogle = "http://localhost:8000/api/holyday/saveToGoogle";
+
+    if (props.data.year === "next") {
+      thisYear++;
+    }
+
+    const date = `${thisYear}-${props.data.date.substring(
+      0,
+      2
+    )}-${props.data.date.substring(2, 4)}`;
+
+    //console.log("date is", date);
 
     const hoolieDayDatas = {
       id: props.data._id,
-      date: props.data.date,
-      celebrate: props.data.celebrate,
-      description: props.data.description,
-      name: props.data.name,
+      date: date,
+      summary: `${props.dayTypes[props.data.type].name} ${props.data.name}`,
+      description: props.data.celebrate,
       type: props.data.type,
     };
 

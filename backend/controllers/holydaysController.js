@@ -142,18 +142,25 @@ async function askHoolieDaysCalendar(auth) {
   }
 }
 
-async function addEventToCalendar(auth, calendarID) {
+async function addEventToCalendar(
+  auth,
+  calendarID,
+  date,
+  summary,
+  description,
+  color
+) {
   const calendar = google.calendar({ version: "v3", auth });
   var event = {
-    summary: "testColor8",
-    description: "A chance to hear more about Google's developer products.",
-    colorId: "8",
+    summary: summary,
+    description: description,
+    colorId: color,
     start: {
-      date: "2021-09-02",
+      date: date,
       timeZone: "Europe/Budapest",
     },
     end: {
-      date: "2021-09-02",
+      date: date,
       timeZone: "Europe/Budapest",
     },
   };
@@ -174,6 +181,7 @@ async function addEventToCalendar(auth, calendarID) {
 }
 
 exports.saveToGoogle = async (req, res) => {
+  const eventColors = ["2", "3", "6", "7"]; // best colors for the types
   const userDataResponse = await UserModel.findOne({ _id: req.idFromToken });
 
   const dataWhatNeed = {
@@ -201,29 +209,16 @@ exports.saveToGoogle = async (req, res) => {
   const calendarID = await askHoolieDaysCalendar(oauth2Client);
 
   console.log("calendarID= ", calendarID.data);
-  const eventResponse = await addEventToCalendar(oauth2Client, calendarID);
+  const eventResponse = await addEventToCalendar(
+    oauth2Client,
+    calendarID,
+    req.body.date,
+    req.body.summary,
+    req.body.description,
+    eventColors[req.body.type]
+  );
 
-  console.log("return eventresponse :", eventResponse.data);
+  console.log("return eventresponse :", eventResponse.status);
 
-  res.send({ dataWhatNeed });
-
-  //console.log("return data: ", await createNewCalendar(oauth2Client));
-  /* const response = await addEventToCalendar(oauth2Client);
-
-  if (response.status == "200") {
-    res.json(response.data);
-  } else {
-    res.status(400).send("Wrong");
-  } */
-
-  /*   console.log("main response", response);
-
-  res.send({ dataWhatNeed }); */
-
-  /* 
-  -----EZ SE LETT VOLNA ROSSZ MEGOLDÁS
-  const selectedHolyday = userResponse.holydays.filter(
-    (holyday) => holyday._id == req.body.id
-  ); // két egyenlőségjellel mert Login-ra küldöm a dolgokat.
- */
+  res.json({ message: "ezt is megcsináljuk", googleStatus: eventResponse.status });
 };
