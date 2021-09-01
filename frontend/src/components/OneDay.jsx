@@ -31,6 +31,7 @@ function OneDay(props) {
 
   //console.log("props.data", props.data);
   const sendToGoogleFunct = async () => {
+    setModalType("none");
     setLoading(true);
     let thisYear = new Date().getFullYear();
     const urlFetchToGoogle = "http://localhost:8000/api/holyday/saveToGoogle";
@@ -56,12 +57,6 @@ function OneDay(props) {
 
     const response = await FetchModule(urlFetchToGoogle, "POST", hoolieDayDatas);
 
-    /* const response = await fetch(urlFetchToGoogle, {
-      method: "POST",
-      mode: "cors",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ id: props.data._id }),
-    }); */
     setGoogleAnswer(response);
     setLoading(false);
     setModalType("googleAnswer");
@@ -147,7 +142,7 @@ function OneDay(props) {
 
         <div
           className="sendGoogleButton onedayButton"
-          onClick={() => sendToGoogleFunct()}
+          onClick={() => setModalType("sendVerify")}
         >
           Send To{" "}
         </div>
@@ -157,8 +152,20 @@ function OneDay(props) {
         <div className="deleteModal">
           <div className="deleteHead">Are You Sure Delete This Div?</div>
           <div className="deleteButtons">
-            <div onClick={() => deleteFunct()}>yess, of course</div>
             <div onClick={() => setModalType("none")}>no way</div>
+            <div onClick={() => deleteFunct()}>yess, of course</div>
+          </div>
+        </div>
+      )}
+
+      {isModalType === "sendVerify" && (
+        <div className="sendModal">
+          <div className="sendModalIn">
+            <div>Do You Want to send this HoolieDay to Google Calendar?</div>
+            <div className="sendVerifyButton">
+              <div onClick={() => setModalType("none")}>No</div>
+              <div onClick={() => sendToGoogleFunct()}>Yes</div>
+            </div>
           </div>
         </div>
       )}

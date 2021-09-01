@@ -284,3 +284,38 @@
     }
 }
 
+.sendModal{
+  @extend.Modal;
+  padding: 1rem 0 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgb(24, 24, 24);
+  
+  .sendModalIn{
+    max-width: 350px;
+    padding: .5rem;
+    font-weight: bold;
+      .sendVerifyButton{
+        display: flex;
+        justify-content: space-around;
+       div{
+         margin: 1rem 0 .4rem;
+         padding: .1rem .3rem .2rem;
+         border-radius: 5px;
+         width: 3rem;
+         cursor: pointer;
+         &:hover{
+           background-color: purple;
+           color: whiteSmoke;         }
+         &:nth-child(1){
+           border: 2px solid red;
+         }
+         &:nth-child(2){
+          border: 2px solid rgb(100, 75, 245);
+        }
+        
+       }
+      }   
+  }
+}

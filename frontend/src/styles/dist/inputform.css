@@ -19,7 +19,7 @@
   min-height: 70vh;
   background-color: #252525;
   border: 2px solid green;
-  border-radius: 2px;
+  border-radius: 5px;
   color: whitesmoke;
 }
 @media (max-width: 768px) {

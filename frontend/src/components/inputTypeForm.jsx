@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from "react";
 import FetchModule from "../utils/fetch";
+import LoadingWave from "./LoadingWave";
 
 function InputTypeForm(props) {
+  const [isLoading, setLoading] = useState(false);
   const fetchPutTpyes = (data) => {
     const inputValue = document.querySelector(`.typeInput${data}`).value;
   };
 
   // bele lehet építeni a del-t is
   const fetchNew = async (data) => {
+    setLoading(true);
     // ezt lehet még mappolni
     let name = document.querySelector(`.typeInputname`).value;
     let color = document.querySelector(`.typeInputcolor`).value;
@@ -23,7 +26,7 @@ function InputTypeForm(props) {
       };
 
       const response = await FetchModule(url, "POST", fetchBody);
-
+      setLoading(false);
       props.close();
     } //newEnd
 
@@ -54,7 +57,7 @@ function InputTypeForm(props) {
   return (
     <div className="inputUserTypes">
       <div className="inputTypeFormHead">
-        {props.values ? "update datas" : "Write the new datas"}
+        {props.values ? "Update Datas" : "Write the new datas"}
       </div>
       {props.properties.map((data, iterator) => (
         <div className="inputMapField" key={`inputData${iterator}`}>
@@ -87,6 +90,8 @@ function InputTypeForm(props) {
           create
         </div>
       )}
+
+      {isLoading && <LoadingWave></LoadingWave>}
     </div>
   );
 }

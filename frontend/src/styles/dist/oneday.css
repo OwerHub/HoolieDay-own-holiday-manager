@@ -162,7 +162,7 @@
   background-color: blue;
 }
 
-.Modal, .updateModal, .deleteModal {
+.Modal, .sendModal, .updateModal, .deleteModal {
   position: absolute;
   top: 2vh;
   left: calc(50% - 25vw );
@@ -235,4 +235,38 @@
   right: 0.8rem;
   font-size: 150%;
   cursor: pointer;
+}
+
+.sendModal {
+  padding: 1rem 0 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #181818;
+}
+.sendModal .sendModalIn {
+  max-width: 350px;
+  padding: 0.5rem;
+  font-weight: bold;
+}
+.sendModal .sendModalIn .sendVerifyButton {
+  display: flex;
+  justify-content: space-around;
+}
+.sendModal .sendModalIn .sendVerifyButton div {
+  margin: 1rem 0 0.4rem;
+  padding: 0.1rem 0.3rem 0.2rem;
+  border-radius: 5px;
+  width: 3rem;
+  cursor: pointer;
+}
+.sendModal .sendModalIn .sendVerifyButton div:hover {
+  background-color: purple;
+  color: whiteSmoke;
+}
+.sendModal .sendModalIn .sendVerifyButton div:nth-child(1) {
+  border: 2px solid red;
+}
+.sendModal .sendModalIn .sendVerifyButton div:nth-child(2) {
+  border: 2px solid #644bf5;
 }
