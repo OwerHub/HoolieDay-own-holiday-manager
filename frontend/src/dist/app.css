@@ -110,16 +110,26 @@ button {
   position: fixed;
   background-color: #330000;
   width: 100%;
-  min-height: 13vh;
+  min-height: 50vh;
   top: 0;
   padding: 1rem;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
+}
+.WelcomeScreenOut div:nth-child(2) {
+  margin: 0 1rem 1rem;
+  padding: 0 1rem;
+  max-width: 300px;
+  color: whitesmoke;
+}
+.WelcomeScreenOut div:nth-child(2) p {
+  margin: 2rem 0;
 }
 .WelcomeScreenOut .helloText {
   font-weight: bolder;
+  margin: 0 0 0.3rem;
 }
 .WelcomeScreenOut .helloButton {
   width: 5rem;

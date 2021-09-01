@@ -32,18 +32,32 @@ button {
   position: fixed;
   background-color: rgb(51, 0, 0);
   width: 100%;
-  min-height: 13vh;
+  min-height: 50vh;
   top: 0;
   padding: 1rem;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
+  div{
+    &:nth-child(2){
+      
+      margin: 0 1rem 1rem;
+      padding:0 1rem;
+      max-width: 300px;
+      color: whitesmoke;
+      p{
+        margin: 2rem 0;
+      }
+    }
+  }
   .helloText{
     font-weight: bolder;
+    margin: 0 0 .3rem;
   }
   .helloButton{
     width: 5rem;
+ 
     //background-color: rgba(black, .3);
     border: 1px solid white;
     border-radius: 5px;
