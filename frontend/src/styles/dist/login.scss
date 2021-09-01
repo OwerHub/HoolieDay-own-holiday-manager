@@ -2,7 +2,8 @@
 @import "./include";
 
 .loginOutDiv{
-	background-color: hsl(204, 77, 42);
+	background-color: rgb(1, 19, 31);
+	border: 2px solid rgb(52, 52, 255);
 	margin: 2rem auto;
 	padding: 2rem;
 	width: 80%;
@@ -31,8 +32,13 @@
 		border-radius: 10px;
 		width: 10rem;
 		padding: 1rem;
-		color: white;
-
+		color: whitesmoke;
+		cursor: pointer;
+		font-weight: bold;
+		transition: transform .3s;
+		&:hover{
+			transform: scale(1.02);
+		}
 	}
 
 }

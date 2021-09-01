@@ -1,6 +1,7 @@
 /* from: https://colorpalettes.net/color-palette-2911/ */
 .loginOutDiv {
-  background-color: #197cbe;
+  background-color: #01131f;
+  border: 2px solid #3434ff;
   margin: 2rem auto;
   padding: 2rem;
   width: 80%;
@@ -26,5 +27,11 @@
   border-radius: 10px;
   width: 10rem;
   padding: 1rem;
-  color: white;
+  color: whitesmoke;
+  cursor: pointer;
+  font-weight: bold;
+  transition: transform 0.3s;
+}
+.loginOutDiv .LoginButton:hover {
+  transform: scale(1.02);
 }

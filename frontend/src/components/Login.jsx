@@ -12,7 +12,7 @@ function Login() {
   return (
     <div className="loginOutDiv">
       <div className="loginUpper">
-        <div className="welcomeDiv">Welcome in Holyday</div>
+        <div className="welcomeDiv">Welcome in HoolieDays</div>
         <div>0.9.5 Vizsgaverzió</div>
       </div>
       <div className="LoginButton" onClick={loginAuth}>

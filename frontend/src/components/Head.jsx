@@ -1,9 +1,9 @@
 import "../styles/dist/head.css";
-//import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 
 function HeadFunct(props) {
   console.log("props in Head", props.isPage);
-
+  const [isLogin, setLogin] = useState();
   return (
     <div id="head" className="testHead">
       <div className="userNameOrLoginPage">
@@ -21,7 +21,7 @@ function HeadFunct(props) {
             className="headName headButton"
             onClick={() => props.setPage("login")}
           >
-            Please login or refresh the page
+            Login
           </div>
         )}
         {/* <div
@@ -47,6 +47,7 @@ function HeadFunct(props) {
       >
         HolyDayz
       </div>
+      {localStorage.getItem("token") === null && <div className="headCover"></div>}
     </div>
   );
 }
